@@ -9,9 +9,20 @@ import SwiftUI
 
 @main
 struct MacPackerApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self)
+    private var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .handlesExternalEvents(matching: [])
+    }
+}
+
+final class AppDelegate: NSObject, NSApplicationDelegate {
+    func application(_ application: NSApplication, open urls: [URL]) {
+        print(">> \(urls)")
     }
 }

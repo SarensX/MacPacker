@@ -14,6 +14,13 @@
 		25C0A8BA2A78DE62002C1C2A /* MacPackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8B92A78DE62002C1C2A /* MacPackerTests.swift */; };
 		25C0A8C42A78DE62002C1C2A /* MacPackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8C32A78DE62002C1C2A /* MacPackerUITests.swift */; };
 		25C0A8C62A78DE62002C1C2A /* MacPackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8C52A78DE62002C1C2A /* MacPackerUITestsLaunchTests.swift */; };
+		25C0A8E12A7B5569002C1C2A /* ArchiveManager in Frameworks */ = {isa = PBXBuildFile; productRef = 25C0A8E02A7B5569002C1C2A /* ArchiveManager */; };
+		25C0A8E72A7B59E5002C1C2A /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 25C0A8E62A7B59E5002C1C2A /* ZIPFoundation */; };
+		25C0A8EA2A7B7013002C1C2A /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8E92A7B7013002C1C2A /* FileItem.swift */; };
+		25C0A8EC2A7B7E13002C1C2A /* ArchiveBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8EB2A7B7E13002C1C2A /* ArchiveBrowserView.swift */; };
+		25C62FB42A7C998B00ED5CDE /* FileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB32A7C998B00ED5CDE /* FileContainer.swift */; };
+		25C62FB62A7CC47C00ED5CDE /* ItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB52A7CC47C00ED5CDE /* ItemTableView.swift */; };
+		25C62FB82A80975A00ED5CDE /* SwiftUIDoubleClickModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB72A80975A00ED5CDE /* SwiftUIDoubleClickModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +52,13 @@
 		25C0A8BF2A78DE62002C1C2A /* MacPackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacPackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C0A8C32A78DE62002C1C2A /* MacPackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPackerUITests.swift; sourceTree = "<group>"; };
 		25C0A8C52A78DE62002C1C2A /* MacPackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		25C0A8D22A78DF92002C1C2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		25C0A8DB2A7B5339002C1C2A /* ArchiveManager */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ArchiveManager; path = "../../../Projects/MBeat/MBeat-iOS/ArchiveManager"; sourceTree = "<group>"; };
+		25C0A8E92A7B7013002C1C2A /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
+		25C0A8EB2A7B7E13002C1C2A /* ArchiveBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveBrowserView.swift; sourceTree = "<group>"; };
+		25C62FB32A7C998B00ED5CDE /* FileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContainer.swift; sourceTree = "<group>"; };
+		25C62FB52A7CC47C00ED5CDE /* ItemTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableView.swift; sourceTree = "<group>"; };
+		25C62FB72A80975A00ED5CDE /* SwiftUIDoubleClickModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDoubleClickModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25C0A8E12A7B5569002C1C2A /* ArchiveManager in Frameworks */,
+				25C0A8E72A7B59E5002C1C2A /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,10 +91,12 @@
 		25C0A89B2A78DE5F002C1C2A = {
 			isa = PBXGroup;
 			children = (
+				25C0A8DA2A7B5339002C1C2A /* Packages */,
 				25C0A8A62A78DE5F002C1C2A /* MacPacker */,
 				25C0A8B82A78DE62002C1C2A /* MacPackerTests */,
 				25C0A8C22A78DE62002C1C2A /* MacPackerUITests */,
 				25C0A8A52A78DE5F002C1C2A /* Products */,
+				25C0A8DF2A7B5569002C1C2A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,8 +113,11 @@
 		25C0A8A62A78DE5F002C1C2A /* MacPacker */ = {
 			isa = PBXGroup;
 			children = (
+				25C0A8E82A7B7007002C1C2A /* Model */,
+				25C0A8E22A7B57C1002C1C2A /* Utility */,
+				25C0A8DC2A7B54E2002C1C2A /* View */,
+				25C0A8D22A78DF92002C1C2A /* Info.plist */,
 				25C0A8A72A78DE5F002C1C2A /* MacPackerApp.swift */,
-				25C0A8A92A78DE5F002C1C2A /* ContentView.swift */,
 				25C0A8AB2A78DE61002C1C2A /* Assets.xcassets */,
 				25C0A8B02A78DE61002C1C2A /* MacPacker.entitlements */,
 				25C0A8AD2A78DE61002C1C2A /* Preview Content */,
@@ -129,6 +150,48 @@
 			path = MacPackerUITests;
 			sourceTree = "<group>";
 		};
+		25C0A8DA2A7B5339002C1C2A /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				25C0A8DB2A7B5339002C1C2A /* ArchiveManager */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		25C0A8DC2A7B54E2002C1C2A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				25C0A8EB2A7B7E13002C1C2A /* ArchiveBrowserView.swift */,
+				25C0A8A92A78DE5F002C1C2A /* ContentView.swift */,
+				25C62FB52A7CC47C00ED5CDE /* ItemTableView.swift */,
+				25C62FB72A80975A00ED5CDE /* SwiftUIDoubleClickModifier.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		25C0A8DF2A7B5569002C1C2A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		25C0A8E22A7B57C1002C1C2A /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		25C0A8E82A7B7007002C1C2A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				25C62FB32A7C998B00ED5CDE /* FileContainer.swift */,
+				25C0A8E92A7B7013002C1C2A /* FileItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,6 +208,10 @@
 			dependencies = (
 			);
 			name = MacPacker;
+			packageProductDependencies = (
+				25C0A8E02A7B5569002C1C2A /* ArchiveManager */,
+				25C0A8E62A7B59E5002C1C2A /* ZIPFoundation */,
+			);
 			productName = MacPacker;
 			productReference = 25C0A8A42A78DE5F002C1C2A /* MacPacker.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +284,9 @@
 				Base,
 			);
 			mainGroup = 25C0A89B2A78DE5F002C1C2A;
+			packageReferences = (
+				25C0A8E52A7B59E5002C1C2A /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+			);
 			productRefGroup = 25C0A8A52A78DE5F002C1C2A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,7 +329,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25C62FB82A80975A00ED5CDE /* SwiftUIDoubleClickModifier.swift in Sources */,
+				25C0A8EA2A7B7013002C1C2A /* FileItem.swift in Sources */,
+				25C0A8EC2A7B7E13002C1C2A /* ArchiveBrowserView.swift in Sources */,
 				25C0A8AA2A78DE5F002C1C2A /* ContentView.swift in Sources */,
+				25C62FB42A7C998B00ED5CDE /* FileContainer.swift in Sources */,
+				25C62FB62A7CC47C00ED5CDE /* ItemTableView.swift in Sources */,
 				25C0A8A82A78DE5F002C1C2A /* MacPackerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,7 +422,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -401,7 +476,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -424,12 +499,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MacPacker/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarensx.MacPacker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -451,12 +528,14 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MacPacker/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarensx.MacPacker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -576,6 +655,29 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		25C0A8E52A7B59E5002C1C2A /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.16;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		25C0A8E02A7B5569002C1C2A /* ArchiveManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ArchiveManager;
+		};
+		25C0A8E62A7B59E5002C1C2A /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25C0A8E52A7B59E5002C1C2A /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 25C0A89C2A78DE5F002C1C2A /* Project object */;
 }
