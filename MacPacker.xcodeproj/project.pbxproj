@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		259847C62A81E62000E8CDD9 /* FileItemStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259847C52A81E62000E8CDD9 /* FileItemStack.swift */; };
 		25C0A8A82A78DE5F002C1C2A /* MacPackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8A72A78DE5F002C1C2A /* MacPackerApp.swift */; };
 		25C0A8AA2A78DE5F002C1C2A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8A92A78DE5F002C1C2A /* ContentView.swift */; };
 		25C0A8AC2A78DE61002C1C2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25C0A8AB2A78DE61002C1C2A /* Assets.xcassets */; };
@@ -14,8 +15,6 @@
 		25C0A8BA2A78DE62002C1C2A /* MacPackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8B92A78DE62002C1C2A /* MacPackerTests.swift */; };
 		25C0A8C42A78DE62002C1C2A /* MacPackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8C32A78DE62002C1C2A /* MacPackerUITests.swift */; };
 		25C0A8C62A78DE62002C1C2A /* MacPackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8C52A78DE62002C1C2A /* MacPackerUITestsLaunchTests.swift */; };
-		25C0A8E12A7B5569002C1C2A /* ArchiveManager in Frameworks */ = {isa = PBXBuildFile; productRef = 25C0A8E02A7B5569002C1C2A /* ArchiveManager */; };
-		25C0A8E72A7B59E5002C1C2A /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 25C0A8E62A7B59E5002C1C2A /* ZIPFoundation */; };
 		25C0A8EA2A7B7013002C1C2A /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8E92A7B7013002C1C2A /* FileItem.swift */; };
 		25C0A8EC2A7B7E13002C1C2A /* ArchiveBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8EB2A7B7E13002C1C2A /* ArchiveBrowserView.swift */; };
 		25C62FB42A7C998B00ED5CDE /* FileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB32A7C998B00ED5CDE /* FileContainer.swift */; };
@@ -41,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		259847C52A81E62000E8CDD9 /* FileItemStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItemStack.swift; sourceTree = "<group>"; };
 		25C0A8A42A78DE5F002C1C2A /* MacPacker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacPacker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C0A8A72A78DE5F002C1C2A /* MacPackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPackerApp.swift; sourceTree = "<group>"; };
 		25C0A8A92A78DE5F002C1C2A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,7 +53,6 @@
 		25C0A8C32A78DE62002C1C2A /* MacPackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPackerUITests.swift; sourceTree = "<group>"; };
 		25C0A8C52A78DE62002C1C2A /* MacPackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		25C0A8D22A78DF92002C1C2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		25C0A8DB2A7B5339002C1C2A /* ArchiveManager */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ArchiveManager; path = "../../../Projects/MBeat/MBeat-iOS/ArchiveManager"; sourceTree = "<group>"; };
 		25C0A8E92A7B7013002C1C2A /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
 		25C0A8EB2A7B7E13002C1C2A /* ArchiveBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveBrowserView.swift; sourceTree = "<group>"; };
 		25C62FB32A7C998B00ED5CDE /* FileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContainer.swift; sourceTree = "<group>"; };
@@ -66,8 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25C0A8E12A7B5569002C1C2A /* ArchiveManager in Frameworks */,
-				25C0A8E72A7B59E5002C1C2A /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +150,6 @@
 		25C0A8DA2A7B5339002C1C2A /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				25C0A8DB2A7B5339002C1C2A /* ArchiveManager */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -188,6 +184,7 @@
 			children = (
 				25C62FB32A7C998B00ED5CDE /* FileContainer.swift */,
 				25C0A8E92A7B7013002C1C2A /* FileItem.swift */,
+				259847C52A81E62000E8CDD9 /* FileItemStack.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -209,8 +206,6 @@
 			);
 			name = MacPacker;
 			packageProductDependencies = (
-				25C0A8E02A7B5569002C1C2A /* ArchiveManager */,
-				25C0A8E62A7B59E5002C1C2A /* ZIPFoundation */,
 			);
 			productName = MacPacker;
 			productReference = 25C0A8A42A78DE5F002C1C2A /* MacPacker.app */;
@@ -285,7 +280,6 @@
 			);
 			mainGroup = 25C0A89B2A78DE5F002C1C2A;
 			packageReferences = (
-				25C0A8E52A7B59E5002C1C2A /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 			);
 			productRefGroup = 25C0A8A52A78DE5F002C1C2A /* Products */;
 			projectDirPath = "";
@@ -332,6 +326,7 @@
 				25C62FB82A80975A00ED5CDE /* SwiftUIDoubleClickModifier.swift in Sources */,
 				25C0A8EA2A7B7013002C1C2A /* FileItem.swift in Sources */,
 				25C0A8EC2A7B7E13002C1C2A /* ArchiveBrowserView.swift in Sources */,
+				259847C62A81E62000E8CDD9 /* FileItemStack.swift in Sources */,
 				25C0A8AA2A78DE5F002C1C2A /* ContentView.swift in Sources */,
 				25C62FB42A7C998B00ED5CDE /* FileContainer.swift in Sources */,
 				25C62FB62A7CC47C00ED5CDE /* ItemTableView.swift in Sources */,
@@ -505,7 +500,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarensx.MacPacker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -534,7 +529,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarensx.MacPacker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -655,29 +650,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		25C0A8E52A7B59E5002C1C2A /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.16;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		25C0A8E02A7B5569002C1C2A /* ArchiveManager */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ArchiveManager;
-		};
-		25C0A8E62A7B59E5002C1C2A /* ZIPFoundation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 25C0A8E52A7B59E5002C1C2A /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
-			productName = ZIPFoundation;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 25C0A89C2A78DE5F002C1C2A /* Project object */;
 }

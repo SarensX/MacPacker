@@ -52,3 +52,9 @@ class FileItem: ObservableObject, Identifiable, Hashable {
         
     }
 }
+
+extension FileItem: CustomStringConvertible {
+    var description: String {
+        return path.absoluteString
+    }
+}

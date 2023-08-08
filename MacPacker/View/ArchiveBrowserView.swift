@@ -12,11 +12,9 @@ struct ArchiveBrowserView: View {
     @StateObject var container: FileContainer = FileContainer()
     @State private var selectedFileItem: FileItem.ID?
     @State private var sortOrder = [KeyPathComparator<FileItem>(\.name)]
-    @State private var stack: [URL] = []
     
-    @available(macOS 13.0, *)
     var body: some View {
-        HStack {
+        VStack(alignment: .leading) {
             Table(of: FileItem.self, selection: $selectedFileItem, sortOrder: $sortOrder) {
                 TableColumn("name", value: \.name) { item in
                     HStack {
@@ -33,7 +31,7 @@ struct ArchiveBrowserView: View {
                     .contentShape(Rectangle())
                     .gesture(TapGesture(count: 2).onEnded {
                         print(item)
-                        doubleClick(path: item.path)
+                        doubleClick(on: item)
                     }).simultaneousGesture(TapGesture().onEnded {
                         self.selectedFileItem = item.id
                     })
@@ -48,7 +46,7 @@ struct ArchiveBrowserView: View {
                     .contentShape(Rectangle())
                     .gesture(TapGesture(count: 2).onEnded {
                         print(item)
-                        doubleClick(path: item.path)
+                        doubleClick(on: item)
                     }).simultaneousGesture(TapGesture().onEnded {
                         self.selectedFileItem = item.id
                     })
@@ -61,12 +59,12 @@ struct ArchiveBrowserView: View {
                 }
             }
             .tableStyle(.bordered(alternatesRowBackgrounds: true))
-//            .contextMenu(forSelectionType: FileItem.ID.self) { items in
-//            } primaryAction: { items in
-//                print(items)
-////                print(container.items.first(where: { $0.id == items.first.id }))
-//                print("double click")
-//            }
+            
+            if let errorMessage = container.errorMessage {
+                Text(errorMessage)
+                    .padding(.bottom, 2)
+                    .frame(alignment: .topLeading)
+            }
         }
         .onDrop(of: ["public.file-url"], isTargeted: nil) { providers -> Bool in
             for provider in providers {
@@ -75,8 +73,7 @@ struct ArchiveBrowserView: View {
                         let fileURL = URL(dataRepresentation: data, relativeTo: nil) {
                         // Update the state variable with the accepted file URL
                         DispatchQueue.main.async {
-                            self.container.load(path: fileURL)
-                            self.stack.append(fileURL)
+                            self.drop(path: fileURL)
                         }
                     }
                 }
@@ -89,7 +86,13 @@ struct ArchiveBrowserView: View {
     // functions
     //
     
-    func doubleClick(path: URL) {
-        self.container.load(path: path)
+    func drop(path: URL) {
+        container.errorMessage = ""
+        self.container.load(path)
+    }
+    
+    func doubleClick(on item: FileItem) {
+        container.errorMessage = ""
+        self.container.open(item)
     }
 }
