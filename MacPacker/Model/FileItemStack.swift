@@ -12,12 +12,16 @@ import Foundation
 struct FileItemStack {
     private var items: [FileItem] = []
     
-    func peek() -> FileItem {
-        guard let topElement = items.first else { fatalError("This stack is empty.") }
+    func peek() -> FileItem? {
+        guard let topElement = items.first else { return nil }
         return topElement
     }
     
-    mutating func pop() -> FileItem {
+    @discardableResult
+    mutating func pop() -> FileItem? {
+        if items.count == 0 {
+            return nil
+        }
         return items.removeFirst()
     }
   

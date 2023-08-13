@@ -16,6 +16,7 @@ struct MacPackerApp: App {
         WindowGroup {
             ContentView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .navigationTitle("Hello World")
         }
         .handlesExternalEvents(matching: [])
     }

@@ -74,7 +74,7 @@ struct ItemTableView: NSViewRepresentable {
                 let clickedRow = tableView.clickedRow
                 if clickedRow >= 0 && clickedRow < container.items.count {
                     let file = container.items[clickedRow]
-                    print("Double Clicked: \(file.name), \(file.size)")
+                    print("Double Clicked: \(file.name), \(String(describing: file.size))")
                 }
             }
         }

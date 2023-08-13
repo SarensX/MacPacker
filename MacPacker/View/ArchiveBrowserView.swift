@@ -38,9 +38,9 @@ struct ArchiveBrowserView: View {
                     .background(.red)
                     .padding(.all, 0)
                 }
-                TableColumn("path", value: \.path.absoluteString) { item in
+                TableColumn("path", value: \.fullPath) { item in
                     HStack {
-                        Text(item.path.absoluteString)
+                        Text(item.fullPath)
                         Spacer()
                     }
                     .contentShape(Rectangle())
