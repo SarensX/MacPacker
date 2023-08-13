@@ -200,7 +200,6 @@ class FileContainer: ObservableObject {
     // Loads the contents of the directory/archive
     private func loadDirectoryContent(path: URL) throws {
         let contents = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: [.isDirectoryKey])
-        var resultItems: [FileItem] = []
         var resultDirectories: [FileItem] = []
         var resultFiles: [FileItem] = []
         
@@ -210,9 +209,11 @@ class FileContainer: ObservableObject {
         // now add all items in the dir
         for url in contents {
             var isDirectory = false
+            var fileSize: Int = -1
             do {
                 let resourceValue = try url.resourceValues(forKeys: [.isDirectoryKey, .totalFileSizeKey])
                 isDirectory = resourceValue.isDirectory ?? false
+                fileSize = resourceValue.totalFileSize ?? -1
             } catch {
                 
             }
@@ -221,7 +222,7 @@ class FileContainer: ObservableObject {
             if fileItemType == .file && isSupportedArchive(ext: url.pathExtension) {
                 fileItemType = .archive
             }
-            let fileItem = FileItem(path: url, type: fileItemType)
+            let fileItem = FileItem(path: url, type: fileItemType, size: fileSize)
             
             if fileItemType == .directory {
                 resultDirectories.append(fileItem)

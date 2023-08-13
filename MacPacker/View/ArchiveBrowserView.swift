@@ -38,9 +38,9 @@ struct ArchiveBrowserView: View {
 //                    .background(.red)
                     .padding(.all, 0)
                 }
-                TableColumn("path", value: \.fullPath) { item in
+                TableColumn("ext", value: \.ext) { item in
                     HStack {
-                        Text(item.fullPath)
+                        Text(item.ext)
                         Spacer()
                     }
                     .contentShape(Rectangle())
@@ -50,9 +50,40 @@ struct ArchiveBrowserView: View {
                     }).simultaneousGesture(TapGesture().onEnded {
                         self.selectedFileItem = item.id
                     })
-//                    .background(.green)
                     .padding(.all, 0)
                 }
+                .width(ideal: 60, max: 80)
+                TableColumn("size", value: \.size) { item in
+                    HStack {
+                        Spacer()
+                        if item.size >= 0 {
+                            Text(self.sizeAsHumanReadableString(item.size))
+                        }
+                    }
+                    .contentShape(Rectangle())
+                    .gesture(TapGesture(count: 2).onEnded {
+                        print(item)
+                        doubleClick(on: item)
+                    }).simultaneousGesture(TapGesture().onEnded {
+                        self.selectedFileItem = item.id
+                    })
+                    .padding(.all, 0)
+                }
+                .width(ideal: 60, max: 120)
+//                TableColumn("path", value: \.fullPath) { item in
+//                    HStack {
+//                        Text(item.fullPath)
+//                        Spacer()
+//                    }
+//                    .contentShape(Rectangle())
+//                    .gesture(TapGesture(count: 2).onEnded {
+//                        print(item)
+//                        doubleClick(on: item)
+//                    }).simultaneousGesture(TapGesture().onEnded {
+//                        self.selectedFileItem = item.id
+//                    }
+//                    .padding(.all, 0)
+//                }
             } rows: {
                 ForEach(container.items) {
                     TableRow($0)
@@ -85,6 +116,22 @@ struct ArchiveBrowserView: View {
     //
     // functions
     //
+    
+    func sizeAsHumanReadableString(_ size: Int) -> String {
+        print(size)
+        if size < 0 {
+            return ""
+        }
+        
+        if size >= 1000000 {
+            return String(size / 1000000) + " MB"
+        }
+        if size >= 1000 {
+            return String(size / 1000) + " KB"
+        }
+        
+        return ""
+    }
     
     func drop(path: URL) {
         container.errorMessage = ""

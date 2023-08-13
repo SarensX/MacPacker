@@ -21,29 +21,29 @@ class FileItem: ObservableObject, Identifiable, Hashable {
     let type: FileItemType
     @Published var name: String
     @Published var ext: String
-    @Published var size: Int64?
+    @Published var size: Int = -1
     
     //
     // Initializers
     //
     
     // Default constructor
-    init(path: URL, type: FileItemType, size: Int64? = nil, name: String? = nil) {
+    init(path: URL, type: FileItemType, size: Int? = nil, name: String? = nil) {
         self.path = path
         self.fullPath = path.absoluteString
         self.type = type
         self.name = name ?? path.lastPathComponent
-        self.size = size
+        self.size = size ?? -1
         self.ext = ""
         
         self.ext = getExtension(name: name ?? path.lastPathComponent)
     }
     
-    init(name: String, type: FileItemType, size: Int64? = nil) {
+    init(name: String, type: FileItemType, size: Int? = nil) {
         self.path = nil
         self.fullPath = ""
         self.name = name
-        self.size = size
+        self.size = size ?? -1
         self.type = type
         self.ext = ""
         
