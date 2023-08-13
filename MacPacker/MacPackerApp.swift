@@ -18,7 +18,6 @@ struct MacPackerApp: App {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .navigationTitle("Hello World")
         }
-        .handlesExternalEvents(matching: [])
     }
 }
 

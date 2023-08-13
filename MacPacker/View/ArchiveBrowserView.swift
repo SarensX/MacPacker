@@ -35,7 +35,7 @@ struct ArchiveBrowserView: View {
                     }).simultaneousGesture(TapGesture().onEnded {
                         self.selectedFileItem = item.id
                     })
-                    .background(.red)
+//                    .background(.red)
                     .padding(.all, 0)
                 }
                 TableColumn("path", value: \.fullPath) { item in
@@ -50,7 +50,7 @@ struct ArchiveBrowserView: View {
                     }).simultaneousGesture(TapGesture().onEnded {
                         self.selectedFileItem = item.id
                     })
-                    .background(.green)
+//                    .background(.green)
                     .padding(.all, 0)
                 }
             } rows: {

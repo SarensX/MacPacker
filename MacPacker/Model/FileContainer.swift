@@ -201,9 +201,11 @@ class FileContainer: ObservableObject {
     private func loadDirectoryContent(path: URL) throws {
         let contents = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: [.isDirectoryKey])
         var resultItems: [FileItem] = []
+        var resultDirectories: [FileItem] = []
+        var resultFiles: [FileItem] = []
         
         // add the possibility to go up
-        resultItems.append(FileItem(path: path.deletingLastPathComponent(), type: .directory, name: ".."))
+        resultDirectories.append(FileItem(path: path.deletingLastPathComponent(), type: .directory, name: ".."))
         
         // now add all items in the dir
         for url in contents {
@@ -221,15 +223,18 @@ class FileContainer: ObservableObject {
             }
             let fileItem = FileItem(path: url, type: fileItemType)
             
-            resultItems.append(fileItem)
-        }
-        items = resultItems.sorted {
-            if $0.type == $1.type {
-                return $0.name < $1.name
+            if fileItemType == .directory {
+                resultDirectories.append(fileItem)
+            } else {
+                resultFiles.append(fileItem)
             }
-            
-            return $0.type > $1.type
         }
+        items = resultDirectories.sorted {
+            return $0.name < $1.name
+        }
+        items.append(contentsOf: resultFiles.sorted {
+            return $0.name < $1.name
+        })
         print("items loaded \(items.count)")
     }
     
