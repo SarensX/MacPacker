@@ -36,7 +36,9 @@ class FileItem: ObservableObject, Identifiable, Hashable {
         self.size = size ?? -1
         self.ext = ""
         
-        self.ext = getExtension(name: name ?? path.lastPathComponent)
+        if type != .directory {
+            self.ext = getExtension(name: name ?? path.lastPathComponent)
+        }
     }
     
     init(name: String, type: FileItemType, size: Int? = nil) {
@@ -47,7 +49,9 @@ class FileItem: ObservableObject, Identifiable, Hashable {
         self.type = type
         self.ext = ""
         
-        self.ext = getExtension(name: name)
+        if type != .directory {
+            self.ext = getExtension(name: name)
+        }
     }
     
     private init() {
@@ -64,13 +68,16 @@ class FileItem: ObservableObject, Identifiable, Hashable {
     //
     
     private func getExtension(name: String) -> String {
-        if let fileURL = URL(string: name) {
-            let fileExtension = fileURL.pathExtension
-            if !fileExtension.isEmpty {
-                return fileExtension
-            }
+        guard let lastDotIndex = name.lastIndex(of: ".") else {
+            return ""
         }
-        return ""
+        
+        if lastDotIndex == name.startIndex {
+            return ""
+        }
+        
+        let extensionStartIndex = name.index(after: lastDotIndex)
+        return String(name[extensionStartIndex...])
     }
     
     // opens the item

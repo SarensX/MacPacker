@@ -118,7 +118,6 @@ struct ArchiveBrowserView: View {
     //
     
     func sizeAsHumanReadableString(_ size: Int) -> String {
-        print(size)
         if size < 0 {
             return ""
         }

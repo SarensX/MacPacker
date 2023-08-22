@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import AppleArchive
+import SWCompression
 import System
 
 protocol Archive {
@@ -80,38 +80,23 @@ class ArchiveLz4: Archive {
             
             print("--- Extracting...")
             print("source: \(sourceFileName)")
+            print("source path \(item.fullPath)")
             print("target: \(extractedFileName)")
-            print("target: \(extractedFilePathName)")
-            
-            guard let readFileStream = ArchiveByteStream.fileStream(
-                path: FilePath(item.path!.path),
-                mode: .readOnly,
-                options: [ ],
-                permissions: FilePermissions(rawValue: 0o644)) else {
-                return nil
-            }
-            guard let writeFileStream = ArchiveByteStream.fileStream(
-                path: FilePath(String(extractedFilePathName.path)),
-                mode: .writeOnly,
-                options: [ .create ],
-                permissions: FilePermissions(rawValue: 0o644)) else {
-                return nil
-            }
-            guard let decompressStream = ArchiveByteStream.decompressionStream(readingFrom: readFileStream) else {
-                print("unable to create compress stream")
-                return nil
-            }
+            print("target path: \(extractedFilePathName.path)")
             
             do {
-                _ = try ArchiveByteStream.process(readingFrom: decompressStream,
-                                                  writingTo: writeFileStream)
+                if let data = try? Data(contentsOf: sourceFilePath, options: .mappedIfSafe) {
+                    print("data loaded")
+                    let decompressedData = try LZ4.decompress(data: data)
+                    
+                    FileManager.default.createFile(atPath: extractedFilePathName.path, contents: decompressedData)
+                    print("file written... in theory")
+                } else {
+                    print("could not load")
+                }
             } catch {
-                print("Handle `ArchiveByteStream.process` failed.")
-            }
-
-            defer {
-                try? readFileStream.close()
-                try? writeFileStream.close()
+                print("ran in error")
+                print(error)
             }
             
             print("---")

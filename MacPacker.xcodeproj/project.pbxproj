@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		259847C62A81E62000E8CDD9 /* FileItemStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259847C52A81E62000E8CDD9 /* FileItemStack.swift */; };
 		259847C92A81F27900E8CDD9 /* ArchiveLz4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259847C82A81F27900E8CDD9 /* ArchiveLz4.swift */; };
+		259847CC2A891E8200E8CDD9 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 259847CB2A891E8200E8CDD9 /* SWCompression */; };
 		25C0A8A82A78DE5F002C1C2A /* MacPackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8A72A78DE5F002C1C2A /* MacPackerApp.swift */; };
 		25C0A8AA2A78DE5F002C1C2A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8A92A78DE5F002C1C2A /* ContentView.swift */; };
 		25C0A8AC2A78DE61002C1C2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25C0A8AB2A78DE61002C1C2A /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				259847CC2A891E8200E8CDD9 /* SWCompression in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +219,7 @@
 			);
 			name = MacPacker;
 			packageProductDependencies = (
+				259847CB2A891E8200E8CDD9 /* SWCompression */,
 			);
 			productName = MacPacker;
 			productReference = 25C0A8A42A78DE5F002C1C2A /* MacPacker.app */;
@@ -291,6 +294,7 @@
 			);
 			mainGroup = 25C0A89B2A78DE5F002C1C2A;
 			packageReferences = (
+				259847CA2A891E8100E8CDD9 /* XCRemoteSwiftPackageReference "SWCompression" */,
 			);
 			productRefGroup = 25C0A8A52A78DE5F002C1C2A /* Products */;
 			projectDirPath = "";
@@ -662,6 +666,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		259847CA2A891E8100E8CDD9 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tsolomko/SWCompression";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		259847CB2A891E8200E8CDD9 /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 259847CA2A891E8100E8CDD9 /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 25C0A89C2A78DE5F002C1C2A /* Project object */;
 }
