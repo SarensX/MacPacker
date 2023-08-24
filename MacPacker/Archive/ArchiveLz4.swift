@@ -9,38 +9,6 @@ import Foundation
 import SWCompression
 import System
 
-protocol Archive {
-    var ext: String { get }
-    var extractedPath: URL? { get }
-    var item: FileItem { get }
-    
-    func content() throws -> [FileItem]
-    func extractToTemp() -> FileItem?
-}
-
-extension Archive {
-    public func createTempDirectory() -> URL? {
-        do {
-            let applicationSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
-            let id = UUID().uuidString
-            let appSupportSubDirectory = applicationSupport
-                .appendingPathComponent("ta", isDirectory: true)
-                .appendingPathComponent(id, isDirectory: true)
-            try FileManager.default.createDirectory(at: appSupportSubDirectory, withIntermediateDirectories: true, attributes: nil)
-            print(appSupportSubDirectory.path) // /Users/.../Library/Application Support/YourBundleIdentifier
-            return appSupportSubDirectory
-        } catch {
-            print(error)
-        }
-        return nil
-    }
-}
-
-enum ArchiveError: Error {
-    // used to say that the archive is invalid and cannot be extracted
-    case invalidArchive(_ message: String)
-}
-
 class ArchiveLz4: Archive {
     var ext: String = "lz4"
     var extractedPath: URL? = nil
@@ -80,7 +48,7 @@ class ArchiveLz4: Archive {
             
             print("--- Extracting...")
             print("source: \(sourceFileName)")
-            print("source path \(item.fullPath)")
+            print("source path \(String(describing: item.path?.absoluteString))")
             print("target: \(extractedFileName)")
             print("target path: \(extractedFilePathName.path)")
             
@@ -91,6 +59,7 @@ class ArchiveLz4: Archive {
                     
                     FileManager.default.createFile(atPath: extractedFilePathName.path, contents: decompressedData)
                     print("file written... in theory")
+                    return FileItem(path: extractedFilePathName, type: .archive)
                 } else {
                     print("could not load")
                 }

@@ -37,7 +37,8 @@ class FileContainer: ObservableObject {
     // Functions
     //
     
-    /// Loads the directory/archive/file from the tiven path
+    /// Loads the directory/archive/file from the given path. This is done when you drag/drop an
+    /// item to the window or when you open an item using the open dialog
     /// - Parameter path: path to load
     public func load(_ path: URL) {
         
@@ -110,7 +111,15 @@ class FileContainer: ObservableObject {
             if let parent = stack.peek() {
                 if parent.type == .archive {
                     if let archive = tempArchives.first(where: { $0.item.id == parent.id }) {
-                        let fileItem = archive.extractToTemp()
+                        if let fileItem = archive.extractToTemp() {
+                            open(fileItem)
+                        }
+                        
+                        // if it was decompressed then the output is a file or archive
+                        // in case of a file > open
+                        // in case of an archive > content
+                        
+                        // if it was extracted, then show the content of the directory
                     }
                     return
                 }
@@ -120,6 +129,9 @@ class FileContainer: ObservableObject {
         
         // if a regular item in a directory was selected, then check the type
         if let path = item.path {
+            print("----")
+            print(path.path)
+            print(FileManager.default.fileExists(atPath: path.path))
             let exists = isExists(path: path)
             if !exists {
                 errorMessage = "The selected file does not exist"
@@ -142,6 +154,8 @@ class FileContainer: ObservableObject {
                     // extract and load directory
                     try loadArchiveContent(item)
                     stack.push(item)
+                case .unknown:
+                    self.errorMessage = "unknown type"
                 }
             } catch {
                 print(error)
@@ -166,15 +180,15 @@ class FileContainer: ObservableObject {
     /// - Parameter path: URL to check for existance
     /// - Returns: true in case the file/dir on that path exists, false otherwise
     public func isExists(path: URL) -> Bool {
-        if #available(macOS 13.0, *) {
-            if FileManager.default.fileExists(atPath: path.path()) {
-                return true
-            }
-        } else {
-            if FileManager.default.fileExists(atPath: path.path) {
-                return true
-            }
+//        if #available(macOS 13.0, *) {
+//            if FileManager.default.fileExists(atPath: path.path()) {
+//                return true
+//            }
+//        } else {
+        if FileManager.default.fileExists(atPath: path.path) {
+            return true
         }
+//        }
         return false
     }
     
@@ -242,8 +256,14 @@ class FileContainer: ObservableObject {
     /// Loads the given archive by extracting it and loading its content
     /// - Parameter item: the archive as FileItem
     private func loadArchiveContent(_ item: FileItem) throws {
+        var archive: Archive? = nil
         if item.ext == SupportedArchiveTypes.lz4.rawValue {
-            let archive = ArchiveLz4(item)
+            archive = ArchiveLz4(item)
+        } else if item.ext == SupportedArchiveTypes.tar.rawValue {
+            archive = ArchiveTar(item)
+        }
+        
+        if let archive {
             items = try archive.content().sorted {
                 if $0.type == $1.type {
                     return $0.name < $1.name

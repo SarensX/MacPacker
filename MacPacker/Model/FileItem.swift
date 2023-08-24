@@ -11,13 +11,14 @@ enum FileItemType: Comparable {
     case file
     case directory
     case archive
+    case unknown
 }
 
 class FileItem: ObservableObject, Identifiable, Hashable {
-    public static let parent: FileItem = FileItem()
+    public static let parent: FileItem = FileItem(name: "..", type: .directory)
     let id = UUID()
-    let path: URL?
-    let fullPath: String
+    var path: URL? = nil
+    var virtualPath: String? = nil
     let type: FileItemType
     @Published var name: String
     @Published var ext: String
@@ -27,10 +28,14 @@ class FileItem: ObservableObject, Identifiable, Hashable {
     // Initializers
     //
     
-    // Default constructor
+    /// Constructor used to represent a file that actually exists on the local drive
+    /// - Parameters:
+    ///   - path: Actual path to the file
+    ///   - type: Type of item
+    ///   - size: Size of the item
+    ///   - name: Name of the titem. If this is nil, then the last path component from path is used
     init(path: URL, type: FileItemType, size: Int? = nil, name: String? = nil) {
         self.path = path
-        self.fullPath = path.absoluteString
         self.type = type
         self.name = name ?? path.lastPathComponent
         self.size = size ?? -1
@@ -41,9 +46,15 @@ class FileItem: ObservableObject, Identifiable, Hashable {
         }
     }
     
-    init(name: String, type: FileItemType, size: Int? = nil) {
-        self.path = nil
-        self.fullPath = ""
+    /// Constructor used to represent an item that virtually exist. This refers to items that
+    /// are not yet extracted, so do not have a local path.
+    /// - Parameters:
+    ///   - name: Name of the item
+    ///   - type: Type of the item
+    ///   - virtualPath: The virtual path, for example in an archive
+    ///   - size: Size of the item
+    init(name: String, type: FileItemType, virtualPath: String? = nil, size: Int? = nil) {
+        self.virtualPath = virtualPath
         self.name = name
         self.size = size ?? -1
         self.type = type
@@ -52,20 +63,29 @@ class FileItem: ObservableObject, Identifiable, Hashable {
         if type != .directory {
             self.ext = getExtension(name: name)
         }
-    }
-    
-    private init() {
-        self.path = nil
-        self.fullPath = ""
-        self.name = ".."
-        self.size = 0
-        self.type = .directory
-        self.ext = ""
+        self.name = getName(archiveName: name)
     }
     
     //
     // Functions
     //
+    
+    private func getName(archiveName: String) -> String {
+        var name = archiveName
+        
+        // in tar, directories have a "/" at the end > remove this first
+        if name.last == "/" {
+             _ = name.popLast()
+        }
+        
+        // search for the last "/" and then take everything after that
+        if var lastSlashIndex = name.lastIndex(of: "/") {
+            lastSlashIndex = name.index(after: lastSlashIndex)
+            name = String(name[lastSlashIndex...])
+        }
+        
+        return name
+    }
     
     private func getExtension(name: String) -> String {
         guard let lastDotIndex = name.lastIndex(of: ".") else {

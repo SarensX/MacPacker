@@ -18,6 +18,7 @@ struct MacPackerApp: App {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .navigationTitle("MacPacker")
         }
+        .windowToolbarStyle(.unified)
     }
 }
 
