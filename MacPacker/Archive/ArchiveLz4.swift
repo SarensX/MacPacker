@@ -9,57 +9,63 @@ import Foundation
 import SWCompression
 import System
 
-class ArchiveLz4: Archive {
+class ArchiveLz4: IArchive {
     var ext: String = "lz4"
     var extractedPath: URL? = nil
-    var item: FileItem
+    var item: FileItem?
+    
+    init() {
+        
+    }
     
     init(_ item: FileItem) {
         self.item = item
     }
     
-    func content() throws -> [FileItem] {
-        print("archive content")
-        
-        // lz4 is just a compression algorithm. So the content
-        // is the name of the file without the extension
-        if item.ext == ext {
-            if let name = item.path?.lastPathComponent.dropLast(ext.count + 1) {
-                return [
-                    FileItem.parent,
-                    FileItem(name: String(name), type: .file)
-                ]
-            }
+    
+    /// Returns the content of the lz4 file. Note that an lz4 file is just a compression algorithm.
+    /// It will not contain files or folders. Therefore, this method will just return the name without
+    /// the lz4 extension.
+    /// - Parameters:
+    ///   - path: Path to the lz4 file
+    ///   - archivePath: Path within the archive. This is ignored for lz4 (is always "/")
+    /// - Returns: The items to show in the UI
+    public func content(path: URL, archivePath: String) throws -> [FileItem] {
+        if path.lastPathComponent.hasSuffix(ext) {
+            let name = stripFileExtension(path.lastPathComponent)
+            return [
+                FileItem.parent,
+                FileItem(name: String(name), type: .file)
+            ]
         }
-        
-        throw ArchiveError.invalidArchive("This is supposed to be a lz4 archive, but it does not end with \(ext)")
+        throw ArchiveError.invalidArchive("The given archive does not seem to be an lz4 archive in contrast to what is expected")
     }
     
     /// Extracts this archive to a temporary location in the sandbox
     /// - Returns: the directory as a file item to further process this
-    func extractToTemp() -> FileItem? {
-        if let tempUrl = createTempDirectory(),
-           let sourceFilePath = item.path {
+    func extractToTemp(path: URL) -> String? {
+        if let tempUrl = createTempDirectory() {
             
-            let sourceFileName = sourceFilePath.lastPathComponent
-            let extractedFileName = String(sourceFileName.dropLast(ext.count + 1))
-            let extractedFilePathName = tempUrl.appendingPathComponent(extractedFileName, isDirectory: false)
-            extractedPath = tempUrl
+            let sourceFileName = path.lastPathComponent
+            let extractedFileName = stripFileExtension(sourceFileName)
+            let extractedFilePathName = tempUrl.path.appendingPathComponent(extractedFileName, isDirectory: false)
+            extractedPath = tempUrl.path
             
             print("--- Extracting...")
             print("source: \(sourceFileName)")
-            print("source path \(String(describing: item.path?.absoluteString))")
+            print("source path \(String(describing: item?.path?.absoluteString))")
             print("target: \(extractedFileName)")
             print("target path: \(extractedFilePathName.path)")
             
             do {
-                if let data = try? Data(contentsOf: sourceFilePath, options: .mappedIfSafe) {
+                if let data = try? Data(contentsOf: path, options: .mappedIfSafe) {
                     print("data loaded")
                     let decompressedData = try LZ4.decompress(data: data)
                     
                     FileManager.default.createFile(atPath: extractedFilePathName.path, contents: decompressedData)
                     print("file written... in theory")
-                    return FileItem(path: extractedFilePathName, type: .archive)
+//                    return FileItem(path: extractedFilePathName, type: .archive)
+                    return tempUrl.id
                 } else {
                     print("could not load")
                 }
@@ -71,6 +77,6 @@ class ArchiveLz4: Archive {
             print("---")
         }
         
-        return FileItem(name: "dir", type: .directory)
+        return nil
     }
 }

@@ -63,7 +63,7 @@ class FileItem: ObservableObject, Identifiable, Hashable {
         if type != .directory {
             self.ext = getExtension(name: name)
         }
-        self.name = getName(archiveName: name)
+//        self.name = getName(archiveName: name)
     }
     
     //

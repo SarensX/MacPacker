@@ -23,7 +23,8 @@ class FileContainer: ObservableObject {
     @Published var items: [FileItem] = []
     @Published var errorMessage: String?
     @Published var stack: FileItemStack = FileItemStack()
-    @Published var tempArchives: [Archive] = []
+    @Published var currentStackEntry: FileItemStackEntry? = nil
+    @Published var tempArchives: [IArchive] = []
     
     //
     // Initializers
@@ -37,6 +38,39 @@ class FileContainer: ObservableObject {
     // Functions
     //
     
+    private func loadStackEntry(_ entry: FileItemStackEntry) {
+        do {
+            // stack item is directory that actually exists
+            if entry.archivePath == nil {
+                try loadDirectoryContent(path: entry.localPath)
+            }
+            
+            // stack item is archive
+            if let archivePath = entry.archivePath,
+               let archiveType = entry.archiveType {
+                let archive = try Archive.with(archiveType)
+                
+                if let content: [FileItem] = try? archive.content(
+                    path: entry.localPath,
+                    archivePath: archivePath) {
+                    
+                    // sort the result
+                    items = content.sorted {
+                        if $0.type == $1.type {
+                            return $0.name < $1.name
+                        }
+                        
+                        return $0.type > $1.type
+                    }
+                }
+            }
+        } catch {
+            
+        }
+        
+        print(stack.description)
+    }
+    
     /// Loads the directory/archive/file from the given path. This is done when you drag/drop an
     /// item to the window or when you open an item using the open dialog
     /// - Parameter path: path to load
@@ -48,34 +82,33 @@ class FileContainer: ObservableObject {
             // the path does not exist
             let isDirectory = try isDirectory(path: path)
             
-            // let's work with this dir/file if it exists
             if isDirectory {
-                type = .directory
-                
-                // reset the stack
-                resetStack()
-                let fileItem = FileItem(path: path, type: .directory)
-                stack.push(fileItem)
-                
-                try loadDirectoryContent(path: path)
+                // directory
+                let stackEntry = FileItemStackEntry(
+                    type: .Directory,
+                    localPath: path,
+                    archivePath: nil,
+                    tempId: nil,
+                    archiveType: nil)
+                loadStackEntry(stackEntry)
+                stack.clear()
+                stack.push(stackEntry)
             } else {
-                // no dir, check if this is a supported archive
-                let ext = path.pathExtension
-                let isSupportedArchive = isSupportedArchive(ext: ext)
-                if isSupportedArchive {
-                    type = .archive
-                    
-                    // reset the stack
-                    resetStack()
-                    let fileItem = FileItem(path: path, type: .archive)
-                    stack.push(fileItem)
-                    
-                    try loadArchiveContent(fileItem)
-                } else {
-                    print("no need to change anything as a file was tried to be loaded")
-                    errorMessage = "This file type is not supported by MacPacker"
+                if isSupportedArchive(path: path) {
+                    // archive
+                    let stackEntry = FileItemStackEntry(
+                        type: .Archive,
+                        localPath: path,
+                        archivePath: "",
+                        tempId: nil,
+                        archiveType: "lz4")
+                    loadStackEntry(stackEntry)
+                    stack.clear()
+                    stack.push(stackEntry)
                 }
             }
+            
+            print(stack.description)
             
         } catch let error as CocoaError {
             switch error.code {
@@ -94,83 +127,95 @@ class FileContainer: ObservableObject {
         }
     }
     
-    public func open(_ item: FileItem) {
+    /// Opens the given item. This can be one of the following cases:
+    /// - File in directory > open the file with system default action
+    /// - Directory > show the content of the directory
+    /// - Archive > show the content of the archive depending on the archive type
+    /// - File in archive > extract just this file if possible, then open it with system default
+    /// - Directory in archive > go one level down in archive if this is supported, otherwise, extract and then go to directory
+    /// - Parameter item: The item to open
+    public func open(_ item: FileItem) throws {
         // if the selected item is the parent item (the one with ..),
         // then just go back in the stack
         if item == FileItem.parent {
             stack.pop()
-            if let parent = stack.pop() {
-                open(parent)
-            }
-            return
-        }
-        
-        // if an item in an archive was selected that is not extracted yet,
-        // then extract, and then jump into the extracted dir
-        if item.path == nil {
             if let parent = stack.peek() {
-                if parent.type == .archive {
-                    if let archive = tempArchives.first(where: { $0.item.id == parent.id }) {
-                        if let fileItem = archive.extractToTemp() {
-                            open(fileItem)
-                        }
-                        
-                        // if it was decompressed then the output is a file or archive
-                        // in case of a file > open
-                        // in case of an archive > content
-                        
-                        // if it was extracted, then show the content of the directory
-                    }
-                    return
-                }
+//                open(parent)
+                loadStackEntry(parent)
             }
             return
         }
         
-        // if a regular item in a directory was selected, then check the type
-        if let path = item.path {
-            print("----")
-            print(path.path)
-            print(FileManager.default.fileExists(atPath: path.path))
-            let exists = isExists(path: path)
-            if !exists {
-                errorMessage = "The selected file does not exist"
-                return
-            }
-            
-            do {
-                switch item.type {
-                case .file:
-                    // open external
-                    break
-                case .directory:
-                    try loadDirectoryContent(path: path)
-                    if item.name == ".." {
-                        stack.pop()
-                    } else {
-                        stack.push(item)
+        // The item selected is not the parent. So check if this is a file,
+        // and if yes, whether it is a supported archive.
+        if item.type == .file {
+            if isSupportedArchive(ext: item.ext) {
+                // file, and supported archive, open as a new stack entry
+                
+                // two possibilities
+                // 1. the archive selected is extracted already > just open it
+                // 2. it is not extracted, so it was shown in the file list based
+                //    on the virtual archive contetn > extract first, then create
+                //    stackentry
+                if let prevStackEntry = stack.peek() {
+                    if prevStackEntry.type == .Archive && prevStackEntry.tempId == nil {
+                        // the previous stack entry is an archive, but there is no
+                        // temp id, so it was not extracted yet
+                        // > extract first
+                        if let archiveType = prevStackEntry.archiveType,
+                           let id = try? Archive
+                            .with(archiveType)
+                            .extractToTemp(path: prevStackEntry.localPath) {
+                            
+                            // now, create the new stack entry
+                            let stackEntry = FileItemStackEntry(
+                                type: .Archive,
+                                localPath: Archive.getTempDirectory(id: id).appendingPathComponent(item.name),
+                                archivePath: "",
+                                tempId: id,
+                                archiveType: item.ext)
+                            loadStackEntry(stackEntry)
+                            stack.push(stackEntry)
+                        }
                     }
-                case .archive:
-                    // extract and load directory
-                    try loadArchiveContent(item)
-                    stack.push(item)
-                case .unknown:
-                    self.errorMessage = "unknown type"
                 }
-            } catch {
-                print(error)
-                errorMessage = error.localizedDescription
+            } else {
+                // TODO file, but not an archive, so extract and open using sytem
             }
-            
-            print(stack)
+        } else if item.type == .directory {
+            if let currentStackEntry = stack.peek(),
+               let archivePath = currentStackEntry.archivePath {
+                let stackEntry = FileItemStackEntry(
+                    type: .Archive,
+                    localPath: currentStackEntry.localPath,
+                    archivePath: archivePath == "" ? item.name : archivePath + "/" + item.name,
+                    tempId: currentStackEntry.tempId,
+                    archiveType: currentStackEntry.archiveType)
+                loadStackEntry(stackEntry)
+                stack.push(stackEntry)
+            }
         }
     }
+    
     
     /// Checks if the given archive extension is supported to be loaded in MacPacker
     /// - Parameter ext: extension
     /// - Returns: true in case supported, false otherwise
     public func isSupportedArchive(ext: String) -> Bool {
         if let _ = SupportedArchiveTypes(rawValue: ext) {
+            return true
+        }
+        return false
+    }
+    
+    /// Checks if the given archive extension is supported to be loaded in MacPacker
+    /// - Parameter ext: extension
+    /// - Returns: true in case supported, false otherwise
+    public func isSupportedArchive(path: URL) -> Bool {
+        let name = path.lastPathComponent
+        
+        if let ext = name.components(separatedBy: ".").last,
+           let _ = SupportedArchiveTypes(rawValue: ext) {
             return true
         }
         return false
@@ -197,15 +242,9 @@ class FileContainer: ObservableObject {
     /// - Returns: true in case the path is a dir, false otherwise
     public func isDirectory(path: URL) throws -> Bool {
         var isDirectory: ObjCBool = false
-        if #available(macOS 13.0, *) {
-            if !FileManager.default.fileExists(atPath: path.path(), isDirectory: &isDirectory) {
-                throw CocoaError(.fileNoSuchFile)
-            }
-        } else {
-            if !FileManager.default.fileExists(atPath: path.path, isDirectory: &isDirectory) {
-                items = []
-                throw CocoaError(.fileNoSuchFile)
-            }
+        if !FileManager.default.fileExists(atPath: path.path, isDirectory: &isDirectory) {
+            items = []
+            throw CocoaError(.fileNoSuchFile)
         }
         
         return isDirectory.boolValue
@@ -256,23 +295,23 @@ class FileContainer: ObservableObject {
     /// Loads the given archive by extracting it and loading its content
     /// - Parameter item: the archive as FileItem
     private func loadArchiveContent(_ item: FileItem) throws {
-        var archive: Archive? = nil
-        if item.ext == SupportedArchiveTypes.lz4.rawValue {
-            archive = ArchiveLz4(item)
-        } else if item.ext == SupportedArchiveTypes.tar.rawValue {
-            archive = ArchiveTar(item)
-        }
-        
-        if let archive {
-            items = try archive.content().sorted {
-                if $0.type == $1.type {
-                    return $0.name < $1.name
-                }
-                
-                return $0.type > $1.type
-            }
-            tempArchives.append(archive)
-        }
+//        var archive: IArchive? = nil
+//        if item.ext == SupportedArchiveTypes.lz4.rawValue {
+//            archive = ArchiveLz4(item)
+//        } else if item.ext == SupportedArchiveTypes.tar.rawValue {
+//            archive = ArchiveTar(item)
+//        }
+//
+//        if let archive {
+//            items = try archive.content().sorted {
+//                if $0.type == $1.type {
+//                    return $0.name < $1.name
+//                }
+//
+//                return $0.type > $1.type
+//            }
+//            tempArchives.append(archive)
+//        }
     }
     
     private func resetStack() {

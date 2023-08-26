@@ -139,6 +139,10 @@ struct ArchiveBrowserView: View {
     
     func doubleClick(on item: FileItem) {
         container.errorMessage = ""
-        self.container.open(item)
+        do {
+            try self.container.open(item)
+        } catch {
+            print(error)
+        }
     }
 }
