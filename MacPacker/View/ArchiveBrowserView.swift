@@ -10,12 +10,13 @@ import SwiftUI
 
 struct ArchiveBrowserView: View {
     @StateObject var container: FileContainer = FileContainer()
-    @State private var selectedFileItem: FileItem.ID?
+//    @State private var selectedFileItem: FileItem.ID?
     @State private var sortOrder = [KeyPathComparator<FileItem>(\.name)]
+    @Binding var selection: FileItem.ID?
     
     var body: some View {
         VStack(alignment: .leading) {
-            Table(of: FileItem.self, selection: $selectedFileItem, sortOrder: $sortOrder) {
+            Table(selection: $selection, sortOrder: $sortOrder) {
                 TableColumn("name", value: \.name) { item in
                     HStack {
                         if item.type == .directory {
@@ -28,29 +29,12 @@ struct ArchiveBrowserView: View {
                         Text(item.name)
                         Spacer()
                     }
-                    .contentShape(Rectangle())
-                    .gesture(TapGesture(count: 2).onEnded {
-                        print(item)
-                        doubleClick(on: item)
-                    }).simultaneousGesture(TapGesture().onEnded {
-                        self.selectedFileItem = item.id
-                    })
-//                    .background(.red)
-                    .padding(.all, 0)
                 }
                 TableColumn("ext", value: \.ext) { item in
                     HStack {
                         Text(item.ext)
                         Spacer()
                     }
-                    .contentShape(Rectangle())
-                    .gesture(TapGesture(count: 2).onEnded {
-                        print(item)
-                        doubleClick(on: item)
-                    }).simultaneousGesture(TapGesture().onEnded {
-                        self.selectedFileItem = item.id
-                    })
-                    .padding(.all, 0)
                 }
                 .width(ideal: 60, max: 80)
                 TableColumn("size", value: \.size) { item in
@@ -60,14 +44,6 @@ struct ArchiveBrowserView: View {
                             Text(self.sizeAsHumanReadableString(item.size))
                         }
                     }
-                    .contentShape(Rectangle())
-                    .gesture(TapGesture(count: 2).onEnded {
-                        print(item)
-                        doubleClick(on: item)
-                    }).simultaneousGesture(TapGesture().onEnded {
-                        self.selectedFileItem = item.id
-                    })
-                    .padding(.all, 0)
                 }
                 .width(ideal: 60, max: 120)
 //                TableColumn("path", value: \.fullPath) { item in
@@ -85,11 +61,18 @@ struct ArchiveBrowserView: View {
 //                    .padding(.all, 0)
 //                }
             } rows: {
-                ForEach(container.items) {
-                    TableRow($0)
+                ForEach(container.items) { item in
+                    TableRow(item)
+//                        .itemProvider { item.itemProvider }
+                        .itemProvider { NSItemProvider() }
                 }
             }
             .tableStyle(.bordered(alternatesRowBackgrounds: true))
+            .onDoubleClick {
+                if let item = container.items.first(where: { $0.id == selection }) {
+                    doubleClick(on: item)
+                }
+            }
             
             if let errorMessage = container.errorMessage {
                 Text(errorMessage)
@@ -138,6 +121,7 @@ struct ArchiveBrowserView: View {
     }
     
     func doubleClick(on item: FileItem) {
+        print("double click triggered")
         container.errorMessage = ""
         do {
             try self.container.open(item)

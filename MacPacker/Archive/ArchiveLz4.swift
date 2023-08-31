@@ -41,6 +41,10 @@ class ArchiveLz4: IArchive {
         throw ArchiveError.invalidArchive("The given archive does not seem to be an lz4 archive in contrast to what is expected")
     }
     
+    func extractFileToTemp(path: URL, item: FileItem) -> URL? {
+        return nil
+    }
+    
     /// Extracts this archive to a temporary location in the sandbox
     /// - Returns: the directory as a file item to further process this
     func extractToTemp(path: URL) -> String? {

@@ -23,8 +23,9 @@ class FileContainer: ObservableObject {
     @Published var items: [FileItem] = []
     @Published var errorMessage: String?
     @Published var stack: FileItemStack = FileItemStack()
-    @Published var currentStackEntry: FileItemStackEntry? = nil
     @Published var tempArchives: [IArchive] = []
+    @Published var isReloadNeeded: Bool = false
+    public static var currentStackEntry: FileItemStackEntry? = nil
     
     //
     // Initializers
@@ -38,7 +39,7 @@ class FileContainer: ObservableObject {
     // Functions
     //
     
-    private func loadStackEntry(_ entry: FileItemStackEntry) {
+    private func loadStackEntry(_ entry: FileItemStackEntry, clear: Bool = false) {
         do {
             // stack item is directory that actually exists
             if entry.archivePath == nil {
@@ -64,6 +65,13 @@ class FileContainer: ObservableObject {
                     }
                 }
             }
+            
+            // add the item to the stack and clear if requested
+            if clear { resetStack() }
+            stack.push(entry)
+            FileContainer.currentStackEntry = entry
+            
+            isReloadNeeded = true
         } catch {
             
         }
@@ -90,9 +98,7 @@ class FileContainer: ObservableObject {
                     archivePath: nil,
                     tempId: nil,
                     archiveType: nil)
-                loadStackEntry(stackEntry)
-                stack.clear()
-                stack.push(stackEntry)
+                loadStackEntry(stackEntry, clear: true)
             } else {
                 if isSupportedArchive(path: path) {
                     // archive
@@ -102,9 +108,7 @@ class FileContainer: ObservableObject {
                         archivePath: "",
                         tempId: nil,
                         archiveType: "lz4")
-                    loadStackEntry(stackEntry)
-                    stack.clear()
-                    stack.push(stackEntry)
+                    loadStackEntry(stackEntry, clear: true)
                 }
             }
             
@@ -175,8 +179,11 @@ class FileContainer: ObservableObject {
                                 tempId: id,
                                 archiveType: item.ext)
                             loadStackEntry(stackEntry)
-                            stack.push(stackEntry)
                         }
+                    } else {
+                        // the previous stack entry is an archive, and there is
+                        // a temp id, so the previous archive was extracted already
+                        // > just extend the path
                     }
                 }
             } else {
@@ -192,7 +199,6 @@ class FileContainer: ObservableObject {
                     tempId: currentStackEntry.tempId,
                     archiveType: currentStackEntry.archiveType)
                 loadStackEntry(stackEntry)
-                stack.push(stackEntry)
             }
         }
     }

@@ -8,13 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selectedFileItemID: Set<FileItem.ID> = []
+    
     var body: some View {
         VStack {
-            ArchiveBrowserView()
+//            ArchiveBrowserView(selection: selection)
+//            ItemTableView(selection: selection)
+            ArchiveView()
         }
         .toolbar {
             Toolbar()
         }
+    }
+    
+    private var selection: Binding<Set<FileItem.ID>> {
+        Binding(
+            get: { selectedFileItemID },
+            set: {
+                selectedFileItemID = $0
+                print("selection changed to \(String(describing: selectedFileItemID))")
+            }
+        )
     }
 }
 

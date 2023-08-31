@@ -60,14 +60,16 @@ class ArchiveTar: IArchive {
                                     name: npc.name,
                                     type: .directory,
                                     virtualPath: archivePath + "/" + npc.name,
-                                    size: nil))
+                                    size: nil,
+                                    data: tarEntry.data))
                             }
                         } else {
                             if let name = npc.name.components(separatedBy: "/").last {
                                 result.append(FileItem(
                                     name: name,
                                     type: .file,
-                                    virtualPath: tarEntry.info.name))
+                                    virtualPath: tarEntry.info.name,
+                                    data: tarEntry.data))
                             }
                         }
                     }
@@ -81,10 +83,23 @@ class ArchiveTar: IArchive {
         return result
     }
     
-    func extractToTemp(path: URL) -> String? {
-        print("extract tar")
+    func extractFileToTemp(path: URL, item: FileItem) -> URL? {
+        if let tempUrl = createTempDirectory() {
+            
+            let extractedFilePathName = tempUrl.path.appendingPathComponent(
+                item.name,
+                isDirectory: false)
+            FileManager.default.createFile(
+                atPath: extractedFilePathName.path,
+                contents: item.data)
+            
+            return extractedFilePathName
+        }
+        
         return nil
     }
     
-    
+    func extractToTemp(path: URL) -> String? {
+        return nil
+    }
 }

@@ -14,6 +14,7 @@ protocol IArchive {
     
     func content(path: URL, archivePath: String) throws -> [FileItem]
     func extractToTemp(path: URL) -> String?
+    func extractFileToTemp(path: URL, item: FileItem) -> URL?
 }
 
 struct Archive {

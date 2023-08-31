@@ -14,8 +14,8 @@
             filePath = "MacPacker/View/ArchiveBrowserView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -30,26 +30,10 @@
             filePath = "MacPacker/View/ItemTableView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "updateNSView(_:context:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CF58A3A1-21FB-4FF6-8F72-1D0CC2DF85F6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MacPacker/View/ArchiveBrowserView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "body"
-            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -62,8 +46,8 @@
             filePath = "MacPacker/View/ArchiveBrowserView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -110,8 +94,8 @@
             filePath = "MacPacker/Model/FileContainer.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "loadArchiveContent(_:)"
             landmarkType = "7">
             <Locations>
@@ -188,8 +172,8 @@
             filePath = "MacPacker/Model/FileContainer.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "open(_:)"
             landmarkType = "7">
             <Locations>
@@ -222,6 +206,21 @@
                   startingLineNumber = "140"
                   endingLineNumber = "140"
                   offsetFromSymbolStart = "516">
+               </Location>
+               <Location
+                  uuid = "F2842714-9027-4BE8-BE6C-EC7B45DE45AF - 64f613bd407394ee"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacPacker.FileContainer.open(MacPacker.FileItem) throws -&gt; ()"
+                  moduleName = "MacPacker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarensw/Documents/Private/Projects/MacPacker/MacPacker/Model/FileContainer.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "741">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -284,8 +283,8 @@
             filePath = "MacPacker/Model/FileContainer.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "init()"
             landmarkType = "7">
             <Locations>
@@ -380,42 +379,10 @@
             filePath = "MacPacker/Archive/ArchiveLz4.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "extractToTemp(path:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F5621571-3EE0-40DA-AB86-DF5DE10C2A95 - b1cc8aef64128c30"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MacPacker.ArchiveLz4.extractToTemp() -&gt; Swift.Optional&lt;MacPacker.FileItem&gt;"
-                  moduleName = "MacPacker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sarensw/Documents/Private/Projects/MacPacker/MacPacker/Archive/ArchiveLz4.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "452">
-               </Location>
-               <Location
-                  uuid = "F5621571-3EE0-40DA-AB86-DF5DE10C2A95 - b1cc8aef64128c30"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MacPacker.ArchiveLz4.extractToTemp() -&gt; Swift.Optional&lt;MacPacker.FileItem&gt;"
-                  moduleName = "MacPacker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sarensw/Documents/Private/Projects/MacPacker/MacPacker/Archive/ArchiveLz4.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "1007">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -428,8 +395,8 @@
             filePath = "MacPacker/Archive/IArchive.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "nextPathComponent(after:in:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -444,8 +411,8 @@
             filePath = "MacPacker/Model/FileContainer.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "open(_:)"
             landmarkType = "7">
             <Locations>
@@ -492,8 +459,8 @@
             filePath = "MacPacker/Model/FileContainer.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "open(_:)"
             landmarkType = "7">
             <Locations>
@@ -592,6 +559,371 @@
                   offsetFromSymbolStart = "436">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B9D9F9E8-55D7-4146-BEB1-12DB23297710"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacPacker/Model/FileItem+ItemProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "itemProvider"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "95C010FF-021E-4580-9CE8-BBEB43CE29B8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacPacker/Model/FileItem+ItemProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "itemProvider"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "95C010FF-021E-4580-9CE8-BBEB43CE29B8 - 34019db0fedb63c2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacPacker.FileItem.itemProvider.getter : __C.NSItemProvider"
+                  moduleName = "MacPacker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarensw/Documents/Private/Projects/MacPacker/MacPacker/Model/FileItem+ItemProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "179">
+               </Location>
+               <Location
+                  uuid = "95C010FF-021E-4580-9CE8-BBEB43CE29B8 - 2d9626a5079c2bc4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable ((Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; Swift.Optional&lt;__C.NSProgress&gt; in MacPacker.FileItem.itemProvider.getter : __C.NSItemProvider"
+                  moduleName = "MacPacker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarensw/Documents/Private/Projects/MacPacker/MacPacker/Model/FileItem+ItemProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "95C010FF-021E-4580-9CE8-BBEB43CE29B8 - 34019db0fedb63c2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MacPacker.FileItem.itemProvider.getter : __C.NSItemProvider"
+                  moduleName = "MacPacker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarensw/Documents/Private/Projects/MacPacker/MacPacker/Model/FileItem+ItemProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "239">
+               </Location>
+               <Location
+                  uuid = "95C010FF-021E-4580-9CE8-BBEB43CE29B8 - 2d9626a5079c2bc4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable ((Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; Swift.Optional&lt;__C.NSProgress&gt; in MacPacker.FileItem.itemProvider.getter : __C.NSItemProvider"
+                  moduleName = "MacPacker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarensw/Documents/Private/Projects/MacPacker/MacPacker/Model/FileItem+ItemProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "93">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C83D45F0-2884-4523-AC88-774D1FBEA1D2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacPacker/Model/FileItem+ItemProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "itemProvider"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "82780AE2-E240-459E-916F-E2C818A21958"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacPacker/Model/FileItem+ItemProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "itemProvider"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "90322D83-5A3C-49A2-ACC2-85597EF52CA5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacPacker/Model/FileItem+ItemProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "itemProvider"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6DADCF0A-6ADD-4715-94A2-4053C92103C6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacPacker/Model/FileItem+ItemProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "itemProvider"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0B491477-8E6D-4FC9-9512-01D48DB0DF15"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacPacker/Model/FileItem+ItemProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "itemProvider"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "0B491477-8E6D-4FC9-9512-01D48DB0DF15 - dc9b155401c7eee1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable ((Swift.Optional&lt;Foundation.URL&gt;, Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; Swift.Optional&lt;__C.NSProgress&gt; in MacPacker.FileItem.itemProvider.getter : __C.NSItemProvider"
+                  moduleName = "MacPacker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarensw/Documents/Private/Projects/MacPacker/MacPacker/Model/FileItem+ItemProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "778">
+               </Location>
+               <Location
+                  uuid = "0B491477-8E6D-4FC9-9512-01D48DB0DF15 - dc9b155401c7eee1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable ((Swift.Optional&lt;Foundation.URL&gt;, Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; Swift.Optional&lt;__C.NSProgress&gt; in MacPacker.FileItem.itemProvider.getter : __C.NSItemProvider"
+                  moduleName = "MacPacker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarensw/Documents/Private/Projects/MacPacker/MacPacker/Model/FileItem+ItemProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "617">
+               </Location>
+               <Location
+                  uuid = "0B491477-8E6D-4FC9-9512-01D48DB0DF15 - dc9b155401c7ee82"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable ((Swift.Optional&lt;Foundation.URL&gt;, Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; Swift.Optional&lt;__C.NSProgress&gt; in MacPacker.FileItem.itemProvider.getter : __C.NSItemProvider"
+                  moduleName = "MacPacker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarensw/Documents/Private/Projects/MacPacker/MacPacker/Model/FileItem+ItemProvider.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "657">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E1D52535-42C6-49E0-AE32-DE46B1CD6661"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacPacker/View/ArchiveBrowserView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "04A29133-26AF-4B28-AFB6-623157496222"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacPacker/View/ArchiveBrowserView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "04A29133-26AF-4B28-AFB6-623157496222 - 481d795dd04b1adf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;__C.NSSecureCoding&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #2 (Swift.Array&lt;__C.NSItemProvider&gt;) -&gt; Swift.Bool in MacPacker.ArchiveBrowserView.body.getter : some"
+                  moduleName = "MacPacker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarensw/Documents/Private/Projects/MacPacker/MacPacker/View/ArchiveBrowserView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "489">
+               </Location>
+               <Location
+                  uuid = "04A29133-26AF-4B28-AFB6-623157496222 - 481d795dd04b1adf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;__C.NSSecureCoding&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #2 (Swift.Array&lt;__C.NSItemProvider&gt;) -&gt; Swift.Bool in MacPacker.ArchiveBrowserView.body.getter : some"
+                  moduleName = "MacPacker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sarensw/Documents/Private/Projects/MacPacker/MacPacker/View/ArchiveBrowserView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "814">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2EA7D2EE-4CEF-494F-AD65-C4B962A9E94C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacPacker/Model/FileItem+ItemProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "itemProvider"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3AE38C64-04BD-4DC2-BAC5-61CAD8AC2697"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacPacker/Model/FileItem+ItemProvider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "itemProvider"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "47FF3E4C-64F7-434F-B443-14AC6E0445C7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacPacker/Archive/ArchiveTar.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "extractFileToTemp(path:item:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "28741B7A-6570-4731-BD64-CADAA17D3003"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacPacker/View/ArchiveTableView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "makeNSView(context:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "202BBC24-57E1-496C-AE49-175B8EBE517E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MacPacker/View/ArchiveTableView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "updateNSView(_:context:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

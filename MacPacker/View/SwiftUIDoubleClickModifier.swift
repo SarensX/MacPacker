@@ -58,4 +58,9 @@ class DoubleClickListeningView: NSView {
             handler()
         }
     }
+    
+    override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+        print("drag staarred")
+        return .copy
+    }
 }

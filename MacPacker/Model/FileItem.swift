@@ -7,22 +7,23 @@
 
 import Foundation
 
-enum FileItemType: Comparable {
+enum FileItemType: Comparable, Codable {
     case file
     case directory
     case archive
     case unknown
 }
 
-class FileItem: ObservableObject, Identifiable, Hashable {
+struct FileItem: Identifiable, Hashable, Encodable {
     public static let parent: FileItem = FileItem(name: "..", type: .directory)
     let id = UUID()
     var path: URL? = nil
     var virtualPath: String? = nil
     let type: FileItemType
-    @Published var name: String
-    @Published var ext: String
-    @Published var size: Int = -1
+    var name: String
+    var ext: String
+    var size: Int = -1
+    var data: Data? = nil
     
     //
     // Initializers
@@ -53,12 +54,14 @@ class FileItem: ObservableObject, Identifiable, Hashable {
     ///   - type: Type of the item
     ///   - virtualPath: The virtual path, for example in an archive
     ///   - size: Size of the item
-    init(name: String, type: FileItemType, virtualPath: String? = nil, size: Int? = nil) {
+    ///   - data: Data of the item if available
+    init(name: String, type: FileItemType, virtualPath: String? = nil, size: Int? = nil, data: Data? = nil) {
         self.virtualPath = virtualPath
         self.name = name
         self.size = size ?? -1
         self.type = type
         self.ext = ""
+        self.data = data
         
         if type != .directory {
             self.ext = getExtension(name: name)
