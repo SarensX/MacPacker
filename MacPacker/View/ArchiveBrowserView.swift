@@ -12,7 +12,7 @@ struct ArchiveBrowserView: View {
     @StateObject var container: FileContainer = FileContainer()
 //    @State private var selectedFileItem: FileItem.ID?
     @State private var sortOrder = [KeyPathComparator<FileItem>(\.name)]
-    @Binding var selection: FileItem.ID?
+    @Binding var selection: Set<FileItem.ID>
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -69,8 +69,10 @@ struct ArchiveBrowserView: View {
             }
             .tableStyle(.bordered(alternatesRowBackgrounds: true))
             .onDoubleClick {
-                if let item = container.items.first(where: { $0.id == selection }) {
-                    doubleClick(on: item)
+                if let sel = selection.first {
+                    if let item = container.items.first(where: { $0.id == sel }) {
+                        doubleClick(on: item)
+                    }
                 }
             }
             

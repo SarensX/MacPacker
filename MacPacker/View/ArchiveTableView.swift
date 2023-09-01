@@ -23,7 +23,7 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
 //        return parent.data.count
         return items.count
     }
-    
+        
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let columnIdentifier = tableColumn?.identifier else { return nil }
         
@@ -37,12 +37,63 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
         
         return cellView
     }
+    
+    func tableView(_ tableView: NSTableView, writeRowsWith rowIndexes: IndexSet, to pboard: NSPasteboard) -> Bool {
+        pboard.declareTypes([.fileURL], owner: nil)
+        if let se = FileContainer.currentStackEntry {
+            do {
+                // write the data to a file
+                guard let archiveType = se.archiveType else { return false }
+                
+                // Prepare data:
+                pboard.clearContents()
+                var arrayOfNSURLs = [NSURL]()
+                for rowIndex in rowIndexes{
+                    let item = items[rowIndex]
+                    
+                    guard let path = try Archive.with(archiveType).extractFileToTemp(
+                        path: se.localPath,
+                        item: item) else { return false }
+                    
+                    arrayOfNSURLs.append(path as NSURL)
+                }
+                
+                // Let API write objects automatically:
+                pboard.writeObjects(arrayOfNSURLs)
+                print(arrayOfNSURLs)
+                return true
+            } catch {
+                print("could not create item provider")
+                print(error)
+            }
+        }
+        return false
+    }
+    
+    @objc func doubleClicked(_ sender: AnyObject) {
+        guard let tableView = sender as? NSTableView else {
+            return
+        }
+        
+        let clickedRow = tableView.clickedRow
+        if clickedRow >= 0 {
+            // Handle double-click action here
+            print("Double-clicked row: \(clickedRow)")
+            do {
+                let item = items[clickedRow]
+                try parent.container.open(item)
+            } catch {
+                print(error)
+            }
+        }
+    }
 }
 
 /// Table
 struct ArchiveTableView: NSViewRepresentable {
     @Binding var data: [FileItem]
     @Binding var isReloadNeeded: Bool
+    var container: FileContainer
     
     //
     // Constructor
@@ -69,9 +120,13 @@ struct ArchiveTableView: NSViewRepresentable {
         createColumns(tableView)
         tableView.delegate = context.coordinator
         tableView.dataSource = context.coordinator
+        tableView.target = context.coordinator
         tableView.style = .fullWidth
         tableView.allowsMultipleSelection = true
         tableView.usesAlternatingRowBackgroundColors = true
+        tableView.setDraggingSourceOperationMask(NSDragOperation.every, forLocal: false)
+        
+        tableView.doubleAction = #selector(Coordinator.doubleClicked(_:))
         
         return scrollView
     }
@@ -113,6 +168,6 @@ struct ArchiveTableView: NSViewRepresentable {
     }
     
     //
-    // Table delegate
+    // Functions
     //
 }

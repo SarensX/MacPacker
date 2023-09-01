@@ -13,7 +13,10 @@ struct ArchiveView: View {
 
     var body: some View {
         VStack {
-            ArchiveTableView(data: $container.items, isReloadNeeded: $container.isReloadNeeded)
+            ArchiveTableView(
+                data: $container.items,
+                isReloadNeeded: $container.isReloadNeeded,
+                container: container)
         }
         .onDrop(of: ["public.file-url"], isTargeted: nil) { providers -> Bool in
             for provider in providers {
