@@ -91,4 +91,10 @@ extension FileItemStack: CustomStringConvertible {
 
         return topDivider + stackElements + bottomDivider
     }
+    
+    var count: Int {
+        get {
+            return stack.count
+        }
+    }
 }

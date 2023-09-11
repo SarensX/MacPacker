@@ -39,7 +39,7 @@ class FileContainer: ObservableObject {
     // Functions
     //
     
-    private func loadStackEntry(_ entry: FileItemStackEntry, clear: Bool = false) {
+    private func loadStackEntry(_ entry: FileItemStackEntry, clear: Bool = false, push: Bool = true) {
         do {
             // stack item is directory that actually exists
             if entry.archivePath == nil {
@@ -68,7 +68,7 @@ class FileContainer: ObservableObject {
             
             // add the item to the stack and clear if requested
             if clear { resetStack() }
-            stack.push(entry)
+            if push { stack.push(entry) }
             FileContainer.currentStackEntry = entry
             
             isReloadNeeded = true
@@ -142,10 +142,10 @@ class FileContainer: ObservableObject {
         // if the selected item is the parent item (the one with ..),
         // then just go back in the stack
         if item == FileItem.parent {
-            stack.pop()
+            if stack.count > 1 { stack.pop() }
             if let parent = stack.peek() {
 //                open(parent)
-                loadStackEntry(parent)
+                loadStackEntry(parent, push: false)
             }
             return
         }
