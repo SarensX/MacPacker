@@ -99,7 +99,7 @@ class ArchiveTar: IArchive {
         return nil
     }
     
-    func extractToTemp(path: URL) -> String? {
+    func extractToTemp(path: URL) -> URL? {
         return nil
     }
 }

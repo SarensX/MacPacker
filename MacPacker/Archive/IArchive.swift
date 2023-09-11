@@ -13,7 +13,7 @@ protocol IArchive {
     var item: FileItem? { get }
     
     func content(path: URL, archivePath: String) throws -> [FileItem]
-    func extractToTemp(path: URL) -> String?
+    func extractToTemp(path: URL) -> URL?
     func extractFileToTemp(path: URL, item: FileItem) -> URL?
 }
 
@@ -25,7 +25,7 @@ struct Archive {
     }
     
     public static func getTempDirectory(id: String) -> URL {
-        let applicationSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+        let applicationSupport = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
         let appSupportSubDirectory = applicationSupport
             .appendingPathComponent("ta", isDirectory: true)
             .appendingPathComponent(id, isDirectory: true)
@@ -43,7 +43,7 @@ extension IArchive {
     
     public func createTempDirectory() -> (id: String, path: URL)? {
         do {
-            let applicationSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+            let applicationSupport = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
             let id = UUID().uuidString
             let appSupportSubDirectory = applicationSupport
                 .appendingPathComponent("ta", isDirectory: true)

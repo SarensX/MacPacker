@@ -138,7 +138,6 @@ struct ArchiveTableView: NSViewRepresentable {
     func updateNSView(_ nsView: NSScrollView, context: Context) {
         // todo: make sure the data is only reloaded when needed
         if isReloadNeeded {
-            print("reload needed")
             let tableView = (nsView.documentView as! NSTableView)
             //        context.coordinator.parent = self
             context.coordinator.items = self.data
@@ -146,8 +145,6 @@ struct ArchiveTableView: NSViewRepresentable {
                 tableView.reloadData()
                 isReloadNeeded = false
             }
-        } else {
-            print("reload not needed")
         }
     }
     

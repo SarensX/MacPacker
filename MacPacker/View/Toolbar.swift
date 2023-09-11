@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct Toolbar: ToolbarContent {
-    private let applicationSupportDirectory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first
+    private let applicationSupportDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first
 
     var body: some ToolbarContent {
         ToolbarItemGroup {

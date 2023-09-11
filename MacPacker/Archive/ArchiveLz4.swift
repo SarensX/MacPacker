@@ -42,12 +42,12 @@ class ArchiveLz4: IArchive {
     }
     
     func extractFileToTemp(path: URL, item: FileItem) -> URL? {
-        return nil
+        return extractToTemp(path: path)
     }
     
     /// Extracts this archive to a temporary location in the sandbox
     /// - Returns: the directory as a file item to further process this
-    func extractToTemp(path: URL) -> String? {
+    func extractToTemp(path: URL) -> URL? {
         if let tempUrl = createTempDirectory() {
             
             let sourceFileName = path.lastPathComponent
@@ -69,7 +69,7 @@ class ArchiveLz4: IArchive {
                     FileManager.default.createFile(atPath: extractedFilePathName.path, contents: decompressedData)
                     print("file written... in theory")
 //                    return FileItem(path: extractedFilePathName, type: .archive)
-                    return tempUrl.id
+                    return extractedFilePathName
                 } else {
                     print("could not load")
                 }

@@ -73,7 +73,7 @@ class FileContainer: ObservableObject {
             
             isReloadNeeded = true
         } catch {
-            
+            print(error)
         }
         
         print(stack.description)
@@ -157,33 +157,53 @@ class FileContainer: ObservableObject {
                 // file, and supported archive, open as a new stack entry
                 
                 // two possibilities
-                // 1. the archive selected is extracted already > just open it
+                // 1. the archive selected is extracted already > just open it,
+                //    but set tempId, not archive path
                 // 2. it is not extracted, so it was shown in the file list based
                 //    on the virtual archive contetn > extract first, then create
                 //    stackentry
-                if let prevStackEntry = stack.peek() {
-                    if prevStackEntry.type == .Archive && prevStackEntry.tempId == nil {
+                if let currentStackEntry = stack.peek() {
+                    if currentStackEntry.type == .Archive && currentStackEntry.archivePath == nil {
+                        // the previous stack entry is an archive, and the archive path is nil which
+                        // means that it physically exists on the local drive
+                        
+                        // distinguish between a real local drive vs a temp drive
+                        if currentStackEntry.tempId == nil {
+                            print("Error: this should not happen")
+                        } else {
+                            if let path = item.path {
+                                let stackEntry = FileItemStackEntry(
+                                    type: .Archive,
+                                    localPath: path,
+                                    archivePath: "",
+                                    tempId: nil,
+                                    archiveType: item.ext)
+                                loadStackEntry(stackEntry)
+                            }
+                        }
+                    } else if currentStackEntry.type == .Archive && currentStackEntry.archivePath != nil {
                         // the previous stack entry is an archive, but there is no
                         // temp id, so it was not extracted yet
                         // > extract first
-                        if let archiveType = prevStackEntry.archiveType,
-                           let id = try? Archive
+                        if let archiveType = currentStackEntry.archiveType,
+                           let tempDir = try? Archive
                             .with(archiveType)
-                            .extractToTemp(path: prevStackEntry.localPath) {
+                            .extractFileToTemp(
+                                path: currentStackEntry.localPath,
+                                item: item) {
                             
                             // now, create the new stack entry
+//                            let tempDir = Archive.getTempDirectory(id: id).appendingPathComponent(item.name)
                             let stackEntry = FileItemStackEntry(
                                 type: .Archive,
-                                localPath: Archive.getTempDirectory(id: id).appendingPathComponent(item.name),
+                                localPath: tempDir,
                                 archivePath: "",
-                                tempId: id,
+                                tempId: nil,
                                 archiveType: item.ext)
                             loadStackEntry(stackEntry)
                         }
-                    } else {
-                        // the previous stack entry is an archive, and there is
-                        // a temp id, so the previous archive was extracted already
-                        // > just extend the path
+                    } else if currentStackEntry.type == .Directory {
+                        // just open the file in this case using the system methods
                     }
                 }
             } else {
@@ -258,6 +278,7 @@ class FileContainer: ObservableObject {
     
     // Loads the contents of the directory/archive
     private func loadDirectoryContent(path: URL) throws {
+//        let contents = try FileManager.default.contentsOfDirectory(atPath: path.path)
         let contents = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: [.isDirectoryKey])
         var resultDirectories: [FileItem] = []
         var resultFiles: [FileItem] = []
@@ -274,8 +295,14 @@ class FileContainer: ObservableObject {
                 isDirectory = resourceValue.isDirectory ?? false
                 fileSize = resourceValue.totalFileSize ?? -1
             } catch {
-                
+
             }
+//            var isDir: ObjCBool = false
+//            FileManager.default.fileExists(atPath: u, isDirectory: &isDir)
+//            let isDirectory = isDir.boolValue
+//
+//            let url = URL(fileURLWithPath: u)
+//            let fileSize = 0
             
             var fileItemType: FileItemType = isDirectory ? .directory : .file
             if fileItemType == .file && isSupportedArchive(ext: url.pathExtension) {
