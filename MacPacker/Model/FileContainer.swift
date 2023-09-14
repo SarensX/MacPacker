@@ -144,7 +144,6 @@ class FileContainer: ObservableObject {
         if item == FileItem.parent {
             if stack.count > 1 { stack.pop() }
             if let parent = stack.peek() {
-//                open(parent)
                 loadStackEntry(parent, push: false)
             }
             return
@@ -193,7 +192,6 @@ class FileContainer: ObservableObject {
                                 item: item) {
                             
                             // now, create the new stack entry
-//                            let tempDir = Archive.getTempDirectory(id: id).appendingPathComponent(item.name)
                             let stackEntry = FileItemStackEntry(
                                 type: .Archive,
                                 localPath: tempDir,
