@@ -28,26 +28,6 @@ class FilePromiseProvider: NSFilePromiseProvider {
         return types
     }
     
-    /** Required:
-        Return the appropriate property list object for the provided type.
-        This will commonly be the NSData for that data type.  However, if this function returns either a string, or any other property-list type,
-        the pasteboard will automatically convert these items to the correct NSData format required for the pasteboard.
-    */
-//    override func pasteboardPropertyList(forType type: NSPasteboard.PasteboardType) -> Any? {
-//        print("pasteboardPropertyList")
-//        print("pasteboardPropertyList: \(type)")
-//    
-//        switch type {
-//        case .fileURL:
-//            let url = NSURL(fileURLWithPath: "/Users/sarensw/Library/Containers/com.sarensx.MacPacker/Data/Library/Caches/ta/25F62093-B0C7-4FFA-91AE-536140FBD87B/dlt_offlinetrace_collected.dlt")
-//            let ppl = url.pasteboardPropertyList(forType: type)
-//            return ppl
-//        default: break
-//        }
-//        
-//        return super.pasteboardPropertyList(forType: type)
-//    }
-    
     /** Optional:
         Returns options for writing data of a type to a pasteboard.
         Use the pasteboard argument to provide different options based on the pasteboard name, if desired.
