@@ -23,11 +23,8 @@ class FilePromiseProvider: NSFilePromiseProvider {
         Do not perform other pasteboard operations in the function implementation.
     */
     override func writableTypes(for pasteboard: NSPasteboard) -> [NSPasteboard.PasteboardType] {
-        print("writableTypes")
         var types = super.writableTypes(for: pasteboard)
-        types.append(.fileURL) // Add the .fileURL drag type (to promise files to other apps).
-//        let types: [NSPasteboard.PasteboardType] = [.fileURL]
-        print("writableTypes: \(types)")
+        types.append(.fileURL)
         return types
     }
     
@@ -36,21 +33,20 @@ class FilePromiseProvider: NSFilePromiseProvider {
         This will commonly be the NSData for that data type.  However, if this function returns either a string, or any other property-list type,
         the pasteboard will automatically convert these items to the correct NSData format required for the pasteboard.
     */
-    override func pasteboardPropertyList(forType type: NSPasteboard.PasteboardType) -> Any? {
-        print("pasteboardPropertyList")
-        print("pasteboardPropertyList: \(type)")
-//        guard let userInfoDict = userInfo as? [String: Any] else { return nil }
-    
-        switch type {
-        case .fileURL:
-            let url = NSURL(fileURLWithPath: "/Users/sarensw/Library/Containers/com.sarensx.MacPacker/Data/Library/Caches/ta/25F62093-B0C7-4FFA-91AE-536140FBD87B/dlt_offlinetrace_collected.dlt")
-            let ppl = url.pasteboardPropertyList(forType: type)
-            return ppl
-        default: break
-        }
-        
-        return super.pasteboardPropertyList(forType: type)
-    }
+//    override func pasteboardPropertyList(forType type: NSPasteboard.PasteboardType) -> Any? {
+//        print("pasteboardPropertyList")
+//        print("pasteboardPropertyList: \(type)")
+//    
+//        switch type {
+//        case .fileURL:
+//            let url = NSURL(fileURLWithPath: "/Users/sarensw/Library/Containers/com.sarensx.MacPacker/Data/Library/Caches/ta/25F62093-B0C7-4FFA-91AE-536140FBD87B/dlt_offlinetrace_collected.dlt")
+//            let ppl = url.pasteboardPropertyList(forType: type)
+//            return ppl
+//        default: break
+//        }
+//        
+//        return super.pasteboardPropertyList(forType: type)
+//    }
     
     /** Optional:
         Returns options for writing data of a type to a pasteboard.
@@ -59,14 +55,6 @@ class FilePromiseProvider: NSFilePromiseProvider {
      */
     public override func writingOptions(forType type: NSPasteboard.PasteboardType, pasteboard: NSPasteboard)
         -> NSPasteboard.WritingOptions {
-            print("writingOptions")
-            print("writingOptions: \(type)")
-//            if type == .fileURL {
-//                print("writingOptions: set to .promised")
-//                return .promised
-//                return [.promised]
-//                return []
-//            }
             return super.writingOptions(forType: type, pasteboard: pasteboard)
     }
 
@@ -79,21 +67,24 @@ extension Coordinator: NSFilePromiseProviderDelegate {
     */
     func filePromiseProvider(_ filePromiseProvider: NSFilePromiseProvider, fileNameForType fileType: String) -> String {
         // Return the photoItem's URL file name.
-        return "dlt_offlinetrace_collected.dlt"
+        if let name = itemDragged?.name {
+            return name
+        }
+        return "unknown"
     }
     
     func filePromiseProvider(_ filePromiseProvider: NSFilePromiseProvider,
                              writePromiseTo url: URL,
                              completionHandler: @escaping (Error?) -> Void) {
-        print("filePromiseProvider_2")
-        url.startAccessingSecurityScopedResource()
+        print("filePromiseProvider")
         if let se = FileContainer.currentStackEntry {
             do {
-                let item = self.items[0]
                 guard let archiveType = se.archiveType else { return }
-                guard let path = try Archive.with(archiveType).extractFileToTemp(
+                guard let itemDragged,
+                      let path = try Archive.with(archiveType).extractFileToTemp(
                     path: se.localPath,
-                    item: item) else { return }
+                    item: itemDragged) else { return }
+                print("filePromiseProvider: \(path)")
                 try FileManager.default.copyItem(at: path, to: url)
 
                 completionHandler(nil)
@@ -125,6 +116,7 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
     
     var parent: ArchiveTableView
     var items: [FileItem] = []
+    var itemDragged: FileItem?
     
     var filePromiseQueue: OperationQueue = {
         let queue = OperationQueue()
@@ -163,13 +155,6 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
     //
     // In this case, I would need a URL promise instead of a file promise
     // ---
-//    enum FilePromiseProviderUserInfoKeys {
-//        static let filename = "filename"
-//    }
-
-//    func filePromiseProvider(_ filePromiseProvider: NSFilePromiseProvider, fileNameForType fileType: String) -> String {
-//        return "Test2.dlt"
-//    }
     
     func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting? {
         print("")
@@ -179,92 +164,17 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
         print("")
         print("start dragging session")
         print("---")
+        
+        // get the item being dragged
+        let item = items[row]
+        itemDragged = item
 
-        let typeIdentifier = UTType(filenameExtension: "dlt")
+        // use that item to define the uttype and create the promise provider
+        let typeIdentifier = UTType(filenameExtension: item.ext)
         let provider = FilePromiseProvider(fileType: typeIdentifier!.identifier, delegate: self)
         
         return provider
     }
-
-//    func filePromiseProvider(_ filePromiseProvider: NSFilePromiseProvider, writePromiseTo url: URL, completionHandler: @escaping (Error?) -> Void) {
-//        print("filePromiseProvider")
-//
-//        if let se = FileContainer.currentStackEntry {
-//            do {
-//                let item = self.items[0]
-//                guard let archiveType = se.archiveType else { return }
-//                guard let path = try Archive.with(archiveType).extractFileToTemp(
-//                    path: se.localPath,
-//                    item: item) else { return }
-//                try FileManager.default.copyItem(at: path, to: url)
-//
-//                completionHandler(nil)
-//            } catch {
-//                print(error)
-//                completionHandler(error)
-//            }
-//        } else {
-//            completionHandler(nil)
-//        }
-//    }
-
-//    func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting? {
-////        let typeIdentifier = UTType(filenameExtension: "lz4") ?? UTType.data
-//        let typeIdentifier = UTType(filenameExtension: "dlt")
-//        let provider = NSFilePromiseProvider(fileType: typeIdentifier!.identifier, delegate: self)
-//        provider.userInfo = [FilePromiseProviderUserInfoKeys.filename: "test.dlt"]
-//
-//        return provider
-//    }
-    
-    // ---
-    // Second attempt to send data to another application
-    // ---
-//    func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting? {
-//        // Create a placeholder NSPasteboardItem that will provide the URL promise.
-//        let pasteboardItem = NSPasteboardItem()
-//
-//        // Set a custom UTI for your promise. This UTI should be unique to your app.
-//        let utis = [
-//            NSPasteboard.PasteboardType.URL,
-//            NSPasteboard.PasteboardType.fileURL
-//        ]
-//
-//        // Set the custom UTI on the pasteboard item.
-//        pasteboardItem.setDataProvider(self, forTypes: utis)
-//
-//        return pasteboardItem
-//    }
-//
-//    func pasteboard(_ pasteboard: NSPasteboard?, item: NSPasteboardItem, provideDataForType type: NSPasteboard.PasteboardType) {
-//        print("pasteboard \(type)")
-//        if type == .fileURL {
-////            pasteboard!.setData("file:///Users/sarensw/Library/Containers/com.sarensx.MacPacker/Data/Library/Caches/ta/9C77FCB9-031E-4D05-8F69-D869FDF5A2D0/dlt_offlinetrace_collected.dlt".data(using: .utf8), forType: type)
-////            return
-////            DispatchQueue.global().async {
-//                if let se = FileContainer.currentStackEntry {
-//                    do {
-//                        let item = self.items[0]
-//                        guard let archiveType = se.archiveType else { return }
-//                        guard let path = try Archive.with(archiveType).extractFileToTemp(
-//                            path: se.localPath,
-//                            item: item) else { return }
-//
-//                        print("extracted")
-//                        if let pasteboard,
-//                           let data = path.absoluteString.data(using: .utf8) {
-//                            print("pasteboard good, data available")
-//                            print(String(decoding: data, as: UTF8.self))
-//                            pasteboard.setData(data, forType: type)
-//                        }
-//                    } catch {
-//                        print(error)
-//                    }
-//                }
-////            }
-//        }
-//    }
-    
     
     // ---
     // Double click functionality

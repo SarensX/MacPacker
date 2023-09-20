@@ -26,7 +26,6 @@
 		25C62FB42A7C998B00ED5CDE /* FileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB32A7C998B00ED5CDE /* FileContainer.swift */; };
 		25C62FB62A7CC47C00ED5CDE /* ItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB52A7CC47C00ED5CDE /* ItemTableView.swift */; };
 		25C62FB82A80975A00ED5CDE /* SwiftUIDoubleClickModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB72A80975A00ED5CDE /* SwiftUIDoubleClickModifier.swift */; };
-		25F32C9F2A9A3B89002ED5A4 /* FileItem+ItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F32C9E2A9A3B89002ED5A4 /* FileItem+ItemProvider.swift */; };
 		25F32CA12A9EEE1C002ED5A4 /* ArchiveTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F32CA02A9EEE1C002ED5A4 /* ArchiveTableView.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +70,6 @@
 		25C62FB32A7C998B00ED5CDE /* FileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContainer.swift; sourceTree = "<group>"; };
 		25C62FB52A7CC47C00ED5CDE /* ItemTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableView.swift; sourceTree = "<group>"; };
 		25C62FB72A80975A00ED5CDE /* SwiftUIDoubleClickModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDoubleClickModifier.swift; sourceTree = "<group>"; };
-		25F32C9E2A9A3B89002ED5A4 /* FileItem+ItemProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileItem+ItemProvider.swift"; sourceTree = "<group>"; };
 		25F32CA02A9EEE1C002ED5A4 /* ArchiveTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,7 +212,6 @@
 			children = (
 				25C62FB32A7C998B00ED5CDE /* FileContainer.swift */,
 				25C0A8E92A7B7013002C1C2A /* FileItem.swift */,
-				25F32C9E2A9A3B89002ED5A4 /* FileItem+ItemProvider.swift */,
 				259847C52A81E62000E8CDD9 /* FileItemStack.swift */,
 			);
 			path = Model;
@@ -366,7 +363,6 @@
 				251C7A3E2AA02D9600CD4C86 /* ArchiveView.swift in Sources */,
 				25C62FB42A7C998B00ED5CDE /* FileContainer.swift in Sources */,
 				252960992A945BDC00551F53 /* Toolbar.swift in Sources */,
-				25F32C9F2A9A3B89002ED5A4 /* FileItem+ItemProvider.swift in Sources */,
 				2529609D2A94619C00551F53 /* ArchiveTar.swift in Sources */,
 				25C62FB62A7CC47C00ED5CDE /* ItemTableView.swift in Sources */,
 				25C0A8A82A78DE5F002C1C2A /* MacPackerApp.swift in Sources */,
