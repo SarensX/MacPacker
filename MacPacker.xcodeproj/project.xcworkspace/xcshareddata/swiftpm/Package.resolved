@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "sparkle",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sparkle-project/Sparkle",
+      "state" : {
+        "revision" : "f0ceaf5cc9f3f23daa0ccb6dcebd79fc96ccc7d9",
+        "version" : "2.5.0"
+      }
+    },
+    {
       "identity" : "swcompression",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tsolomko/SWCompression",
