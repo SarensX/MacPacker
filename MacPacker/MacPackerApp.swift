@@ -28,6 +28,11 @@ struct MacPackerApp: App {
         }
         .windowToolbarStyle(.unified)
         .commands {
+            CommandGroup(replacing: .appInfo) {
+                Button("About MacPacker") {
+                    AboutWindowController.shared.show()
+                }
+            }
             CommandGroup(after: .appInfo) {
                 CheckForUpdatesView(updater: updaterController.updater)
             }

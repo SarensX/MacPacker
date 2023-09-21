@@ -42,6 +42,10 @@
 		25C0A8EA2A7B7013002C1C2A /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8E92A7B7013002C1C2A /* FileItem.swift */; };
 		25C62FB42A7C998B00ED5CDE /* FileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB32A7C998B00ED5CDE /* FileContainer.swift */; };
 		25F32CA12A9EEE1C002ED5A4 /* ArchiveTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F32CA02A9EEE1C002ED5A4 /* ArchiveTableView.swift */; };
+		25FF4ACE2ABC9C5900E060A7 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FF4ACD2ABC9C5900E060A7 /* AboutView.swift */; };
+		25FF4ACF2ABC9C5900E060A7 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FF4ACD2ABC9C5900E060A7 /* AboutView.swift */; };
+		25FF4AD12ABC9C6300E060A7 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FF4AD02ABC9C6300E060A7 /* AboutWindowController.swift */; };
+		25FF4AD22ABC9C6300E060A7 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FF4AD02ABC9C6300E060A7 /* AboutWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +90,8 @@
 		25C0A8E92A7B7013002C1C2A /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
 		25C62FB32A7C998B00ED5CDE /* FileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContainer.swift; sourceTree = "<group>"; };
 		25F32CA02A9EEE1C002ED5A4 /* ArchiveTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTableView.swift; sourceTree = "<group>"; };
+		25FF4ACD2ABC9C5900E060A7 /* AboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		25FF4AD02ABC9C6300E060A7 /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,7 @@
 				25C0A8E82A7B7007002C1C2A /* Model */,
 				25C0A8E22A7B57C1002C1C2A /* Utility */,
 				25C0A8DC2A7B54E2002C1C2A /* View */,
+				25FF4ACB2ABC9BA000E060A7 /* Windows */,
 				25C0A8D22A78DF92002C1C2A /* Info.plist */,
 				25C0A8A72A78DE5F002C1C2A /* MacPackerApp.swift */,
 				25C0A8AB2A78DE61002C1C2A /* Assets.xcassets */,
@@ -210,11 +217,12 @@
 		25C0A8DC2A7B54E2002C1C2A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				25C0A8A92A78DE5F002C1C2A /* ContentView.swift */,
+				25FF4ACC2ABC9C0500E060A7 /* Preferences */,
 				25F32CA02A9EEE1C002ED5A4 /* ArchiveTableView.swift */,
-				252960982A945BDC00551F53 /* Toolbar.swift */,
 				251C7A3D2AA02D9600CD4C86 /* ArchiveView.swift */,
 				254BB55E2ABBE9D10059A1D5 /* CheckForUpdatesView.swift */,
+				25C0A8A92A78DE5F002C1C2A /* ContentView.swift */,
+				252960982A945BDC00551F53 /* Toolbar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -241,6 +249,22 @@
 				259847C52A81E62000E8CDD9 /* FileItemStack.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		25FF4ACB2ABC9BA000E060A7 /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				25FF4AD02ABC9C6300E060A7 /* AboutWindowController.swift */,
+			);
+			path = Windows;
+			sourceTree = "<group>";
+		};
+		25FF4ACC2ABC9C0500E060A7 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				25FF4ACD2ABC9C5900E060A7 /* AboutView.swift */,
+			);
+			path = Preferences;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,7 +441,9 @@
 				254BB5422ABBE8430059A1D5 /* ArchiveTableView.swift in Sources */,
 				254BB5432ABBE8430059A1D5 /* ArchiveLz4.swift in Sources */,
 				254BB5452ABBE8430059A1D5 /* FileItem.swift in Sources */,
+				25FF4AD22ABC9C6300E060A7 /* AboutWindowController.swift in Sources */,
 				254BB5472ABBE8430059A1D5 /* FileItemStack.swift in Sources */,
+				25FF4ACF2ABC9C5900E060A7 /* AboutView.swift in Sources */,
 				254BB5482ABBE8430059A1D5 /* ContentView.swift in Sources */,
 				254BB5492ABBE8430059A1D5 /* ArchiveView.swift in Sources */,
 				254BB54A2ABBE8430059A1D5 /* FileContainer.swift in Sources */,
@@ -436,6 +462,7 @@
 				259847C92A81F27900E8CDD9 /* ArchiveLz4.swift in Sources */,
 				25C0A8EA2A7B7013002C1C2A /* FileItem.swift in Sources */,
 				259847C62A81E62000E8CDD9 /* FileItemStack.swift in Sources */,
+				25FF4ACE2ABC9C5900E060A7 /* AboutView.swift in Sources */,
 				25C0A8AA2A78DE5F002C1C2A /* ContentView.swift in Sources */,
 				251C7A3E2AA02D9600CD4C86 /* ArchiveView.swift in Sources */,
 				254BB55F2ABBE9D10059A1D5 /* CheckForUpdatesView.swift in Sources */,
@@ -444,6 +471,7 @@
 				2529609D2A94619C00551F53 /* ArchiveTar.swift in Sources */,
 				25C0A8A82A78DE5F002C1C2A /* MacPackerApp.swift in Sources */,
 				2529609B2A94617900551F53 /* IArchive.swift in Sources */,
+				25FF4AD12ABC9C6300E060A7 /* AboutWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
