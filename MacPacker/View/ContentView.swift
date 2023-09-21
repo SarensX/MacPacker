@@ -12,8 +12,6 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-//            ArchiveBrowserView(selection: selection)
-//            ItemTableView(selection: selection)
             ArchiveView()
         }
         .toolbar {

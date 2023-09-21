@@ -13,16 +13,13 @@
 		2529609D2A94619C00551F53 /* ArchiveTar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529609C2A94619C00551F53 /* ArchiveTar.swift */; };
 		254BB5422ABBE8430059A1D5 /* ArchiveTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F32CA02A9EEE1C002ED5A4 /* ArchiveTableView.swift */; };
 		254BB5432ABBE8430059A1D5 /* ArchiveLz4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259847C82A81F27900E8CDD9 /* ArchiveLz4.swift */; };
-		254BB5442ABBE8430059A1D5 /* SwiftUIDoubleClickModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB72A80975A00ED5CDE /* SwiftUIDoubleClickModifier.swift */; };
 		254BB5452ABBE8430059A1D5 /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8E92A7B7013002C1C2A /* FileItem.swift */; };
-		254BB5462ABBE8430059A1D5 /* ArchiveBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8EB2A7B7E13002C1C2A /* ArchiveBrowserView.swift */; };
 		254BB5472ABBE8430059A1D5 /* FileItemStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259847C52A81E62000E8CDD9 /* FileItemStack.swift */; };
 		254BB5482ABBE8430059A1D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8A92A78DE5F002C1C2A /* ContentView.swift */; };
 		254BB5492ABBE8430059A1D5 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251C7A3D2AA02D9600CD4C86 /* ArchiveView.swift */; };
 		254BB54A2ABBE8430059A1D5 /* FileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB32A7C998B00ED5CDE /* FileContainer.swift */; };
 		254BB54B2ABBE8430059A1D5 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252960982A945BDC00551F53 /* Toolbar.swift */; };
 		254BB54C2ABBE8430059A1D5 /* ArchiveTar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529609C2A94619C00551F53 /* ArchiveTar.swift */; };
-		254BB54D2ABBE8430059A1D5 /* ItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB52A7CC47C00ED5CDE /* ItemTableView.swift */; };
 		254BB54E2ABBE8430059A1D5 /* MacPackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8A72A78DE5F002C1C2A /* MacPackerApp.swift */; };
 		254BB54F2ABBE8430059A1D5 /* IArchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529609A2A94617900551F53 /* IArchive.swift */; };
 		254BB5512ABBE8430059A1D5 /* BitByteData in Frameworks */ = {isa = PBXBuildFile; productRef = 254BB53F2ABBE8430059A1D5 /* BitByteData */; };
@@ -43,10 +40,7 @@
 		25C0A8C42A78DE62002C1C2A /* MacPackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8C32A78DE62002C1C2A /* MacPackerUITests.swift */; };
 		25C0A8C62A78DE62002C1C2A /* MacPackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8C52A78DE62002C1C2A /* MacPackerUITestsLaunchTests.swift */; };
 		25C0A8EA2A7B7013002C1C2A /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8E92A7B7013002C1C2A /* FileItem.swift */; };
-		25C0A8EC2A7B7E13002C1C2A /* ArchiveBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8EB2A7B7E13002C1C2A /* ArchiveBrowserView.swift */; };
 		25C62FB42A7C998B00ED5CDE /* FileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB32A7C998B00ED5CDE /* FileContainer.swift */; };
-		25C62FB62A7CC47C00ED5CDE /* ItemTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB52A7CC47C00ED5CDE /* ItemTableView.swift */; };
-		25C62FB82A80975A00ED5CDE /* SwiftUIDoubleClickModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB72A80975A00ED5CDE /* SwiftUIDoubleClickModifier.swift */; };
 		25F32CA12A9EEE1C002ED5A4 /* ArchiveTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F32CA02A9EEE1C002ED5A4 /* ArchiveTableView.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,10 +84,7 @@
 		25C0A8C52A78DE62002C1C2A /* MacPackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		25C0A8D22A78DF92002C1C2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		25C0A8E92A7B7013002C1C2A /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
-		25C0A8EB2A7B7E13002C1C2A /* ArchiveBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveBrowserView.swift; sourceTree = "<group>"; };
 		25C62FB32A7C998B00ED5CDE /* FileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContainer.swift; sourceTree = "<group>"; };
-		25C62FB52A7CC47C00ED5CDE /* ItemTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableView.swift; sourceTree = "<group>"; };
-		25C62FB72A80975A00ED5CDE /* SwiftUIDoubleClickModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDoubleClickModifier.swift; sourceTree = "<group>"; };
 		25F32CA02A9EEE1C002ED5A4 /* ArchiveTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -219,11 +210,8 @@
 		25C0A8DC2A7B54E2002C1C2A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				25C0A8EB2A7B7E13002C1C2A /* ArchiveBrowserView.swift */,
 				25C0A8A92A78DE5F002C1C2A /* ContentView.swift */,
-				25C62FB52A7CC47C00ED5CDE /* ItemTableView.swift */,
 				25F32CA02A9EEE1C002ED5A4 /* ArchiveTableView.swift */,
-				25C62FB72A80975A00ED5CDE /* SwiftUIDoubleClickModifier.swift */,
 				252960982A945BDC00551F53 /* Toolbar.swift */,
 				251C7A3D2AA02D9600CD4C86 /* ArchiveView.swift */,
 				254BB55E2ABBE9D10059A1D5 /* CheckForUpdatesView.swift */,
@@ -428,16 +416,13 @@
 			files = (
 				254BB5422ABBE8430059A1D5 /* ArchiveTableView.swift in Sources */,
 				254BB5432ABBE8430059A1D5 /* ArchiveLz4.swift in Sources */,
-				254BB5442ABBE8430059A1D5 /* SwiftUIDoubleClickModifier.swift in Sources */,
 				254BB5452ABBE8430059A1D5 /* FileItem.swift in Sources */,
-				254BB5462ABBE8430059A1D5 /* ArchiveBrowserView.swift in Sources */,
 				254BB5472ABBE8430059A1D5 /* FileItemStack.swift in Sources */,
 				254BB5482ABBE8430059A1D5 /* ContentView.swift in Sources */,
 				254BB5492ABBE8430059A1D5 /* ArchiveView.swift in Sources */,
 				254BB54A2ABBE8430059A1D5 /* FileContainer.swift in Sources */,
 				254BB54B2ABBE8430059A1D5 /* Toolbar.swift in Sources */,
 				254BB54C2ABBE8430059A1D5 /* ArchiveTar.swift in Sources */,
-				254BB54D2ABBE8430059A1D5 /* ItemTableView.swift in Sources */,
 				254BB54E2ABBE8430059A1D5 /* MacPackerApp.swift in Sources */,
 				254BB54F2ABBE8430059A1D5 /* IArchive.swift in Sources */,
 			);
@@ -449,9 +434,7 @@
 			files = (
 				25F32CA12A9EEE1C002ED5A4 /* ArchiveTableView.swift in Sources */,
 				259847C92A81F27900E8CDD9 /* ArchiveLz4.swift in Sources */,
-				25C62FB82A80975A00ED5CDE /* SwiftUIDoubleClickModifier.swift in Sources */,
 				25C0A8EA2A7B7013002C1C2A /* FileItem.swift in Sources */,
-				25C0A8EC2A7B7E13002C1C2A /* ArchiveBrowserView.swift in Sources */,
 				259847C62A81E62000E8CDD9 /* FileItemStack.swift in Sources */,
 				25C0A8AA2A78DE5F002C1C2A /* ContentView.swift in Sources */,
 				251C7A3E2AA02D9600CD4C86 /* ArchiveView.swift in Sources */,
@@ -459,7 +442,6 @@
 				25C62FB42A7C998B00ED5CDE /* FileContainer.swift in Sources */,
 				252960992A945BDC00551F53 /* Toolbar.swift in Sources */,
 				2529609D2A94619C00551F53 /* ArchiveTar.swift in Sources */,
-				25C62FB62A7CC47C00ED5CDE /* ItemTableView.swift in Sources */,
 				25C0A8A82A78DE5F002C1C2A /* MacPackerApp.swift in Sources */,
 				2529609B2A94617900551F53 /* IArchive.swift in Sources */,
 			);
