@@ -41,7 +41,16 @@ struct MacPackerApp: App {
 }
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
+    @AppStorage("welcomeScreenShownInVersion") private var welcomeScreenShownInVersion = "0.0"
+    
     func application(_ application: NSApplication, open urls: [URL]) {
         print(">> \(urls)")
+    }
+    
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        if Bundle.main.appVersionLong > welcomeScreenShownInVersion {
+            WelcomeWindowController.shared.show()
+            welcomeScreenShownInVersion = Bundle.main.appVersionLong
+        }
     }
 }
