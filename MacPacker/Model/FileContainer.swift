@@ -6,20 +6,16 @@
 //
 
 import Foundation
-
-enum ContainerType {
-    case directory
-    case archive
-    case none
-}
+import SwiftUI
+import UniformTypeIdentifiers
 
 enum SupportedArchiveTypes: String, CaseIterable {
     case lz4 = "lz4"
     case tar = "tar"
+    case zip = "zip"
 }
 
 class FileContainer: ObservableObject {
-    @Published var type: ContainerType = .none
     @Published var items: [FileItem] = []
     @Published var errorMessage: String?
     @Published var stack: FileItemStack = FileItemStack()
@@ -107,7 +103,7 @@ class FileContainer: ObservableObject {
                         localPath: path,
                         archivePath: "",
                         tempId: nil,
-                        archiveType: "lz4")
+                        archiveType: path.pathExtension)
                     loadStackEntry(stackEntry, clear: true)
                 }
             }

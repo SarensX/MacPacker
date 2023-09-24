@@ -2,7 +2,7 @@
 //  Archive.swift
 //  MacPacker
 //
-//  Created by Arenswald, Stephan (059) on 22.08.23.
+//  Created by Arenswald, Stephan on 22.08.23.
 //
 
 import Foundation
@@ -21,6 +21,7 @@ struct Archive {
     public static func with(_ type: String) throws -> IArchive {
         if type == "lz4" { return ArchiveLz4() }
         if type == "tar" { return ArchiveTar() }
+        if type == "zip" { return ArchiveZip() }
         throw ArchiveError.invalidArchive("Unknown archive type \(type)")
     }
     

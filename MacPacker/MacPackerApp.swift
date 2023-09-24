@@ -21,7 +21,7 @@ struct MacPackerApp: App {
     }
     
     var body: some Scene {
-        WindowGroup {
+        WindowGroup() {
             ContentView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .navigationTitle("MacPacker")
