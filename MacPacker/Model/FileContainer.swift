@@ -29,6 +29,20 @@ class FileContainer: ObservableObject {
     
     // Default constructor
     init() {
+        startObserver()
+    }
+    
+    /// Starts all the required observers for the file container
+    private func startObserver() {
+        NotificationCenter.default.addObserver(forName: Notification.Name("file.load"), object: nil, queue:
+        nil) {
+            notification in
+            if let paths = notification.object as? [URL] {
+                if paths.count > 0 {
+                    self.load(paths[0])
+                }
+            }
+        }
     }
     
     //

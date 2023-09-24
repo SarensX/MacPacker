@@ -45,7 +45,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     @AppStorage("welcomeScreenShownInVersion") private var welcomeScreenShownInVersion = "0.0"
     
     func application(_ application: NSApplication, open urls: [URL]) {
-        print(">> \(urls)")
+        print("User asked to open the following url with Open With... from the context menu")
+        print(urls)
+        NotificationCenter.default.post(name: Notification.Name("file.load"), object: urls)
     }
     
     func applicationDidFinishLaunching(_ notification: Notification) {
