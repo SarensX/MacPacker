@@ -37,6 +37,7 @@ struct MacPackerApp: App {
                 CheckForUpdatesView(updater: updaterController.updater)
             }
         }
+        .handlesExternalEvents(matching: [])
     }
 }
 
