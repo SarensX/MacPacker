@@ -1,9 +1,5 @@
 <p align="center">
-  <a href="https://gofiber.io">
-    <picture>
-      <img alt="MacPacker Logo" src="https://raw.githubusercontent.com/SarensX/MacPacker/c55540e27fe8d9e419651b7e917b4e09ce238c52/MacPacker/Assets.xcassets/Logo.imageset/icon_128x128.png">
-    </picture>
-  </a>
+  <img alt="MacPacker Logo" src="https://raw.githubusercontent.com/SarensX/MacPacker/c55540e27fe8d9e419651b7e917b4e09ce238c52/MacPacker/Assets.xcassets/Logo.imageset/icon_128x128.png">
 </p>
 
 ## Why?
