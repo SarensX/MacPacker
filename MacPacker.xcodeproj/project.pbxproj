@@ -45,6 +45,8 @@
 		25CF96882AC06E34000A7601 /* Archive2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF96862AC06E34000A7601 /* Archive2.swift */; };
 		25CF968A2AC09398000A7601 /* ArchiveZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF96892AC09398000A7601 /* ArchiveZip.swift */; };
 		25CF968B2AC09398000A7601 /* ArchiveZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF96892AC09398000A7601 /* ArchiveZip.swift */; };
+		25CF968D2AC09B8C000A7601 /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = 25CF968C2AC09B8C000A7601 /* CHANGELOG */; };
+		25CF968E2AC09B8C000A7601 /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = 25CF968C2AC09B8C000A7601 /* CHANGELOG */; };
 		25F32CA12A9EEE1C002ED5A4 /* ArchiveTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F32CA02A9EEE1C002ED5A4 /* ArchiveTableView.swift */; };
 		25FF4ACE2ABC9C5900E060A7 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FF4ACD2ABC9C5900E060A7 /* AboutView.swift */; };
 		25FF4ACF2ABC9C5900E060A7 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FF4ACD2ABC9C5900E060A7 /* AboutView.swift */; };
@@ -99,6 +101,7 @@
 		25C62FB32A7C998B00ED5CDE /* FileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContainer.swift; sourceTree = "<group>"; };
 		25CF96862AC06E34000A7601 /* Archive2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive2.swift; sourceTree = "<group>"; };
 		25CF96892AC09398000A7601 /* ArchiveZip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveZip.swift; sourceTree = "<group>"; };
+		25CF968C2AC09B8C000A7601 /* CHANGELOG */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		25F32CA02A9EEE1C002ED5A4 /* ArchiveTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTableView.swift; sourceTree = "<group>"; };
 		25FF4ACD2ABC9C5900E060A7 /* AboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		25FF4AD02ABC9C6300E060A7 /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
@@ -192,6 +195,7 @@
 				25C0A8AB2A78DE61002C1C2A /* Assets.xcassets */,
 				25C0A8B02A78DE61002C1C2A /* MacPacker.entitlements */,
 				25C0A8AD2A78DE61002C1C2A /* Preview Content */,
+				25CF968C2AC09B8C000A7601 /* CHANGELOG */,
 			);
 			path = MacPacker;
 			sourceTree = "<group>";
@@ -421,6 +425,7 @@
 			files = (
 				254BB5542ABBE8430059A1D5 /* Preview Assets.xcassets in Resources */,
 				254BB5552ABBE8430059A1D5 /* Assets.xcassets in Resources */,
+				25CF968E2AC09B8C000A7601 /* CHANGELOG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +435,7 @@
 			files = (
 				25C0A8AF2A78DE61002C1C2A /* Preview Assets.xcassets in Resources */,
 				25C0A8AC2A78DE61002C1C2A /* Assets.xcassets in Resources */,
+				25CF968D2AC09B8C000A7601 /* CHANGELOG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
