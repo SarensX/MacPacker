@@ -10,7 +10,6 @@ import SWCompression
 
 class ArchiveZip: IArchive {
     var ext: String = "zip"
-    var extractedPath: URL? = nil
     var item: FileItem?
     
     init() {

@@ -11,7 +11,6 @@ import System
 
 class ArchiveLz4: IArchive {
     var ext: String = "lz4"
-    var extractedPath: URL? = nil
     var item: FileItem?
     
     init() {
@@ -53,7 +52,6 @@ class ArchiveLz4: IArchive {
             let sourceFileName = path.lastPathComponent
             let extractedFileName = stripFileExtension(sourceFileName)
             let extractedFilePathName = tempUrl.path.appendingPathComponent(extractedFileName, isDirectory: false)
-            extractedPath = tempUrl.path
             
             print("--- Extracting...")
             print("source: \(sourceFileName)")

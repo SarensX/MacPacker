@@ -9,29 +9,11 @@ import Foundation
 
 protocol IArchive {
     var ext: String { get }
-    var extractedPath: URL? { get }
     var item: FileItem? { get }
     
     func content(path: URL, archivePath: String) throws -> [FileItem]
     func extractToTemp(path: URL) -> URL?
     func extractFileToTemp(path: URL, item: FileItem) -> URL?
-}
-
-struct Archive {
-    public static func with(_ type: String) throws -> IArchive {
-        if type == "lz4" { return ArchiveLz4() }
-        if type == "tar" { return ArchiveTar() }
-        if type == "zip" { return ArchiveZip() }
-        throw ArchiveError.invalidArchive("Unknown archive type \(type)")
-    }
-    
-    public static func getTempDirectory(id: String) -> URL {
-        let applicationSupport = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-        let appSupportSubDirectory = applicationSupport
-            .appendingPathComponent("ta", isDirectory: true)
-            .appendingPathComponent(id, isDirectory: true)
-        return appSupportSubDirectory
-    }
 }
 
 extension IArchive {

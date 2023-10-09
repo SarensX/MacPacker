@@ -10,7 +10,6 @@ import SWCompression
 
 class ArchiveTar: IArchive {
     var ext: String = "tar"
-    var extractedPath: URL? = nil
     var item: FileItem?
     
     init() {
