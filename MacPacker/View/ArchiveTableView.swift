@@ -61,7 +61,7 @@ extension Coordinator: NSFilePromiseProviderDelegate {
             do {
                 guard let archiveType = se.archiveType else { return }
                 guard let itemDragged,
-                      let path = try Archive.with(archiveType).extractFileToTemp(
+                      let path = try ArchiveType.with(archiveType).extractFileToTemp(
                     path: se.localPath,
                     item: itemDragged) else { return }
                 print("filePromiseProvider: \(path)")
@@ -213,7 +213,6 @@ struct ArchiveTableView: NSViewRepresentable {
         tableView.style = .fullWidth
         tableView.allowsMultipleSelection = true
         tableView.usesAlternatingRowBackgroundColors = true
-//        tableView.setDraggingSourceOperationMask(NSDragOperation.every, forLocal: false)
         tableView.setDraggingSourceOperationMask(.copy, forLocal: false)
         
         tableView.doubleAction = #selector(Coordinator.doubleClicked(_:))

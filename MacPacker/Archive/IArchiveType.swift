@@ -7,16 +7,15 @@
 
 import Foundation
 
-protocol IArchive {
+protocol IArchiveType {
     var ext: String { get }
-    var item: FileItem? { get }
     
     func content(path: URL, archivePath: String) throws -> [FileItem]
     func extractToTemp(path: URL) -> URL?
     func extractFileToTemp(path: URL, item: FileItem) -> URL?
 }
 
-extension IArchive {
+extension IArchiveType {
     public func stripFileExtension ( _ filename: String ) -> String {
         var components = filename.components(separatedBy: ".")
         guard components.count > 1 else { return filename }

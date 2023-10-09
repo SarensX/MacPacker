@@ -19,7 +19,7 @@ class FileContainer: ObservableObject {
     @Published var items: [FileItem] = []
     @Published var errorMessage: String?
     @Published var stack: FileItemStack = FileItemStack()
-    @Published var tempArchives: [IArchive] = []
+    @Published var tempArchives: [IArchiveType] = []
     @Published var isReloadNeeded: Bool = false
     public static var currentStackEntry: FileItemStackEntry? = nil
     
@@ -59,7 +59,7 @@ class FileContainer: ObservableObject {
             // stack item is archive
             if let archivePath = entry.archivePath,
                let archiveType = entry.archiveType {
-                let archive = try Archive.with(archiveType)
+                let archive = try ArchiveType.with(archiveType)
                 
                 if let content: [FileItem] = try? archive.content(
                     path: entry.localPath,
@@ -195,7 +195,7 @@ class FileContainer: ObservableObject {
                         // temp id, so it was not extracted yet
                         // > extract first
                         if let archiveType = currentStackEntry.archiveType,
-                           let tempDir = try? Archive
+                           let tempDir = try? ArchiveType
                             .with(archiveType)
                             .extractFileToTemp(
                                 path: currentStackEntry.localPath,

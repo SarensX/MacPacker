@@ -9,18 +9,8 @@ import Foundation
 import SWCompression
 import System
 
-class ArchiveLz4: IArchive {
+class ArchiveTypeLz4: IArchiveType {
     var ext: String = "lz4"
-    var item: FileItem?
-    
-    init() {
-        
-    }
-    
-    init(_ item: FileItem) {
-        self.item = item
-    }
-    
     
     /// Returns the content of the lz4 file. Note that an lz4 file is just a compression algorithm.
     /// It will not contain files or folders. Therefore, this method will just return the name without
@@ -55,7 +45,6 @@ class ArchiveLz4: IArchive {
             
             print("--- Extracting...")
             print("source: \(sourceFileName)")
-            print("source path \(String(describing: item?.path?.absoluteString))")
             print("target: \(extractedFileName)")
             print("target path: \(extractedFilePathName.path)")
             

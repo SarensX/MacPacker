@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Archive {
-    public static func with(_ type: String) throws -> IArchive {
-        if type == "lz4" { return ArchiveLz4() }
-        if type == "tar" { return ArchiveTar() }
-        if type == "zip" { return ArchiveZip() }
+struct ArchiveType {
+    public static func with(_ type: String) throws -> IArchiveType {
+        if type == "lz4" { return ArchiveTypeLz4() }
+        if type == "tar" { return ArchiveTypeTar() }
+        if type == "zip" { return ArchiveTypeZip() }
         throw ArchiveError.invalidArchive("Unknown archive type \(type)")
     }
     
