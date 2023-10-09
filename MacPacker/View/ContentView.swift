@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedFileItemID: Set<FileItem.ID> = []
+    @State private var selectedFileItemID: Set<ArchiveItem.ID> = []
     
     var body: some View {
         VStack {
@@ -19,7 +19,7 @@ struct ContentView: View {
         }
     }
     
-    private var selection: Binding<Set<FileItem.ID>> {
+    private var selection: Binding<Set<ArchiveItem.ID>> {
         Binding(
             get: { selectedFileItemID },
             set: {

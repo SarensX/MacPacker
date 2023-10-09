@@ -95,8 +95,8 @@ extension Coordinator: NSFilePromiseProviderDelegate {
 final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
     
     var parent: ArchiveTableView
-    var items: [FileItem] = []
-    var itemDragged: FileItem?
+    var items: [ArchiveItem] = []
+    var itemDragged: ArchiveItem?
     
     var filePromiseQueue: OperationQueue = {
         let queue = OperationQueue()
@@ -180,7 +180,7 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
 
 /// Table
 struct ArchiveTableView: NSViewRepresentable {
-    @Binding var data: [FileItem]
+    @Binding var data: [ArchiveItem]
     @Binding var isReloadNeeded: Bool
     var container: FileContainer
     

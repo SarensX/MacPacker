@@ -10,9 +10,9 @@ import Foundation
 protocol IArchiveType {
     var ext: String { get }
     
-    func content(path: URL, archivePath: String) throws -> [FileItem]
+    func content(path: URL, archivePath: String) throws -> [ArchiveItem]
     func extractToTemp(path: URL) -> URL?
-    func extractFileToTemp(path: URL, item: FileItem) -> URL?
+    func extractFileToTemp(path: URL, item: ArchiveItem) -> URL?
 }
 
 extension IArchiveType {

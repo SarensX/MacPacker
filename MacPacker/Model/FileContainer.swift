@@ -16,12 +16,12 @@ enum SupportedArchiveTypes: String, CaseIterable {
 }
 
 class FileContainer: ObservableObject {
-    @Published var items: [FileItem] = []
+    @Published var items: [ArchiveItem] = []
     @Published var errorMessage: String?
-    @Published var stack: FileItemStack = FileItemStack()
+    @Published var stack: ArchiveItemStack = ArchiveItemStack()
     @Published var tempArchives: [IArchiveType] = []
     @Published var isReloadNeeded: Bool = false
-    public static var currentStackEntry: FileItemStackEntry? = nil
+    public static var currentStackEntry: ArchiveItemStackEntry? = nil
     
     //
     // Initializers
@@ -49,7 +49,7 @@ class FileContainer: ObservableObject {
     // Functions
     //
     
-    private func loadStackEntry(_ entry: FileItemStackEntry, clear: Bool = false, push: Bool = true) {
+    private func loadStackEntry(_ entry: ArchiveItemStackEntry, clear: Bool = false, push: Bool = true) {
         do {
             // stack item is directory that actually exists
             if entry.archivePath == nil {
@@ -61,7 +61,7 @@ class FileContainer: ObservableObject {
                let archiveType = entry.archiveType {
                 let archive = try ArchiveType.with(archiveType)
                 
-                if let content: [FileItem] = try? archive.content(
+                if let content: [ArchiveItem] = try? archive.content(
                     path: entry.localPath,
                     archivePath: archivePath) {
                     
@@ -102,7 +102,7 @@ class FileContainer: ObservableObject {
             
             if isDirectory {
                 // directory
-                let stackEntry = FileItemStackEntry(
+                let stackEntry = ArchiveItemStackEntry(
                     type: .Directory,
                     localPath: path,
                     archivePath: nil,
@@ -112,7 +112,7 @@ class FileContainer: ObservableObject {
             } else {
                 if isSupportedArchive(path: path) {
                     // archive
-                    let stackEntry = FileItemStackEntry(
+                    let stackEntry = ArchiveItemStackEntry(
                         type: .Archive,
                         localPath: path,
                         archivePath: "",
@@ -148,10 +148,10 @@ class FileContainer: ObservableObject {
     /// - File in archive > extract just this file if possible, then open it with system default
     /// - Directory in archive > go one level down in archive if this is supported, otherwise, extract and then go to directory
     /// - Parameter item: The item to open
-    public func open(_ item: FileItem) throws {
+    public func open(_ item: ArchiveItem) throws {
         // if the selected item is the parent item (the one with ..),
         // then just go back in the stack
-        if item == FileItem.parent {
+        if item == ArchiveItem.parent {
             if stack.count > 1 { stack.pop() }
             if let parent = stack.peek() {
                 loadStackEntry(parent, push: false)
@@ -181,7 +181,7 @@ class FileContainer: ObservableObject {
                             print("Error: this should not happen")
                         } else {
                             if let path = item.path {
-                                let stackEntry = FileItemStackEntry(
+                                let stackEntry = ArchiveItemStackEntry(
                                     type: .Archive,
                                     localPath: path,
                                     archivePath: "",
@@ -202,7 +202,7 @@ class FileContainer: ObservableObject {
                                 item: item) {
                             
                             // now, create the new stack entry
-                            let stackEntry = FileItemStackEntry(
+                            let stackEntry = ArchiveItemStackEntry(
                                 type: .Archive,
                                 localPath: tempDir,
                                 archivePath: "",
@@ -220,7 +220,7 @@ class FileContainer: ObservableObject {
         } else if item.type == .directory {
             if let currentStackEntry = stack.peek(),
                let archivePath = currentStackEntry.archivePath {
-                let stackEntry = FileItemStackEntry(
+                let stackEntry = ArchiveItemStackEntry(
                     type: .Archive,
                     localPath: currentStackEntry.localPath,
                     archivePath: archivePath == "" ? item.name : archivePath + "/" + item.name,
@@ -259,15 +259,9 @@ class FileContainer: ObservableObject {
     /// - Parameter path: URL to check for existance
     /// - Returns: true in case the file/dir on that path exists, false otherwise
     public func isExists(path: URL) -> Bool {
-//        if #available(macOS 13.0, *) {
-//            if FileManager.default.fileExists(atPath: path.path()) {
-//                return true
-//            }
-//        } else {
         if FileManager.default.fileExists(atPath: path.path) {
             return true
         }
-//        }
         return false
     }
     
@@ -286,13 +280,12 @@ class FileContainer: ObservableObject {
     
     // Loads the contents of the directory/archive
     private func loadDirectoryContent(path: URL) throws {
-//        let contents = try FileManager.default.contentsOfDirectory(atPath: path.path)
         let contents = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: [.isDirectoryKey])
-        var resultDirectories: [FileItem] = []
-        var resultFiles: [FileItem] = []
+        var resultDirectories: [ArchiveItem] = []
+        var resultFiles: [ArchiveItem] = []
         
         // add the possibility to go up
-        resultDirectories.append(FileItem(path: path.deletingLastPathComponent(), type: .directory, name: ".."))
+        resultDirectories.append(ArchiveItem(path: path.deletingLastPathComponent(), type: .directory, name: ".."))
         
         // now add all items in the dir
         for url in contents {
@@ -305,18 +298,12 @@ class FileContainer: ObservableObject {
             } catch {
 
             }
-//            var isDir: ObjCBool = false
-//            FileManager.default.fileExists(atPath: u, isDirectory: &isDir)
-//            let isDirectory = isDir.boolValue
-//
-//            let url = URL(fileURLWithPath: u)
-//            let fileSize = 0
             
-            var fileItemType: FileItemType = isDirectory ? .directory : .file
+            var fileItemType: ArchiveItemType = isDirectory ? .directory : .file
             if fileItemType == .file && isSupportedArchive(ext: url.pathExtension) {
                 fileItemType = .archive
             }
-            let fileItem = FileItem(path: url, type: fileItemType, size: fileSize)
+            let fileItem = ArchiveItem(path: url, type: fileItemType, size: fileSize)
             
             if fileItemType == .directory {
                 resultDirectories.append(fileItem)
@@ -331,28 +318,6 @@ class FileContainer: ObservableObject {
             return $0.name < $1.name
         })
         print("items loaded \(items.count)")
-    }
-    
-    /// Loads the given archive by extracting it and loading its content
-    /// - Parameter item: the archive as FileItem
-    private func loadArchiveContent(_ item: FileItem) throws {
-//        var archive: IArchive? = nil
-//        if item.ext == SupportedArchiveTypes.lz4.rawValue {
-//            archive = ArchiveLz4(item)
-//        } else if item.ext == SupportedArchiveTypes.tar.rawValue {
-//            archive = ArchiveTar(item)
-//        }
-//
-//        if let archive {
-//            items = try archive.content().sorted {
-//                if $0.type == $1.type {
-//                    return $0.name < $1.name
-//                }
-//
-//                return $0.type > $1.type
-//            }
-//            tempArchives.append(archive)
-//        }
     }
     
     private func resetStack() {

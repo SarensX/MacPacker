@@ -17,8 +17,8 @@ class ArchiveTypeZip: IArchiveType {
     ///   - path: Path to the zip file
     ///   - archivePath: Path within the zip archive to return
     /// - Returns: Items in the archive with the given path
-    public func content(path: URL, archivePath: String) throws -> [FileItem] {
-        var result: [FileItem] = [FileItem.parent]
+    public func content(path: URL, archivePath: String) throws -> [ArchiveItem] {
+        var result: [ArchiveItem] = [ArchiveItem.parent]
         var dirs: [String] = []
         
         do {
@@ -34,7 +34,7 @@ class ArchiveTypeZip: IArchiveType {
                             } else {
                                 dirs.append(npc.name)
                                 
-                                result.append(FileItem(
+                                result.append(ArchiveItem(
                                     name: npc.name,
                                     type: .directory,
                                     virtualPath: archivePath + "/" + npc.name,
@@ -43,7 +43,7 @@ class ArchiveTypeZip: IArchiveType {
                             }
                         } else {
                             if let name = npc.name.components(separatedBy: "/").last {
-                                result.append(FileItem(
+                                result.append(ArchiveItem(
                                     name: name,
                                     type: .file,
                                     virtualPath: zipEntry.info.name,
@@ -61,7 +61,7 @@ class ArchiveTypeZip: IArchiveType {
         return result
     }
     
-    func extractFileToTemp(path: URL, item: FileItem) -> URL? {
+    func extractFileToTemp(path: URL, item: ArchiveItem) -> URL? {
         if let tempUrl = createTempDirectory() {
             
             let extractedFilePathName = tempUrl.path.appendingPathComponent(

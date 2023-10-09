@@ -18,7 +18,7 @@ class Archive2 {
     @Published var path: URL?
     @Published var internalPath: String = "/"
     @Published var type: String
-    @Published var stack: FileItemStack = FileItemStack()
+    @Published var stack: ArchiveItemStack = ArchiveItemStack()
     
     init(path: URL? = nil, internalPath: String, type: String) {
         self.path = path

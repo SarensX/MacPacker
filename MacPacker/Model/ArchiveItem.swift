@@ -7,19 +7,19 @@
 
 import Foundation
 
-enum FileItemType: Comparable, Codable {
+enum ArchiveItemType: Comparable, Codable {
     case file
     case directory
     case archive
     case unknown
 }
 
-struct FileItem: Identifiable, Hashable, Encodable {
-    public static let parent: FileItem = FileItem(name: "..", type: .directory)
+struct ArchiveItem: Identifiable, Hashable, Encodable {
+    public static let parent: ArchiveItem = ArchiveItem(name: "..", type: .directory)
     let id = UUID()
     var path: URL? = nil
     var virtualPath: String? = nil
-    let type: FileItemType
+    let type: ArchiveItemType
     var name: String
     var ext: String
     var size: Int = -1
@@ -35,7 +35,7 @@ struct FileItem: Identifiable, Hashable, Encodable {
     ///   - type: Type of item
     ///   - size: Size of the item
     ///   - name: Name of the titem. If this is nil, then the last path component from path is used
-    init(path: URL, type: FileItemType, size: Int? = nil, name: String? = nil) {
+    init(path: URL, type: ArchiveItemType, size: Int? = nil, name: String? = nil) {
         self.path = path
         self.type = type
         self.name = name ?? path.lastPathComponent
@@ -55,7 +55,7 @@ struct FileItem: Identifiable, Hashable, Encodable {
     ///   - virtualPath: The virtual path, for example in an archive
     ///   - size: Size of the item
     ///   - data: Data of the item if available
-    init(name: String, type: FileItemType, virtualPath: String? = nil, size: Int? = nil, data: Data? = nil) {
+    init(name: String, type: ArchiveItemType, virtualPath: String? = nil, size: Int? = nil, data: Data? = nil) {
         self.virtualPath = virtualPath
         self.name = name
         self.size = size ?? -1
@@ -111,7 +111,7 @@ struct FileItem: Identifiable, Hashable, Encodable {
         
     }
     
-    static func == (lhs: FileItem, rhs: FileItem) -> Bool {
+    static func == (lhs: ArchiveItem, rhs: ArchiveItem) -> Bool {
         return lhs.id == rhs.id
     }
     
@@ -120,7 +120,7 @@ struct FileItem: Identifiable, Hashable, Encodable {
     }
 }
 
-extension FileItem: CustomStringConvertible {
+extension ArchiveItem: CustomStringConvertible {
     var description: String {
         return path == nil ? "" : path!.absoluteString
     }

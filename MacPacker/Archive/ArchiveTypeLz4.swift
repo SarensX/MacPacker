@@ -19,18 +19,18 @@ class ArchiveTypeLz4: IArchiveType {
     ///   - path: Path to the lz4 file
     ///   - archivePath: Path within the archive. This is ignored for lz4 (is always "/")
     /// - Returns: The items to show in the UI
-    public func content(path: URL, archivePath: String) throws -> [FileItem] {
+    public func content(path: URL, archivePath: String) throws -> [ArchiveItem] {
         if path.lastPathComponent.hasSuffix(ext) {
             let name = stripFileExtension(path.lastPathComponent)
             return [
-                FileItem.parent,
-                FileItem(name: String(name), type: .file)
+                ArchiveItem.parent,
+                ArchiveItem(name: String(name), type: .file)
             ]
         }
         throw ArchiveError.invalidArchive("The given archive does not seem to be an lz4 archive in contrast to what is expected")
     }
     
-    func extractFileToTemp(path: URL, item: FileItem) -> URL? {
+    func extractFileToTemp(path: URL, item: ArchiveItem) -> URL? {
         return extractToTemp(path: path)
     }
     
