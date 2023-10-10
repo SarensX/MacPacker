@@ -121,9 +121,6 @@ class FileContainer: ObservableObject {
                     loadStackEntry(stackEntry, clear: true)
                 }
             }
-            
-            print(stack.description)
-            
         } catch let error as CocoaError {
             switch error.code {
             case .fileReadNoPermission, .fileReadUnknown:

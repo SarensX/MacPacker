@@ -43,10 +43,11 @@ struct ArchiveItemStackEntry {
 
 extension ArchiveItemStackEntry: CustomStringConvertible {
     var description: String {
-        var result = localPath.absoluteString + "\n"
-        if let archivePath { result += "  " + archivePath + "\n" }
-        if let tempId { result += "  " + tempId + "\n" }
-        if let archiveType { result += "  " + archiveType + "\n" }
+        var result = "> " + localPath.absoluteString + "\n"
+        result = result + "  type: \(type) \n"
+        result = result + "  archivePath: \(archivePath ?? "undefined") \n"
+        result = result + "  tempId: \(tempId ?? "undefined") \n"
+        result = result + "  archiveType: \(archiveType ?? "undefined") \n"
         
         return result
     }

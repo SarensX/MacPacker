@@ -34,7 +34,7 @@ struct ArchiveItemStack {
 
 extension ArchiveItemStack: CustomStringConvertible {
     var description: String {
-        let topDivider = "---FileItemStack---\n"
+        let topDivider = "---ArchiveItemStack---\n"
         let bottomDivider = "-----------\n"
 
         var stackElements: String = ""
