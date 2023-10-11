@@ -39,13 +39,12 @@ class Archive2 {
     }
     
     /// Constructor use if loading an archive
+    /// - Parameter url: url to load
+    /// - Throws: Throws Archive2Error.unknownType in case the archive type is unknown
     init(url: URL) throws {
         self.url = url
         self.type = .zip
         type = try determineTypeFrom(url: url)
-        if isSupportedType(url: url) == false {
-            throw Archive2Error.unknownType("Type \(type) is not supported yet")
-        }
         if type == .zip {
             canEdit = true
         }
@@ -87,6 +86,23 @@ class Archive2 {
         tempDirs.removeAll()
     }
     
+    /// Checks if the given file is a zip file. It does not check for the extension,
+    /// but instead for the first header of the zip to determine this.
+    /// - Parameter url: url of the file to check
+    /// - Returns: true in case it is a valid zip file, false otherwise
+    private func checkIfZipFile(url: URL) -> Bool {
+        var result: Bool = false
+        if let fh = FileHandle(forReadingAtPath: url.path) {
+            let data = fh.readData(ofLength: 4)
+            if data.starts(with: [0x50, 0x4b, 0x03, 0x04]) {
+                // File starts with ZIP magic ...
+                result = true
+            }
+            fh.closeFile()
+        }
+        return result
+    }
+    
     /// Determines the archive type for the given file url
     /// - Parameter url: file url
     /// - Returns: archive type
@@ -94,11 +110,15 @@ class Archive2 {
         let ext = url.pathExtension
         if ext == "" { throw Archive2Error.unknownType("Unknown type") }
         
-        guard let at = Archive2Type(rawValue: ext) else {
-            throw Archive2Error.unknownType("Unknown type")
+        if let at = Archive2Type(rawValue: ext) {
+            return at
         }
         
-        return at
+        if checkIfZipFile(url: url) {
+            return Archive2Type.zip
+        }
+        
+        throw Archive2Error.unknownType("Unknown type")
     }
     
     /// Checks whether the given URL is leads to a supported archive type
@@ -197,7 +217,7 @@ class Archive2 {
             localPath: url,
             archivePath: "",
             tempId: nil,
-            archiveType: url.pathExtension)
+            archiveType: type.rawValue)
         loadStackEntry(stackEntry, clear: true)
     }
     

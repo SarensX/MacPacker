@@ -42,6 +42,7 @@
 		25A0D2132AD64E9C00B43C92 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A0D2112AD64E9C00B43C92 /* URL+Extensions.swift */; };
 		25A0D2152AD6504600B43C92 /* archiveNested2.zip in Resources */ = {isa = PBXBuildFile; fileRef = 25A0D2142AD6504600B43C92 /* archiveNested2.zip */; };
 		25A0D2172AD6F5D800B43C92 /* zipVariant.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 25A0D2162AD6F5D800B43C92 /* zipVariant.xlsx */; };
+		25A0D21B2AD7015F00B43C92 /* zipVariantInvalid.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A0D21A2AD7015F00B43C92 /* zipVariantInvalid.png */; };
 		25BEBC1B2AD63EDE00C65E03 /* archive.tar.lz4 in Resources */ = {isa = PBXBuildFile; fileRef = 25BEBC182AD63EDD00C65E03 /* archive.tar.lz4 */; };
 		25BEBC1C2AD63EDE00C65E03 /* archive.zip in Resources */ = {isa = PBXBuildFile; fileRef = 25BEBC192AD63EDD00C65E03 /* archive.zip */; };
 		25BEBC1D2AD63EDE00C65E03 /* archive.tar in Resources */ = {isa = PBXBuildFile; fileRef = 25BEBC1A2AD63EDD00C65E03 /* archive.tar */; };
@@ -109,6 +110,7 @@
 		25A0D2112AD64E9C00B43C92 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		25A0D2142AD6504600B43C92 /* archiveNested2.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = archiveNested2.zip; sourceTree = "<group>"; };
 		25A0D2162AD6F5D800B43C92 /* zipVariant.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = zipVariant.xlsx; sourceTree = "<group>"; };
+		25A0D21A2AD7015F00B43C92 /* zipVariantInvalid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zipVariantInvalid.png; sourceTree = "<group>"; };
 		25BEBC182AD63EDD00C65E03 /* archive.tar.lz4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = archive.tar.lz4; sourceTree = "<group>"; };
 		25BEBC192AD63EDD00C65E03 /* archive.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = archive.zip; sourceTree = "<group>"; };
 		25BEBC1A2AD63EDD00C65E03 /* archive.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = archive.tar; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 		25BEBC172AD63CD300C65E03 /* TestArchives */ = {
 			isa = PBXGroup;
 			children = (
+				25A0D21A2AD7015F00B43C92 /* zipVariantInvalid.png */,
 				25A0D2162AD6F5D800B43C92 /* zipVariant.xlsx */,
 				25A0D2142AD6504600B43C92 /* archiveNested2.zip */,
 				25A0D20F2AD6443E00B43C92 /* archiveNested1.zip */,
@@ -509,6 +512,7 @@
 				2592CEDA2AD4EF6D008DEFF8 /* hello.txt in Resources */,
 				25BEBC1B2AD63EDE00C65E03 /* archive.tar.lz4 in Resources */,
 				25BEBC1D2AD63EDE00C65E03 /* archive.tar in Resources */,
+				25A0D21B2AD7015F00B43C92 /* zipVariantInvalid.png in Resources */,
 				25A0D2172AD6F5D800B43C92 /* zipVariant.xlsx in Resources */,
 				25BEBC1C2AD63EDE00C65E03 /* archive.zip in Resources */,
 				2592CEE32AD529E2008DEFF8 /* bond.txt in Resources */,
@@ -857,6 +861,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 88W4UN2KJH;
@@ -865,6 +871,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarensx.MacPackerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacPacker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MacPacker";
@@ -876,6 +883,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 88W4UN2KJH;
@@ -884,6 +893,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarensx.MacPackerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacPacker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MacPacker";

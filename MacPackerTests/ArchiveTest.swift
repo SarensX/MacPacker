@@ -172,6 +172,20 @@ final class ArchiveTest: XCTestCase {
         XCTAssertEqual(count, 3)
     }
     
+    func testLoadZipVariant() throws {
+        let tf = try getTestFile(name: "zipVariant.xlsx")
+        
+        let archive = try Archive2(url: tf)
+        let count = archive.items.count
+        XCTAssertEqual(count, 5)
+    }
+    
+    func testLoadZipVariantInvalid() throws {
+        let tf = try getTestFile(name: "zipVariantInvalid.png")
+        
+        XCTAssertThrowsError(try Archive2(url: tf))
+    }
+    
     func testLoadTar() throws {
         let tf = try getTestFile(name: "archive.tar")
         
