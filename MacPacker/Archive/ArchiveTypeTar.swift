@@ -80,4 +80,7 @@ class ArchiveTypeTar: IArchiveType {
     func extractToTemp(path: URL) -> URL? {
         return nil
     }
+    
+    func save(to: URL, items: [ArchiveItem]) throws {
+    }
 }

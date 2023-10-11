@@ -7,6 +7,9 @@
 
 import Foundation
 import SWCompression
+import ZIPFoundation
+
+typealias ZipArchive = ZIPFoundation.Archive
 
 class ArchiveTypeZip: IArchiveType {
     var ext: String = "zip"
@@ -79,5 +82,20 @@ class ArchiveTypeZip: IArchiveType {
     
     func extractToTemp(path: URL) -> URL? {
         return nil
+    }
+    
+    func save(to url: URL, items: [ArchiveItem]) throws {
+        let fileExists = FileManager.default.fileExists(atPath: url.path)
+        let archive = try ZipArchive(
+            url: url,
+            accessMode: fileExists ? .update : .create)
+        
+        for item in items {
+            if let path = item.path {
+                try archive.addEntry(
+                    with: path.lastPathComponent,
+                    relativeTo: path.deletingLastPathComponent())
+            }
+        }
     }
 }

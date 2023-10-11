@@ -29,9 +29,22 @@
 		254BB55D2ABBE8F50059A1D5 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 254BB55C2ABBE8F50059A1D5 /* Sparkle */; };
 		254BB55F2ABBE9D10059A1D5 /* CheckForUpdatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254BB55E2ABBE9D10059A1D5 /* CheckForUpdatesView.swift */; };
 		258C67F82ABB542200CE230E /* BitByteData in Frameworks */ = {isa = PBXBuildFile; productRef = 258C67F72ABB542200CE230E /* BitByteData */; };
+		2592CED72AD4EAA2008DEFF8 /* ArchiveTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2592CED62AD4EAA2008DEFF8 /* ArchiveTest.swift */; };
+		2592CEDA2AD4EF6D008DEFF8 /* hello.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2592CED92AD4EF6D008DEFF8 /* hello.txt */; };
+		2592CEDD2AD4F765008DEFF8 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 2592CEDC2AD4F765008DEFF8 /* ZIPFoundation */; };
+		2592CEDF2AD4F77E008DEFF8 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 2592CEDE2AD4F77E008DEFF8 /* ZIPFoundation */; };
+		2592CEE32AD529E2008DEFF8 /* bond.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2592CEE22AD529E2008DEFF8 /* bond.txt */; };
 		259847C62A81E62000E8CDD9 /* ArchiveItemStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259847C52A81E62000E8CDD9 /* ArchiveItemStack.swift */; };
 		259847C92A81F27900E8CDD9 /* ArchiveTypeLz4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259847C82A81F27900E8CDD9 /* ArchiveTypeLz4.swift */; };
 		259847CC2A891E8200E8CDD9 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 259847CB2A891E8200E8CDD9 /* SWCompression */; };
+		25A0D2102AD6443E00B43C92 /* archiveNested1.zip in Resources */ = {isa = PBXBuildFile; fileRef = 25A0D20F2AD6443E00B43C92 /* archiveNested1.zip */; };
+		25A0D2122AD64E9C00B43C92 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A0D2112AD64E9C00B43C92 /* URL+Extensions.swift */; };
+		25A0D2132AD64E9C00B43C92 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A0D2112AD64E9C00B43C92 /* URL+Extensions.swift */; };
+		25A0D2152AD6504600B43C92 /* archiveNested2.zip in Resources */ = {isa = PBXBuildFile; fileRef = 25A0D2142AD6504600B43C92 /* archiveNested2.zip */; };
+		25A0D2172AD6F5D800B43C92 /* zipVariant.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = 25A0D2162AD6F5D800B43C92 /* zipVariant.xlsx */; };
+		25BEBC1B2AD63EDE00C65E03 /* archive.tar.lz4 in Resources */ = {isa = PBXBuildFile; fileRef = 25BEBC182AD63EDD00C65E03 /* archive.tar.lz4 */; };
+		25BEBC1C2AD63EDE00C65E03 /* archive.zip in Resources */ = {isa = PBXBuildFile; fileRef = 25BEBC192AD63EDD00C65E03 /* archive.zip */; };
+		25BEBC1D2AD63EDE00C65E03 /* archive.tar in Resources */ = {isa = PBXBuildFile; fileRef = 25BEBC1A2AD63EDD00C65E03 /* archive.tar */; };
 		25C0A8A82A78DE5F002C1C2A /* MacPackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8A72A78DE5F002C1C2A /* MacPackerApp.swift */; };
 		25C0A8AA2A78DE5F002C1C2A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8A92A78DE5F002C1C2A /* ContentView.swift */; };
 		25C0A8AC2A78DE61002C1C2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25C0A8AB2A78DE61002C1C2A /* Assets.xcassets */; };
@@ -87,8 +100,18 @@
 		254BB5592ABBE8430059A1D5 /* MacPacker Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MacPacker Store.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		254BB55A2ABBE8430059A1D5 /* MacPacker copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MacPacker copy-Info.plist"; path = "/Users/sarensw/Documents/Private/Projects/MacPacker/MacPacker copy-Info.plist"; sourceTree = "<absolute>"; };
 		254BB55E2ABBE9D10059A1D5 /* CheckForUpdatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckForUpdatesView.swift; sourceTree = "<group>"; };
+		2592CED62AD4EAA2008DEFF8 /* ArchiveTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTest.swift; sourceTree = "<group>"; };
+		2592CED92AD4EF6D008DEFF8 /* hello.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.txt; sourceTree = "<group>"; };
+		2592CEE22AD529E2008DEFF8 /* bond.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bond.txt; sourceTree = "<group>"; };
 		259847C52A81E62000E8CDD9 /* ArchiveItemStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveItemStack.swift; sourceTree = "<group>"; };
 		259847C82A81F27900E8CDD9 /* ArchiveTypeLz4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTypeLz4.swift; sourceTree = "<group>"; };
+		25A0D20F2AD6443E00B43C92 /* archiveNested1.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = archiveNested1.zip; sourceTree = "<group>"; };
+		25A0D2112AD64E9C00B43C92 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		25A0D2142AD6504600B43C92 /* archiveNested2.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = archiveNested2.zip; sourceTree = "<group>"; };
+		25A0D2162AD6F5D800B43C92 /* zipVariant.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = zipVariant.xlsx; sourceTree = "<group>"; };
+		25BEBC182AD63EDD00C65E03 /* archive.tar.lz4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = archive.tar.lz4; sourceTree = "<group>"; };
+		25BEBC192AD63EDD00C65E03 /* archive.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = archive.zip; sourceTree = "<group>"; };
+		25BEBC1A2AD63EDD00C65E03 /* archive.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = archive.tar; sourceTree = "<group>"; };
 		25C0A8A42A78DE5F002C1C2A /* MacPacker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacPacker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C0A8A72A78DE5F002C1C2A /* MacPackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPackerApp.swift; sourceTree = "<group>"; };
 		25C0A8A92A78DE5F002C1C2A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,6 +145,7 @@
 			files = (
 				254BB5512ABBE8430059A1D5 /* BitByteData in Frameworks */,
 				254BB5522ABBE8430059A1D5 /* SWCompression in Frameworks */,
+				2592CEDF2AD4F77E008DEFF8 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +156,7 @@
 				254BB55D2ABBE8F50059A1D5 /* Sparkle in Frameworks */,
 				258C67F82ABB542200CE230E /* BitByteData in Frameworks */,
 				259847CC2A891E8200E8CDD9 /* SWCompression in Frameworks */,
+				2592CEDD2AD4F765008DEFF8 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +177,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2592CED82AD4EDAB008DEFF8 /* TestResources */ = {
+			isa = PBXGroup;
+			children = (
+				2592CEE22AD529E2008DEFF8 /* bond.txt */,
+				2592CED92AD4EF6D008DEFF8 /* hello.txt */,
+			);
+			path = TestResources;
+			sourceTree = "<group>";
+		};
 		259847C72A81F24500E8CDD9 /* Archive */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +196,19 @@
 				2529609A2A94617900551F53 /* IArchiveType.swift */,
 			);
 			path = Archive;
+			sourceTree = "<group>";
+		};
+		25BEBC172AD63CD300C65E03 /* TestArchives */ = {
+			isa = PBXGroup;
+			children = (
+				25A0D2162AD6F5D800B43C92 /* zipVariant.xlsx */,
+				25A0D2142AD6504600B43C92 /* archiveNested2.zip */,
+				25A0D20F2AD6443E00B43C92 /* archiveNested1.zip */,
+				25BEBC1A2AD63EDD00C65E03 /* archive.tar */,
+				25BEBC182AD63EDD00C65E03 /* archive.tar.lz4 */,
+				25BEBC192AD63EDD00C65E03 /* archive.zip */,
+			);
+			path = TestArchives;
 			sourceTree = "<group>";
 		};
 		25C0A89B2A78DE5F002C1C2A = {
@@ -217,7 +264,10 @@
 		25C0A8B82A78DE62002C1C2A /* MacPackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				25BEBC172AD63CD300C65E03 /* TestArchives */,
+				2592CED82AD4EDAB008DEFF8 /* TestResources */,
 				25C0A8B92A78DE62002C1C2A /* MacPackerTests.swift */,
+				2592CED62AD4EAA2008DEFF8 /* ArchiveTest.swift */,
 			);
 			path = MacPackerTests;
 			sourceTree = "<group>";
@@ -261,6 +311,7 @@
 		25C0A8E22A7B57C1002C1C2A /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				25A0D2112AD64E9C00B43C92 /* URL+Extensions.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -314,6 +365,7 @@
 			packageProductDependencies = (
 				254BB53D2ABBE8430059A1D5 /* SWCompression */,
 				254BB53F2ABBE8430059A1D5 /* BitByteData */,
+				2592CEDE2AD4F77E008DEFF8 /* ZIPFoundation */,
 			);
 			productName = MacPacker;
 			productReference = 254BB5592ABBE8430059A1D5 /* MacPacker Store.app */;
@@ -336,6 +388,7 @@
 				259847CB2A891E8200E8CDD9 /* SWCompression */,
 				258C67F72ABB542200CE230E /* BitByteData */,
 				254BB55C2ABBE8F50059A1D5 /* Sparkle */,
+				2592CEDC2AD4F765008DEFF8 /* ZIPFoundation */,
 			);
 			productName = MacPacker;
 			productReference = 25C0A8A42A78DE5F002C1C2A /* MacPacker.app */;
@@ -413,6 +466,7 @@
 				259847CA2A891E8100E8CDD9 /* XCRemoteSwiftPackageReference "SWCompression" */,
 				258C67F62ABB542200CE230E /* XCRemoteSwiftPackageReference "BitByteData" */,
 				254BB55B2ABBE8F50059A1D5 /* XCRemoteSwiftPackageReference "Sparkle" */,
+				2592CEDB2AD4F765008DEFF8 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 			);
 			productRefGroup = 25C0A8A52A78DE5F002C1C2A /* Products */;
 			projectDirPath = "";
@@ -451,6 +505,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25A0D2152AD6504600B43C92 /* archiveNested2.zip in Resources */,
+				2592CEDA2AD4EF6D008DEFF8 /* hello.txt in Resources */,
+				25BEBC1B2AD63EDE00C65E03 /* archive.tar.lz4 in Resources */,
+				25BEBC1D2AD63EDE00C65E03 /* archive.tar in Resources */,
+				25A0D2172AD6F5D800B43C92 /* zipVariant.xlsx in Resources */,
+				25BEBC1C2AD63EDE00C65E03 /* archive.zip in Resources */,
+				2592CEE32AD529E2008DEFF8 /* bond.txt in Resources */,
+				25A0D2102AD6443E00B43C92 /* archiveNested1.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +535,7 @@
 				25FF4AD82ABD3B4200E060A7 /* WelcomeWindowController.swift in Sources */,
 				254BB5432ABBE8430059A1D5 /* ArchiveTypeLz4.swift in Sources */,
 				254BB5452ABBE8430059A1D5 /* ArchiveItem.swift in Sources */,
+				25A0D2132AD64E9C00B43C92 /* URL+Extensions.swift in Sources */,
 				25FF4AD22ABC9C6300E060A7 /* AboutWindowController.swift in Sources */,
 				254BB5472ABBE8430059A1D5 /* ArchiveItemStack.swift in Sources */,
 				25FF4ACF2ABC9C5900E060A7 /* AboutView.swift in Sources */,
@@ -505,6 +568,7 @@
 				25C0A8AA2A78DE5F002C1C2A /* ContentView.swift in Sources */,
 				251C7A3E2AA02D9600CD4C86 /* ArchiveView.swift in Sources */,
 				254BB55F2ABBE9D10059A1D5 /* CheckForUpdatesView.swift in Sources */,
+				25A0D2122AD64E9C00B43C92 /* URL+Extensions.swift in Sources */,
 				25CF968A2AC09398000A7601 /* ArchiveTypeZip.swift in Sources */,
 				25C62FB42A7C998B00ED5CDE /* FileContainer.swift in Sources */,
 				252960992A945BDC00551F53 /* Toolbar.swift in Sources */,
@@ -521,6 +585,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2592CED72AD4EAA2008DEFF8 /* ArchiveTest.swift in Sources */,
 				25C0A8BA2A78DE62002C1C2A /* MacPackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -942,6 +1007,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		2592CEDB2AD4F765008DEFF8 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.17;
+			};
+		};
 		259847CA2A891E8100E8CDD9 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tsolomko/SWCompression";
@@ -972,6 +1045,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 258C67F62ABB542200CE230E /* XCRemoteSwiftPackageReference "BitByteData" */;
 			productName = BitByteData;
+		};
+		2592CEDC2AD4F765008DEFF8 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2592CEDB2AD4F765008DEFF8 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+		2592CEDE2AD4F77E008DEFF8 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2592CEDB2AD4F765008DEFF8 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
 		};
 		259847CB2A891E8200E8CDD9 /* SWCompression */ = {
 			isa = XCSwiftPackageProductDependency;

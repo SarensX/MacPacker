@@ -70,4 +70,8 @@ class ArchiveTypeLz4: IArchiveType {
         
         return nil
     }
+    
+    func save(to: URL, items: [ArchiveItem]) throws {
+        
+    }
 }
