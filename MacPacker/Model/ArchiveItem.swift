@@ -11,11 +11,12 @@ enum ArchiveItemType: Comparable, Codable {
     case file
     case directory
     case archive
+    case parent
     case unknown
 }
 
 struct ArchiveItem: Identifiable, Hashable, Encodable {
-    public static let parent: ArchiveItem = ArchiveItem(name: "..", type: .directory)
+    public static let parent: ArchiveItem = ArchiveItem(name: "..", type: .parent)
     let id = UUID()
     var path: URL? = nil
     var virtualPath: String? = nil

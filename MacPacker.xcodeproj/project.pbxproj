@@ -133,6 +133,7 @@
 		25CF968C2AC09B8C000A7601 /* CHANGELOG */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		25D4F0A82AD39A4E003FBAA4 /* ArchiveType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveType.swift; sourceTree = "<group>"; };
 		25D4F0AB2AD3A9E2003FBAA4 /* ArchiveItemStackEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveItemStackEntry.swift; sourceTree = "<group>"; };
+		25EF27352AD7098300C8CC56 /* MacPacker.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MacPacker.xctestplan; sourceTree = "<group>"; };
 		25F32CA02A9EEE1C002ED5A4 /* ArchiveTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTableView.swift; sourceTree = "<group>"; };
 		25FF4ACD2ABC9C5900E060A7 /* AboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		25FF4AD02ABC9C6300E060A7 /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
@@ -217,6 +218,7 @@
 		25C0A89B2A78DE5F002C1C2A = {
 			isa = PBXGroup;
 			children = (
+				25EF27352AD7098300C8CC56 /* MacPacker.xctestplan */,
 				25C0A8DA2A7B5339002C1C2A /* Packages */,
 				25C0A8A62A78DE5F002C1C2A /* MacPacker */,
 				25C0A8B82A78DE62002C1C2A /* MacPackerTests */,

@@ -9,6 +9,7 @@ import Foundation
 
 enum Archive2Error: Error {
     case unknownType(String)
+    case nonEditable(String)
 }
 
 enum Archive2Type: String {
@@ -26,6 +27,8 @@ class Archive2 {
     @Published var items: [ArchiveItem] = []
     @Published var canEdit: Bool = false
     @Published var tempDirs: [URL] = []
+    @Published var errorMessage: String?
+    @Published var completePath: String?
     
     //
     // Initializers
@@ -49,19 +52,6 @@ class Archive2 {
             canEdit = true
         }
         try load(url)
-    }
-    
-    /// Starts all the required observers for the file container
-    private func startObserver() {
-        NotificationCenter.default.addObserver(forName: Notification.Name("file.load"), object: nil, queue:
-        nil) {
-            notification in
-            if let paths = notification.object as? [URL] {
-                if paths.count > 0 {
-//                    self.load(paths[0])
-                }
-            }
-        }
     }
     
     //
@@ -108,7 +98,6 @@ class Archive2 {
     /// - Returns: archive type
     private func determineTypeFrom(url: URL) throws -> Archive2Type {
         let ext = url.pathExtension
-        if ext == "" { throw Archive2Error.unknownType("Unknown type") }
         
         if let at = Archive2Type(rawValue: ext) {
             return at
@@ -121,21 +110,12 @@ class Archive2 {
         throw Archive2Error.unknownType("Unknown type")
     }
     
-    /// Checks whether the given URL is leads to a supported archive type
-    /// - Parameter url: url to check
-    /// - Returns: true in case the archive is supported, false otherwise
-    private func isSupportedType(url: URL) -> Bool {
-        do {
-            _ = try determineTypeFrom(url: url)
-            return true
-        } catch { }
-        return false
-    }
-    
     /// Adds the given files to the archive. Note that this only works for editable archives
     /// - Parameter urls: the urls of the files to add
-    func add(urls: [URL]) {
-        if canEdit == false { return }
+    func add(urls: [URL]) throws {
+        if canEdit == false {
+            throw Archive2Error.nonEditable("Archive is not editable")
+        }
         
         for url in urls {
             items.append(ArchiveItem(path: url, type: .file))
@@ -145,7 +125,9 @@ class Archive2 {
     /// Saves the current list of items to the given URL as an archvie
     /// - Parameter url: the url where to save the archive
     func save(to url: URL) throws {
-        if canEdit == false { return }
+        if canEdit == false {
+            throw Archive2Error.nonEditable("Archive is not editable")
+        }
         
         let at = try ArchiveType.with(type.rawValue)
         try at.save(to: url, items: items)
@@ -161,9 +143,13 @@ class Archive2 {
     ///   - push: true to push the entry on that stack
     private func loadStackEntry(_ entry: ArchiveItemStackEntry, clear: Bool = false, push: Bool = true) {
         do {
+            // update the complete path
+            completePath = entry.localPath.absoluteString + (entry.archivePath ?? "")
+            
             // stack item is directory that actually exists
             if entry.archivePath == nil {
-//                try loadDirectoryContent(path: entry.localPath)
+                try loadDirectoryContent(url: entry.localPath)
+                print("enable this")
             }
             
             // stack item is archive
@@ -209,16 +195,77 @@ class Archive2 {
         return false
     }
     
+    /// Checks if the given path is a directory
+    /// - Parameter path: path to the potential directory
+    /// - Returns: true in case the path is a dir, false otherwise
+    public func isDirectory(path: URL) throws -> Bool {
+        var isDirectory: ObjCBool = false
+        if !FileManager.default.fileExists(atPath: path.path, isDirectory: &isDirectory) {
+            items = []
+            throw CocoaError(.fileNoSuchFile)
+        }
+        
+        return isDirectory.boolValue
+    }
+    
+    public func moveDirectoryUp(_ item: ArchiveItem) throws {
+        // let's use completePath to go up as long as possible
+        
+        if let completePath,
+           var completePathUrl = URL(string: completePath) {
+            completePathUrl.deleteLastPathComponent()
+            let stackEntry = ArchiveItemStackEntry(
+                type: .Directory,
+                localPath: completePathUrl,
+                archivePath: nil,
+                tempId: nil,
+                archiveType: nil)
+            loadStackEntry(stackEntry, push: false)
+        }
+    }
+    
     /// Loads the archive from the given url
     /// - Parameter url: archive url
     func load(_ url: URL) throws {
-        let stackEntry = ArchiveItemStackEntry(
-            type: .Archive,
-            localPath: url,
-            archivePath: "",
-            tempId: nil,
-            archiveType: type.rawValue)
-        loadStackEntry(stackEntry, clear: true)
+        // load the content depending of the type
+        do {
+            // Check if this is a dir first. This will throw in case
+            // the path does not exist
+            let isDirectory = try isDirectory(path: url)
+            
+            if isDirectory {
+                // directory
+                let stackEntry = ArchiveItemStackEntry(
+                    type: .Directory,
+                    localPath: url,
+                    archivePath: nil,
+                    tempId: nil,
+                    archiveType: nil)
+                loadStackEntry(stackEntry, clear: true)
+            } else {
+                let stackEntry = ArchiveItemStackEntry(
+                    type: .Archive,
+                    localPath: url,
+                    archivePath: "",
+                    tempId: nil,
+                    archiveType: type.rawValue)
+                loadStackEntry(stackEntry, clear: true)
+            }
+        } catch let error as CocoaError {
+            switch error.code {
+            case .fileReadNoPermission, .fileReadUnknown:
+                print("no access")
+                errorMessage = "MacPacker does not have access to the parent directory."
+            case .fileNoSuchFile:
+                print("file not found")
+                errorMessage = "The given file does not seem to exist"
+            default:
+                print("unknown CocoaError")
+                print(error)
+            }
+        } catch {
+            print(error)
+        }
     }
     
     /// Opens the given item. This can be one of the following cases:
@@ -232,10 +279,16 @@ class Archive2 {
         // if the selected item is the parent item (the one with ..),
         // then just go back in the stack
         if item == ArchiveItem.parent {
-            if stack.count > 1 { stack.pop() }
-            if let parent = stack.peek() {
+            // Problem when going up on parent on first stack level.
+            if let parent = stack.pop() {
                 loadStackEntry(parent, push: false)
+            } else {
+                // we're at the top of the archive, the next level
+                // is a directory for sure
+                // so let's check access first
+                try moveDirectoryUp(item)
             }
+            
             return
         }
         
@@ -308,6 +361,15 @@ class Archive2 {
                 // TODO file, but not an archive, so extract and open using sytem
             }
         } else if item.type == .directory {
+            if item.virtualPath == nil {
+                let stackEntry = ArchiveItemStackEntry(
+                    type: .Directory,
+                    localPath: item.path!,
+                    archivePath: nil,
+                    tempId: nil,
+                    archiveType: nil)
+                loadStackEntry(stackEntry, push: false)
+            }
             if let currentStackEntry = stack.peek(),
                let archivePath = currentStackEntry.archivePath {
                 let stackEntry = ArchiveItemStackEntry(
@@ -319,5 +381,49 @@ class Archive2 {
                 loadStackEntry(stackEntry)
             }
         }
+    }
+    
+    /// Loads the content of the given directory. This is especially used
+    /// when navigating outside of archives
+    /// - Parameter url: url to load
+    private func loadDirectoryContent(url: URL) throws {
+        let contents = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: [.isDirectoryKey])
+        var resultDirectories: [ArchiveItem] = []
+        var resultFiles: [ArchiveItem] = []
+        
+        // add the possibility to go up
+        resultDirectories.append(ArchiveItem.parent)
+        
+        // now add all items in the dir
+        for url in contents {
+            var isDirectory = false
+            var fileSize: Int = -1
+            do {
+                let resourceValue = try url.resourceValues(forKeys: [.isDirectoryKey, .totalFileSizeKey])
+                isDirectory = resourceValue.isDirectory ?? false
+                fileSize = resourceValue.totalFileSize ?? -1
+            } catch {
+
+            }
+            
+            var fileItemType: ArchiveItemType = isDirectory ? .directory : .file
+            if fileItemType == .file && isSupportedArchive(ext: url.pathExtension) {
+                fileItemType = .archive
+            }
+            let fileItem = ArchiveItem(path: url, type: fileItemType, size: fileSize)
+            
+            if fileItemType == .directory {
+                resultDirectories.append(fileItem)
+            } else {
+                resultFiles.append(fileItem)
+            }
+        }
+        items = resultDirectories.sorted {
+            return $0.name < $1.name
+        }
+        items.append(contentsOf: resultFiles.sorted {
+            return $0.name < $1.name
+        })
+        print("items loaded \(items.count)")
     }
 }

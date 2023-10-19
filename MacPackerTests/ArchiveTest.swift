@@ -61,6 +61,10 @@ final class ArchiveTest: XCTestCase {
         }
         return file
     }
+    
+    func testWrongFileInTest() {
+        XCTAssertThrowsError(try getTestFile(name: "someName.txt"))
+    }
 
     func testCreation() throws {
         let archive = Archive2()
@@ -71,10 +75,17 @@ final class ArchiveTest: XCTestCase {
     
     func testAddFileToArchive() throws {
         let archive = Archive2()
-        if let helloFile = Bundle.main.url(forResource: "hello", withExtension: "txt") {
-            print(helloFile)
-            archive.add(urls: [helloFile])
-        }
+        let helloFile = try getTestFile(name: "hello.txt")
+        try archive.add(urls: [helloFile])
+    }
+    
+    func testAddFileToNonEditableArchive() throws {
+        let archive = Archive2()
+        archive.canEdit = false
+        let helloFile = try getTestFile(name: "hello.txt")
+        let saveUrl = ArchiveTest.tempDirectoryURL.appendingPathComponent("someRandom.zip")
+        XCTAssertThrowsError(try archive.add(urls: [helloFile]))
+        XCTAssertThrowsError(try archive.save(to: saveUrl))
     }
     
     func testCreateEmptyArchiveAndSave() throws {
@@ -88,10 +99,8 @@ final class ArchiveTest: XCTestCase {
     
     func testCreateAndAddFileToArchiveAndSave() throws {
         let archive = Archive2()
-        if let helloFile = Bundle(for: type(of: self)).url(forResource: "hello.txt", withExtension: nil) {
-            print(helloFile)
-            archive.add(urls: [helloFile])
-        }
+        let helloFile = try getTestFile(name: "hello.txt")
+        try archive.add(urls: [helloFile])
         let saveUrl = ArchiveTest.tempDirectoryURL.appendingPathComponent("testCreateAndAddFileToArchiveAndSave.zip")
         try archive.save(to: saveUrl)
         
@@ -105,22 +114,18 @@ final class ArchiveTest: XCTestCase {
     
     func testAddToExistingArchiveAndSave() throws {
         let saveUrl = ArchiveTest.tempDirectoryURL.appendingPathComponent("testAddToExistingArchiveAndSave.zip")
-        guard let helloFile = Bundle(for: type(of: self)).url(forResource: "hello.txt", withExtension: nil) else {
-            throw TestError.testError("hello.txt not found")
-        }
-        guard let bondFile = Bundle(for: type(of: self)).url(forResource: "bond.txt", withExtension: nil) else {
-            throw TestError.testError("bond.txt not found")
-        }
+        let helloFile = try getTestFile(name: "hello.txt")
+        let bondFile = try getTestFile(name: "bond.txt")
         
         let archive = Archive2()
-        archive.add(urls: [helloFile])
+        try archive.add(urls: [helloFile])
         try archive.save(to: saveUrl)
         
         let archive2 = try Archive2(url: saveUrl)
         let count2 = archive2.items.count
         XCTAssertEqual(count2, 2)
         
-        archive2.add(urls: [bondFile])
+        try archive2.add(urls: [bondFile])
         try archive2.save(to: saveUrl)
         
         let archive3 = try Archive2(url: saveUrl)
@@ -161,7 +166,7 @@ final class ArchiveTest: XCTestCase {
         
         try archive.open(archive.items[0])
         count = archive.items.count
-        XCTAssertEqual(count, 2)
+        XCTAssertEqual(count, 3)
     }
     
     func testLoadZip() throws {
@@ -259,9 +264,6 @@ final class ArchiveTest: XCTestCase {
         // dirs are removed
         try archive1.clean()
         XCTAssertEqual(archive1.tempDirs.count, 0)
-        for tempDir in archive1.tempDirs {
-            XCTAssertFalse(FileManager.default.fileExists(atPath: tempDir.path))
-        }
         for tempDir in archive2.tempDirs {
             XCTAssertTrue(FileManager.default.fileExists(atPath: tempDir.path))
         }
@@ -269,12 +271,28 @@ final class ArchiveTest: XCTestCase {
         // clean the second archive
         try archive2.clean()
         XCTAssertEqual(archive2.tempDirs.count, 0)
-        for tempDir in archive1.tempDirs {
-            XCTAssertFalse(FileManager.default.fileExists(atPath: tempDir.path))
-        }
-        for tempDir in archive2.tempDirs {
-            XCTAssertTrue(FileManager.default.fileExists(atPath: tempDir.path))
-        }
+    }
+    
+    func testMoveUpDirectory() throws {
+        let tf = try getTestFile(name: "archiveNested1.zip")
+        
+        let archive = try Archive2(url: tf)
+        XCTAssertEqual(archive.items.count, 2)
+        
+        try archive.open(archive.items[0])
+        print(archive.$completePath)
+        XCTAssertEqual(archive.items.count, 2)
+        
+        try archive.open(archive.items[0])
+        print(archive.$completePath)
+        XCTAssertEqual(archive.items.count, 10)
+        
+        try archive.open(archive.items[0])
+        print(archive.$completePath)
+        XCTAssertEqual(archive.items.count, 5)
+        
+        try archive.open(archive.items[2])
+        XCTAssertEqual(archive.items.count, 10)
     }
 
 }
