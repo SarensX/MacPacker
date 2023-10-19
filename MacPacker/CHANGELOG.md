@@ -1,3 +1,5 @@
+v0.3
+- feat: highlight when dragging file to MacPacker window
 
 v0.2
 - feat: welcome & about dialog

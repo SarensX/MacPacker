@@ -10,7 +10,8 @@ import SwiftUI
 
 struct ArchiveView: View {
     @StateObject var container: FileContainer = FileContainer()
-
+    @State private var isDraggingOver = false
+    
     var body: some View {
         VStack {
             ArchiveTableView(
@@ -18,7 +19,8 @@ struct ArchiveView: View {
                 isReloadNeeded: $container.isReloadNeeded,
                 container: container)
         }
-        .onDrop(of: ["public.file-url"], isTargeted: nil) { providers -> Bool in
+        .border(isDraggingOver ? Color.blue : Color.clear, width: 2)
+        .onDrop(of: ["public.file-url"], isTargeted: $isDraggingOver) { providers -> Bool in
             for provider in providers {
                 provider.loadItem(forTypeIdentifier: "public.file-url", options: nil) { (data, error) in
                     if let data = data as? Data,

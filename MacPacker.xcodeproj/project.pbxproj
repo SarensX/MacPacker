@@ -59,8 +59,8 @@
 		25CF96882AC06E34000A7601 /* Archive2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF96862AC06E34000A7601 /* Archive2.swift */; };
 		25CF968A2AC09398000A7601 /* ArchiveTypeZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF96892AC09398000A7601 /* ArchiveTypeZip.swift */; };
 		25CF968B2AC09398000A7601 /* ArchiveTypeZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF96892AC09398000A7601 /* ArchiveTypeZip.swift */; };
-		25CF968D2AC09B8C000A7601 /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = 25CF968C2AC09B8C000A7601 /* CHANGELOG */; };
-		25CF968E2AC09B8C000A7601 /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = 25CF968C2AC09B8C000A7601 /* CHANGELOG */; };
+		25CF968D2AC09B8C000A7601 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 25CF968C2AC09B8C000A7601 /* CHANGELOG.md */; };
+		25CF968E2AC09B8C000A7601 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 25CF968C2AC09B8C000A7601 /* CHANGELOG.md */; };
 		25D4F0A92AD39A4E003FBAA4 /* ArchiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D4F0A82AD39A4E003FBAA4 /* ArchiveType.swift */; };
 		25D4F0AA2AD39A4E003FBAA4 /* ArchiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D4F0A82AD39A4E003FBAA4 /* ArchiveType.swift */; };
 		25D4F0AC2AD3A9E2003FBAA4 /* ArchiveItemStackEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D4F0AB2AD3A9E2003FBAA4 /* ArchiveItemStackEntry.swift */; };
@@ -130,7 +130,7 @@
 		25C62FB32A7C998B00ED5CDE /* FileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContainer.swift; sourceTree = "<group>"; };
 		25CF96862AC06E34000A7601 /* Archive2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive2.swift; sourceTree = "<group>"; };
 		25CF96892AC09398000A7601 /* ArchiveTypeZip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTypeZip.swift; sourceTree = "<group>"; };
-		25CF968C2AC09B8C000A7601 /* CHANGELOG */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
+		25CF968C2AC09B8C000A7601 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		25D4F0A82AD39A4E003FBAA4 /* ArchiveType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveType.swift; sourceTree = "<group>"; };
 		25D4F0AB2AD3A9E2003FBAA4 /* ArchiveItemStackEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveItemStackEntry.swift; sourceTree = "<group>"; };
 		25EF27352AD7098300C8CC56 /* MacPacker.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MacPacker.xctestplan; sourceTree = "<group>"; };
@@ -253,7 +253,7 @@
 				25C0A8AB2A78DE61002C1C2A /* Assets.xcassets */,
 				25C0A8B02A78DE61002C1C2A /* MacPacker.entitlements */,
 				25C0A8AD2A78DE61002C1C2A /* Preview Content */,
-				25CF968C2AC09B8C000A7601 /* CHANGELOG */,
+				25CF968C2AC09B8C000A7601 /* CHANGELOG.md */,
 			);
 			path = MacPacker;
 			sourceTree = "<group>";
@@ -492,7 +492,7 @@
 			files = (
 				254BB5542ABBE8430059A1D5 /* Preview Assets.xcassets in Resources */,
 				254BB5552ABBE8430059A1D5 /* Assets.xcassets in Resources */,
-				25CF968E2AC09B8C000A7601 /* CHANGELOG in Resources */,
+				25CF968E2AC09B8C000A7601 /* CHANGELOG.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,7 +502,7 @@
 			files = (
 				25C0A8AF2A78DE61002C1C2A /* Preview Assets.xcassets in Resources */,
 				25C0A8AC2A78DE61002C1C2A /* Assets.xcassets in Resources */,
-				25CF968D2AC09B8C000A7601 /* CHANGELOG in Resources */,
+				25CF968D2AC09B8C000A7601 /* CHANGELOG.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
