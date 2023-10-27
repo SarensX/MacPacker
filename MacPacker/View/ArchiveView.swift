@@ -8,16 +8,23 @@
 import Foundation
 import SwiftUI
 
+class ArchiveContainer: ObservableObject {
+    @Published var archive: Archive2?
+    @Published var isReloadNeeded: Bool = false
+}
+
 struct ArchiveView: View {
-    @StateObject var container: FileContainer = FileContainer()
+//    @StateObject var container: FileContainer = FileContainer()
+    @StateObject var archiveContainer: ArchiveContainer = ArchiveContainer()
     @State private var isDraggingOver = false
     
     var body: some View {
         VStack {
             ArchiveTableView(
-                data: $container.items,
-                isReloadNeeded: $container.isReloadNeeded,
-                container: container)
+//                data: $container.items,
+                isReloadNeeded: $archiveContainer.isReloadNeeded,
+//                container: container)
+                archive: $archiveContainer.archive)
         }
         .border(isDraggingOver ? Color.blue : Color.clear, width: 2)
         .onDrop(of: ["public.file-url"], isTargeted: $isDraggingOver) { providers -> Bool in
@@ -27,21 +34,31 @@ struct ArchiveView: View {
                         let fileURL = URL(dataRepresentation: data, relativeTo: nil) {
                         // Update the state variable with the accepted file URL
                         DispatchQueue.main.async {
-                            self.drop(path: fileURL)
+                            self.drop(fileURL)
                         }
                     }
                 }
             }
             return true
         }
+        .environmentObject(archiveContainer)
     }
     
     //
     // functions
     //
     
-    func drop(path: URL) {
-        container.errorMessage = ""
-        self.container.load(path)
+    func drop(_ url: URL) {
+//        container.errorMessage = ""
+//        self.container.load(path)
+        
+        do {
+            let archive = try Archive2(url: url)
+            archiveContainer.archive = archive
+            
+            archiveContainer.isReloadNeeded = true
+        } catch {
+            print(error)
+        }
     }
 }

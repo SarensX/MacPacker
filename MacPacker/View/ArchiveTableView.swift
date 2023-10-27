@@ -156,6 +156,23 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
         return provider
     }
     
+    public func moveDirectoryUp(_ item: ArchiveItem) throws {
+        // let's use completePath to go up as long as possible
+        print("move up directory now")
+
+//        if let completePath,
+//           var completePathUrl = URL(string: completePath) {
+//            completePathUrl.deleteLastPathComponent()
+//            let stackEntry = ArchiveItemStackEntry(
+//                type: .Directory,
+//                localPath: completePathUrl,
+//                archivePath: nil,
+//                tempId: nil,
+//                archiveType: nil)
+//            loadStackEntry(stackEntry, push: false)
+//        }
+    }
+    
     // ---
     // Double click functionality
     // ---
@@ -170,7 +187,13 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
             print("Double-clicked row: \(clickedRow)")
             do {
                 let item = items[clickedRow]
-                try parent.container.open(item)
+                if let archive = parent.archive {
+                    let result = try archive.open(item)
+                    if result == .leaveDirectory {
+                        try moveDirectoryUp(item)
+                    }
+                    parent.isReloadNeeded = true
+                }
             } catch {
                 print(error)
             }
@@ -180,9 +203,10 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
 
 /// Table
 struct ArchiveTableView: NSViewRepresentable {
-    @Binding var data: [ArchiveItem]
+//    @Binding var data: [ArchiveItem]
     @Binding var isReloadNeeded: Bool
-    var container: FileContainer
+//    var container: FileContainer
+    @Binding var archive: Archive2?
     
     //
     // Constructor
@@ -226,13 +250,16 @@ struct ArchiveTableView: NSViewRepresentable {
     ///   - context: context
     func updateNSView(_ nsView: NSScrollView, context: Context) {
         // todo: make sure the data is only reloaded when needed
-        if isReloadNeeded {
-            let tableView = (nsView.documentView as! NSTableView)
-            //        context.coordinator.parent = self
-            context.coordinator.items = self.data
-            DispatchQueue.main.async {
-                tableView.reloadData()
-                isReloadNeeded = false
+        if let archive {
+            print("isReloadNeeded: \(isReloadNeeded) \(Date.now.description)")
+            if isReloadNeeded {
+                let tableView = (nsView.documentView as! NSTableView)
+                //        context.coordinator.parent = self
+                context.coordinator.items = archive.items
+                DispatchQueue.main.async {
+                    tableView.reloadData()
+                    isReloadNeeded = false
+                }
             }
         }
     }

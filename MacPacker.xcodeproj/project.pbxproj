@@ -22,13 +22,10 @@
 		254BB54C2ABBE8430059A1D5 /* ArchiveTypeTar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529609C2A94619C00551F53 /* ArchiveTypeTar.swift */; };
 		254BB54E2ABBE8430059A1D5 /* MacPackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8A72A78DE5F002C1C2A /* MacPackerApp.swift */; };
 		254BB54F2ABBE8430059A1D5 /* IArchiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529609A2A94617900551F53 /* IArchiveType.swift */; };
-		254BB5512ABBE8430059A1D5 /* BitByteData in Frameworks */ = {isa = PBXBuildFile; productRef = 254BB53F2ABBE8430059A1D5 /* BitByteData */; };
-		254BB5522ABBE8430059A1D5 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 254BB53D2ABBE8430059A1D5 /* SWCompression */; };
 		254BB5542ABBE8430059A1D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25C0A8AE2A78DE61002C1C2A /* Preview Assets.xcassets */; };
 		254BB5552ABBE8430059A1D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25C0A8AB2A78DE61002C1C2A /* Assets.xcassets */; };
 		254BB55D2ABBE8F50059A1D5 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 254BB55C2ABBE8F50059A1D5 /* Sparkle */; };
 		254BB55F2ABBE9D10059A1D5 /* CheckForUpdatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254BB55E2ABBE9D10059A1D5 /* CheckForUpdatesView.swift */; };
-		258C67F82ABB542200CE230E /* BitByteData in Frameworks */ = {isa = PBXBuildFile; productRef = 258C67F72ABB542200CE230E /* BitByteData */; };
 		2592CED72AD4EAA2008DEFF8 /* ArchiveTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2592CED62AD4EAA2008DEFF8 /* ArchiveTest.swift */; };
 		2592CEDA2AD4EF6D008DEFF8 /* hello.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2592CED92AD4EF6D008DEFF8 /* hello.txt */; };
 		2592CEDD2AD4F765008DEFF8 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 2592CEDC2AD4F765008DEFF8 /* ZIPFoundation */; };
@@ -36,7 +33,6 @@
 		2592CEE32AD529E2008DEFF8 /* bond.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2592CEE22AD529E2008DEFF8 /* bond.txt */; };
 		259847C62A81E62000E8CDD9 /* ArchiveItemStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259847C52A81E62000E8CDD9 /* ArchiveItemStack.swift */; };
 		259847C92A81F27900E8CDD9 /* ArchiveTypeLz4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259847C82A81F27900E8CDD9 /* ArchiveTypeLz4.swift */; };
-		259847CC2A891E8200E8CDD9 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 259847CB2A891E8200E8CDD9 /* SWCompression */; };
 		25A0D2102AD6443E00B43C92 /* archiveNested1.zip in Resources */ = {isa = PBXBuildFile; fileRef = 25A0D20F2AD6443E00B43C92 /* archiveNested1.zip */; };
 		25A0D2122AD64E9C00B43C92 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A0D2112AD64E9C00B43C92 /* URL+Extensions.swift */; };
 		25A0D2132AD64E9C00B43C92 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A0D2112AD64E9C00B43C92 /* URL+Extensions.swift */; };
@@ -54,6 +50,16 @@
 		25C0A8C42A78DE62002C1C2A /* MacPackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8C32A78DE62002C1C2A /* MacPackerUITests.swift */; };
 		25C0A8C62A78DE62002C1C2A /* MacPackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8C52A78DE62002C1C2A /* MacPackerUITestsLaunchTests.swift */; };
 		25C0A8EA2A7B7013002C1C2A /* ArchiveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8E92A7B7013002C1C2A /* ArchiveItem.swift */; };
+		25C518842AE762BF0001697F /* Breadcrumbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C518832AE762BF0001697F /* Breadcrumbs.swift */; };
+		25C518852AE762BF0001697F /* Breadcrumbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C518832AE762BF0001697F /* Breadcrumbs.swift */; };
+		25C518872AEA115F0001697F /* BitByteData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C518862AEA115E0001697F /* BitByteData.framework */; };
+		25C518882AEA115F0001697F /* BitByteData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 25C518862AEA115E0001697F /* BitByteData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		25C5188B2AEA11660001697F /* SWCompression.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C5188A2AEA11660001697F /* SWCompression.framework */; };
+		25C5188C2AEA11660001697F /* SWCompression.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 25C5188A2AEA11660001697F /* SWCompression.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		25C5188D2AEA121C0001697F /* BitByteData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C518862AEA115E0001697F /* BitByteData.framework */; };
+		25C5188E2AEA121C0001697F /* BitByteData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 25C518862AEA115E0001697F /* BitByteData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		25C518902AEA121F0001697F /* SWCompression.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C5188A2AEA11660001697F /* SWCompression.framework */; };
+		25C518912AEA121F0001697F /* SWCompression.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 25C5188A2AEA11660001697F /* SWCompression.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		25C62FB42A7C998B00ED5CDE /* FileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB32A7C998B00ED5CDE /* FileContainer.swift */; };
 		25CF96872AC06E34000A7601 /* Archive2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF96862AC06E34000A7601 /* Archive2.swift */; };
 		25CF96882AC06E34000A7601 /* Archive2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF96862AC06E34000A7601 /* Archive2.swift */; };
@@ -93,6 +99,33 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		25C518892AEA115F0001697F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				25C518882AEA115F0001697F /* BitByteData.framework in Embed Frameworks */,
+				25C5188C2AEA11660001697F /* SWCompression.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25C5188F2AEA121C0001697F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				25C5188E2AEA121C0001697F /* BitByteData.framework in Embed Frameworks */,
+				25C518912AEA121F0001697F /* SWCompression.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		251C7A3D2AA02D9600CD4C86 /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
 		252960982A945BDC00551F53 /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
@@ -127,6 +160,9 @@
 		25C0A8C52A78DE62002C1C2A /* MacPackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacPackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		25C0A8D22A78DF92002C1C2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		25C0A8E92A7B7013002C1C2A /* ArchiveItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveItem.swift; sourceTree = "<group>"; };
+		25C518832AE762BF0001697F /* Breadcrumbs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breadcrumbs.swift; sourceTree = "<group>"; };
+		25C518862AEA115E0001697F /* BitByteData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BitByteData.framework; path = "Carthage/Build/BitByteData.xcframework/macos-arm64_x86_64/BitByteData.framework"; sourceTree = "<group>"; };
+		25C5188A2AEA11660001697F /* SWCompression.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWCompression.framework; path = "Carthage/Build/SWCompression.xcframework/macos-arm64_x86_64/SWCompression.framework"; sourceTree = "<group>"; };
 		25C62FB32A7C998B00ED5CDE /* FileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContainer.swift; sourceTree = "<group>"; };
 		25CF96862AC06E34000A7601 /* Archive2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive2.swift; sourceTree = "<group>"; };
 		25CF96892AC09398000A7601 /* ArchiveTypeZip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTypeZip.swift; sourceTree = "<group>"; };
@@ -146,8 +182,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				254BB5512ABBE8430059A1D5 /* BitByteData in Frameworks */,
-				254BB5522ABBE8430059A1D5 /* SWCompression in Frameworks */,
+				25C518902AEA121F0001697F /* SWCompression.framework in Frameworks */,
+				25C5188D2AEA121C0001697F /* BitByteData.framework in Frameworks */,
 				2592CEDF2AD4F77E008DEFF8 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,10 +192,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25C518872AEA115F0001697F /* BitByteData.framework in Frameworks */,
 				254BB55D2ABBE8F50059A1D5 /* Sparkle in Frameworks */,
-				258C67F82ABB542200CE230E /* BitByteData in Frameworks */,
-				259847CC2A891E8200E8CDD9 /* SWCompression in Frameworks */,
 				2592CEDD2AD4F765008DEFF8 /* ZIPFoundation in Frameworks */,
+				25C5188B2AEA11660001697F /* SWCompression.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +345,8 @@
 		25C0A8DF2A7B5569002C1C2A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				25C5188A2AEA11660001697F /* SWCompression.framework */,
+				25C518862AEA115E0001697F /* BitByteData.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -328,6 +366,7 @@
 				25C0A8E92A7B7013002C1C2A /* ArchiveItem.swift */,
 				259847C52A81E62000E8CDD9 /* ArchiveItemStack.swift */,
 				25D4F0AB2AD3A9E2003FBAA4 /* ArchiveItemStackEntry.swift */,
+				25C518832AE762BF0001697F /* Breadcrumbs.swift */,
 				25C62FB32A7C998B00ED5CDE /* FileContainer.swift */,
 			);
 			path = Model;
@@ -361,6 +400,7 @@
 				254BB5412ABBE8430059A1D5 /* Sources */,
 				254BB5502ABBE8430059A1D5 /* Frameworks */,
 				254BB5532ABBE8430059A1D5 /* Resources */,
+				25C5188F2AEA121C0001697F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -368,8 +408,6 @@
 			);
 			name = "MacPacker Store";
 			packageProductDependencies = (
-				254BB53D2ABBE8430059A1D5 /* SWCompression */,
-				254BB53F2ABBE8430059A1D5 /* BitByteData */,
 				2592CEDE2AD4F77E008DEFF8 /* ZIPFoundation */,
 			);
 			productName = MacPacker;
@@ -383,6 +421,7 @@
 				25C0A8A02A78DE5F002C1C2A /* Sources */,
 				25C0A8A12A78DE5F002C1C2A /* Frameworks */,
 				25C0A8A22A78DE5F002C1C2A /* Resources */,
+				25C518892AEA115F0001697F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -390,8 +429,6 @@
 			);
 			name = MacPacker;
 			packageProductDependencies = (
-				259847CB2A891E8200E8CDD9 /* SWCompression */,
-				258C67F72ABB542200CE230E /* BitByteData */,
 				254BB55C2ABBE8F50059A1D5 /* Sparkle */,
 				2592CEDC2AD4F765008DEFF8 /* ZIPFoundation */,
 			);
@@ -468,8 +505,6 @@
 			);
 			mainGroup = 25C0A89B2A78DE5F002C1C2A;
 			packageReferences = (
-				259847CA2A891E8100E8CDD9 /* XCRemoteSwiftPackageReference "SWCompression" */,
-				258C67F62ABB542200CE230E /* XCRemoteSwiftPackageReference "BitByteData" */,
 				254BB55B2ABBE8F50059A1D5 /* XCRemoteSwiftPackageReference "Sparkle" */,
 				2592CEDB2AD4F765008DEFF8 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 			);
@@ -540,6 +575,7 @@
 				254BB5422ABBE8430059A1D5 /* ArchiveTableView.swift in Sources */,
 				25FF4AD82ABD3B4200E060A7 /* WelcomeWindowController.swift in Sources */,
 				254BB5432ABBE8430059A1D5 /* ArchiveTypeLz4.swift in Sources */,
+				25C518852AE762BF0001697F /* Breadcrumbs.swift in Sources */,
 				254BB5452ABBE8430059A1D5 /* ArchiveItem.swift in Sources */,
 				25A0D2132AD64E9C00B43C92 /* URL+Extensions.swift in Sources */,
 				25FF4AD22ABC9C6300E060A7 /* AboutWindowController.swift in Sources */,
@@ -579,6 +615,7 @@
 				25C62FB42A7C998B00ED5CDE /* FileContainer.swift in Sources */,
 				252960992A945BDC00551F53 /* Toolbar.swift in Sources */,
 				25FF4AD42ABD23B200E060A7 /* WelcomeView.swift in Sources */,
+				25C518842AE762BF0001697F /* Breadcrumbs.swift in Sources */,
 				2529609D2A94619C00551F53 /* ArchiveTypeTar.swift in Sources */,
 				25C0A8A82A78DE5F002C1C2A /* MacPackerApp.swift in Sources */,
 				2529609B2A94617900551F53 /* IArchiveType.swift in Sources */,
@@ -634,6 +671,11 @@
 				DEVELOPMENT_TEAM = 88W4UN2KJH;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/BitByteData.xcframework/macos-arm64_x86_64",
+					"$(PROJECT_DIR)/Carthage/Build/SWCompression.xcframework/macos-arm64_x86_64",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MacPacker copy-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = MacPacker;
@@ -665,6 +707,11 @@
 				DEVELOPMENT_TEAM = 88W4UN2KJH;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/BitByteData.xcframework/macos-arm64_x86_64",
+					"$(PROJECT_DIR)/Carthage/Build/SWCompression.xcframework/macos-arm64_x86_64",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MacPacker copy-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = MacPacker;
@@ -809,6 +856,11 @@
 				DEVELOPMENT_TEAM = 88W4UN2KJH;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/BitByteData.xcframework/macos-arm64_x86_64",
+					"$(PROJECT_DIR)/Carthage/Build/SWCompression.xcframework/macos-arm64_x86_64",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MacPacker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MacPacker;
@@ -840,6 +892,11 @@
 				DEVELOPMENT_TEAM = 88W4UN2KJH;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/BitByteData.xcframework/macos-arm64_x86_64",
+					"$(PROJECT_DIR)/Carthage/Build/SWCompression.xcframework/macos-arm64_x86_64",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MacPacker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MacPacker;
@@ -987,33 +1044,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		254BB53E2ABBE8430059A1D5 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tsolomko/SWCompression";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-		254BB5402ABBE8430059A1D5 /* XCRemoteSwiftPackageReference "BitByteData" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tsolomko/BitByteData.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		254BB55B2ABBE8F50059A1D5 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-		258C67F62ABB542200CE230E /* XCRemoteSwiftPackageReference "BitByteData" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tsolomko/BitByteData.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
@@ -1027,36 +1060,13 @@
 				minimumVersion = 0.9.17;
 			};
 		};
-		259847CA2A891E8100E8CDD9 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tsolomko/SWCompression";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		254BB53D2ABBE8430059A1D5 /* SWCompression */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 254BB53E2ABBE8430059A1D5 /* XCRemoteSwiftPackageReference "SWCompression" */;
-			productName = SWCompression;
-		};
-		254BB53F2ABBE8430059A1D5 /* BitByteData */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 254BB5402ABBE8430059A1D5 /* XCRemoteSwiftPackageReference "BitByteData" */;
-			productName = BitByteData;
-		};
 		254BB55C2ABBE8F50059A1D5 /* Sparkle */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 254BB55B2ABBE8F50059A1D5 /* XCRemoteSwiftPackageReference "Sparkle" */;
 			productName = Sparkle;
-		};
-		258C67F72ABB542200CE230E /* BitByteData */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 258C67F62ABB542200CE230E /* XCRemoteSwiftPackageReference "BitByteData" */;
-			productName = BitByteData;
 		};
 		2592CEDC2AD4F765008DEFF8 /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1067,11 +1077,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2592CEDB2AD4F765008DEFF8 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
 			productName = ZIPFoundation;
-		};
-		259847CB2A891E8200E8CDD9 /* SWCompression */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 259847CA2A891E8100E8CDD9 /* XCRemoteSwiftPackageReference "SWCompression" */;
-			productName = SWCompression;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

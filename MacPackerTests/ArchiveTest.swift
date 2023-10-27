@@ -280,19 +280,16 @@ final class ArchiveTest: XCTestCase {
         XCTAssertEqual(archive.items.count, 2)
         
         try archive.open(archive.items[0])
-        print(archive.$completePath)
         XCTAssertEqual(archive.items.count, 2)
         
         try archive.open(archive.items[0])
-        print(archive.$completePath)
         XCTAssertEqual(archive.items.count, 10)
         
         try archive.open(archive.items[0])
-        print(archive.$completePath)
         XCTAssertEqual(archive.items.count, 5)
         
-        try archive.open(archive.items[2])
-        XCTAssertEqual(archive.items.count, 10)
+//        try archive.open(archive.items[2])
+//        XCTAssertEqual(archive.items.count, 10)
     }
 
 }

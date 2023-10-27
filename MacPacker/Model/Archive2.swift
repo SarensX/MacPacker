@@ -18,8 +18,13 @@ enum Archive2Type: String {
     case lz4 = "lz4"
 }
 
+enum Archive2OpenResult: String {
+    case success = "success"
+    case leaveDirectory = "leave"
+}
+
 /// Unused yet, but will be used in future to replace FileContainer
-class Archive2 {
+class Archive2: ObservableObject {
     @Published var url: URL?
     @Published var internalPath: String = "/"
     @Published var type: Archive2Type
@@ -28,7 +33,7 @@ class Archive2 {
     @Published var canEdit: Bool = false
     @Published var tempDirs: [URL] = []
     @Published var errorMessage: String?
-    @Published var completePath: String?
+//    @Published var isReloadNeeded: Bool = false
     
     //
     // Initializers
@@ -144,7 +149,9 @@ class Archive2 {
     private func loadStackEntry(_ entry: ArchiveItemStackEntry, clear: Bool = false, push: Bool = true) {
         do {
             // update the complete path
-            completePath = entry.localPath.absoluteString + (entry.archivePath ?? "")
+//            completePath = entry.localPath.absoluteString + (entry.archivePath ?? "")
+            let nurl = entry.localPath.appendingPathComponent(entry.archivePath ?? "")
+            NotificationCenter.default.post(name: Notification.Name("Breadcrumbs.update"), object: nurl)
             
             // stack item is directory that actually exists
             if entry.archivePath == nil {
@@ -169,15 +176,18 @@ class Archive2 {
                         
                         return $0.type > $1.type
                     }
+                    if (stack.count > 0 && push == true) || stack.count > 1 {
+                        items.insert(ArchiveItem.parent, at: 0)
+                    }
                 }
             }
             
             // add the item to the stack and clear if requested
 //            if clear { resetStack() }
-            if push { stack.push(entry) }
+            if push {
+                stack.push(entry)
+            }
             FileContainer.currentStackEntry = entry
-            
-//            isReloadNeeded = true
         } catch {
             print(error)
         }
@@ -208,21 +218,21 @@ class Archive2 {
         return isDirectory.boolValue
     }
     
-    public func moveDirectoryUp(_ item: ArchiveItem) throws {
-        // let's use completePath to go up as long as possible
-        
-        if let completePath,
-           var completePathUrl = URL(string: completePath) {
-            completePathUrl.deleteLastPathComponent()
-            let stackEntry = ArchiveItemStackEntry(
-                type: .Directory,
-                localPath: completePathUrl,
-                archivePath: nil,
-                tempId: nil,
-                archiveType: nil)
-            loadStackEntry(stackEntry, push: false)
-        }
-    }
+//    public func moveDirectoryUp(_ item: ArchiveItem) throws {
+//        // let's use completePath to go up as long as possible
+//
+//        if let completePath,
+//           var completePathUrl = URL(string: completePath) {
+//            completePathUrl.deleteLastPathComponent()
+//            let stackEntry = ArchiveItemStackEntry(
+//                type: .Directory,
+//                localPath: completePathUrl,
+//                archivePath: nil,
+//                tempId: nil,
+//                archiveType: nil)
+//            loadStackEntry(stackEntry, push: false)
+//        }
+//    }
     
     /// Loads the archive from the given url
     /// - Parameter url: archive url
@@ -275,21 +285,23 @@ class Archive2 {
     /// - File in archive > extract just this file if possible, then open it with system default
     /// - Directory in archive > go one level down in archive if this is supported, otherwise, extract and then go to directory
     /// - Parameter item: The item to open
-    func open(_ item: ArchiveItem) throws {
+    func open(_ item: ArchiveItem) throws -> Archive2OpenResult {
         // if the selected item is the parent item (the one with ..),
         // then just go back in the stack
         if item == ArchiveItem.parent {
             // Problem when going up on parent on first stack level.
-            if let parent = stack.pop() {
+            stack.pop()
+            if let parent = stack.peek() {
                 loadStackEntry(parent, push: false)
             } else {
                 // we're at the top of the archive, the next level
                 // is a directory for sure
                 // so let's check access first
-                try moveDirectoryUp(item)
+//                try moveDirectoryUp(item)
+                return .leaveDirectory
             }
             
-            return
+            return .success
         }
         
         // The item selected is not the parent. So check if this is a file,
@@ -369,9 +381,8 @@ class Archive2 {
                     tempId: nil,
                     archiveType: nil)
                 loadStackEntry(stackEntry, push: false)
-            }
-            if let currentStackEntry = stack.peek(),
-               let archivePath = currentStackEntry.archivePath {
+            } else if let currentStackEntry = stack.peek(),
+                      let archivePath = currentStackEntry.archivePath {
                 let stackEntry = ArchiveItemStackEntry(
                     type: .Archive,
                     localPath: currentStackEntry.localPath,
@@ -379,8 +390,12 @@ class Archive2 {
                     tempId: currentStackEntry.tempId,
                     archiveType: currentStackEntry.archiveType)
                 loadStackEntry(stackEntry)
+            } else {
+                print("else")
             }
         }
+        
+        return .success
     }
     
     /// Loads the content of the given directory. This is especially used

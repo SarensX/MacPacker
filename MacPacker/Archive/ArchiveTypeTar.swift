@@ -18,7 +18,7 @@ class ArchiveTypeTar: IArchiveType {
     ///   - archivePath: Path within the tar archive to return
     /// - Returns: Items in the archive with the given path
     public func content(path: URL, archivePath: String) throws -> [ArchiveItem] {
-        var result: [ArchiveItem] = [ArchiveItem.parent]
+        var result: [ArchiveItem] = []
         var dirs: [String] = []
         
         do {

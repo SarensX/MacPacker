@@ -23,7 +23,6 @@ class ArchiveTypeLz4: IArchiveType {
         if path.lastPathComponent.hasSuffix(ext) {
             let name = stripFileExtension(path.lastPathComponent)
             return [
-                ArchiveItem.parent,
                 ArchiveItem(name: String(name), type: .file)
             ]
         }
