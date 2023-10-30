@@ -53,6 +53,16 @@ struct ArchiveView: View {
 //        self.container.load(path)
         
         do {
+            // we're loading a new archive here, so clean up the current stack first
+            if let arc = archiveContainer.archive {
+                do {
+                    try arc.clean()
+                } catch {
+                    print("clean during drop failed")
+                    print(error)
+                }
+            }
+            
             let archive = try Archive2(url: url)
             archiveContainer.archive = archive
             
