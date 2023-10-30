@@ -19,14 +19,10 @@ class Breadcrumbs: ObservableObject {
     /// Starts all observers
     func startObserver() {
         NotificationCenter.default.addObserver(forName: Notification.Name("Breadcrumbs.update"), object: nil, queue: nil) { notification in
-            if let url = notification.object as? URL {
-                self.setPathFrom(url: url)
+            if let names = notification.object as? [String] {
+                self.completePathArray = names
+                self.completePath = names.joined(separator: "/")
             }
         }
-    }
-    
-    func setPathFrom(url: URL) {
-        // convert the URL to a path and path array
-        completePath = url.path
     }
 }

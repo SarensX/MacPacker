@@ -30,6 +30,16 @@ struct ArchiveItemStack {
     mutating func clear() {
         stack = []
     }
+    
+    func names() -> [String] {
+        var names = stack.map { $0.name }
+        names.reverse()
+        return names
+    }
+    
+    func last() -> ArchiveItemStackEntry? {
+        return stack.last
+    }
 }
 
 extension ArchiveItemStack: CustomStringConvertible {

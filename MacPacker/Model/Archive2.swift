@@ -33,6 +33,8 @@ class Archive2: ObservableObject {
     @Published var canEdit: Bool = false
     @Published var tempDirs: [URL] = []
     @Published var errorMessage: String?
+    public static var currentStackEntry: ArchiveItemStackEntry? = nil
+
 //    @Published var isReloadNeeded: Bool = false
     
     //
@@ -148,11 +150,6 @@ class Archive2: ObservableObject {
     ///   - push: true to push the entry on that stack
     private func loadStackEntry(_ entry: ArchiveItemStackEntry, clear: Bool = false, push: Bool = true) {
         do {
-            // update the complete path
-//            completePath = entry.localPath.absoluteString + (entry.archivePath ?? "")
-            let nurl = entry.localPath.appendingPathComponent(entry.archivePath ?? "")
-            NotificationCenter.default.post(name: Notification.Name("Breadcrumbs.update"), object: nurl)
-            
             // stack item is directory that actually exists
             if entry.archivePath == nil {
                 try loadDirectoryContent(url: entry.localPath)
@@ -187,7 +184,16 @@ class Archive2: ObservableObject {
             if push {
                 stack.push(entry)
             }
-            FileContainer.currentStackEntry = entry
+            
+            // update the breadcrumb with the current path
+            var names = stack.names()
+            if let last = stack.last() {
+                names.insert(last.localPath.deletingLastPathComponent().path, at: 0)
+            }
+//            names[0] = stack.last()!.localPath.path
+            NotificationCenter.default.post(name: Notification.Name("Breadcrumbs.update"), object: names)
+            
+            Archive2.currentStackEntry = entry
         } catch {
             print(error)
         }
@@ -199,7 +205,7 @@ class Archive2: ObservableObject {
     /// - Parameter ext: extension
     /// - Returns: true in case supported, false otherwise
     public func isSupportedArchive(ext: String) -> Bool {
-        if let _ = SupportedArchiveTypes(rawValue: ext) {
+        if let _ = Archive2Type(rawValue: ext) {
             return true
         }
         return false
@@ -247,6 +253,7 @@ class Archive2: ObservableObject {
                 // directory
                 let stackEntry = ArchiveItemStackEntry(
                     type: .Directory,
+                    name: url.lastPathComponent,
                     localPath: url,
                     archivePath: nil,
                     tempId: nil,
@@ -255,6 +262,7 @@ class Archive2: ObservableObject {
             } else {
                 let stackEntry = ArchiveItemStackEntry(
                     type: .Archive,
+                    name: url.lastPathComponent,
                     localPath: url,
                     archivePath: "",
                     tempId: nil,
@@ -328,6 +336,7 @@ class Archive2: ObservableObject {
                             if let path = item.path {
                                 let stackEntry = ArchiveItemStackEntry(
                                     type: .Archive,
+                                    name: item.name,
                                     localPath: path,
                                     archivePath: "",
                                     tempId: nil,
@@ -349,6 +358,7 @@ class Archive2: ObservableObject {
                             // now, create the new stack entry
                             let stackEntry = ArchiveItemStackEntry(
                                 type: .Archive,
+                                name: item.name,
                                 localPath: tempDir,
                                 archivePath: "",
                                 tempId: nil,
@@ -376,6 +386,7 @@ class Archive2: ObservableObject {
             if item.virtualPath == nil {
                 let stackEntry = ArchiveItemStackEntry(
                     type: .Directory,
+                    name: item.name,
                     localPath: item.path!,
                     archivePath: nil,
                     tempId: nil,
@@ -385,6 +396,7 @@ class Archive2: ObservableObject {
                       let archivePath = currentStackEntry.archivePath {
                 let stackEntry = ArchiveItemStackEntry(
                     type: .Archive,
+                    name: item.name,
                     localPath: currentStackEntry.localPath,
                     archivePath: archivePath == "" ? item.name : archivePath + "/" + item.name,
                     tempId: currentStackEntry.tempId,

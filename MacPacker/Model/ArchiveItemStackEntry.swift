@@ -25,6 +25,9 @@ struct ArchiveItemStackEntry {
     // - path in archive to directory, extracted archive
 //    private var path: String
     
+    // The name of that stack item which is usually the file/dir name
+    let name: String
+    
     // This path contains the URL to the actual file
     // or directory on the local drive. In case we are
     // navigating in an archive right now, this url stays
@@ -44,6 +47,7 @@ struct ArchiveItemStackEntry {
 extension ArchiveItemStackEntry: CustomStringConvertible {
     var description: String {
         var result = "> " + localPath.absoluteString + "\n"
+        result = result + "  name: \(name) \n"
         result = result + "  type: \(type) \n"
         result = result + "  archivePath: \(archivePath ?? "undefined") \n"
         result = result + "  tempId: \(tempId ?? "undefined") \n"

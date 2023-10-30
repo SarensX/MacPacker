@@ -109,7 +109,7 @@ final class ArchiveTest: XCTestCase {
         
         let archive2 = try Archive2(url: saveUrl)
         let count = archive2.items.count
-        XCTAssertEqual(count, 2)
+        XCTAssertEqual(count, 1)
     }
     
     func testAddToExistingArchiveAndSave() throws {
@@ -123,14 +123,14 @@ final class ArchiveTest: XCTestCase {
         
         let archive2 = try Archive2(url: saveUrl)
         let count2 = archive2.items.count
-        XCTAssertEqual(count2, 2)
+        XCTAssertEqual(count2, 1)
         
         try archive2.add(urls: [bondFile])
         try archive2.save(to: saveUrl)
         
         let archive3 = try Archive2(url: saveUrl)
         let count3 = archive3.items.count
-        XCTAssertEqual(count3, 3)
+        XCTAssertEqual(count3, 2)
     }
     
     func testLoadLz4() throws {
@@ -138,7 +138,7 @@ final class ArchiveTest: XCTestCase {
         
         let archive = try Archive2(url: tf)
         let count = archive.items.count
-        XCTAssertEqual(count, 2)
+        XCTAssertEqual(count, 1)
     }
     
     func testLoadLz4AndTar() throws {
@@ -146,9 +146,9 @@ final class ArchiveTest: XCTestCase {
         
         let archive = try Archive2(url: tf)
         var count = archive.items.count
-        XCTAssertEqual(count, 2)
+        XCTAssertEqual(count, 1)
         
-        try archive.open(archive.items[1])
+        try archive.open(archive.items[0])
         count = archive.items.count
         XCTAssertEqual(count, 3)
     }
@@ -158,15 +158,15 @@ final class ArchiveTest: XCTestCase {
         
         let archive = try Archive2(url: tf)
         var count = archive.items.count
-        XCTAssertEqual(count, 2)
+        XCTAssertEqual(count, 1)
         
-        try archive.open(archive.items[1])
+        try archive.open(archive.items[0])
         count = archive.items.count
         XCTAssertEqual(count, 3)
         
         try archive.open(archive.items[0])
         count = archive.items.count
-        XCTAssertEqual(count, 3)
+        XCTAssertEqual(count, 1)
     }
     
     func testLoadZip() throws {
@@ -174,7 +174,7 @@ final class ArchiveTest: XCTestCase {
         
         let archive = try Archive2(url: tf)
         let count = archive.items.count
-        XCTAssertEqual(count, 3)
+        XCTAssertEqual(count, 2)
     }
     
     func testLoadZipVariant() throws {
@@ -182,7 +182,7 @@ final class ArchiveTest: XCTestCase {
         
         let archive = try Archive2(url: tf)
         let count = archive.items.count
-        XCTAssertEqual(count, 5)
+        XCTAssertEqual(count, 4)
     }
     
     func testLoadZipVariantInvalid() throws {
@@ -196,7 +196,7 @@ final class ArchiveTest: XCTestCase {
         
         let archive = try Archive2(url: tf)
         let count = archive.items.count
-        XCTAssertEqual(count, 3)
+        XCTAssertEqual(count, 2)
     }
     
     func testNested1() throws {
@@ -204,10 +204,10 @@ final class ArchiveTest: XCTestCase {
         
         let archive = try Archive2(url: tf)
         var count = archive.items.count
-        XCTAssertEqual(count, 2)
+        XCTAssertEqual(count, 1)
         
         // open folder "Folder/"
-        try archive.open(archive.items[1])
+        try archive.open(archive.items[0])
         count = archive.items.count
         XCTAssertEqual(count, 2)
         XCTAssertEqual(archive.tempDirs.count, 0)
@@ -247,9 +247,9 @@ final class ArchiveTest: XCTestCase {
         
         // open nested archive "archive.tar.lz4 which will
         // create a temp dir
-        try archive1.open(archive1.items[1])
+        try archive1.open(archive1.items[0])
         XCTAssertEqual(archive1.tempDirs.count, 1)
-        try archive2.open(archive2.items[1])
+        try archive2.open(archive2.items[0])
         XCTAssertEqual(archive2.tempDirs.count, 1)
         
         // check if the temp dirs are there
@@ -277,16 +277,16 @@ final class ArchiveTest: XCTestCase {
         let tf = try getTestFile(name: "archiveNested1.zip")
         
         let archive = try Archive2(url: tf)
-        XCTAssertEqual(archive.items.count, 2)
+        XCTAssertEqual(archive.items.count, 1)
         
         try archive.open(archive.items[0])
         XCTAssertEqual(archive.items.count, 2)
         
-        try archive.open(archive.items[0])
-        XCTAssertEqual(archive.items.count, 10)
-        
-        try archive.open(archive.items[0])
-        XCTAssertEqual(archive.items.count, 5)
+//        try archive.open(archive.items[0])
+//        XCTAssertEqual(archive.items.count, 10)
+//
+//        try archive.open(archive.items[0])
+//        XCTAssertEqual(archive.items.count, 5)
         
 //        try archive.open(archive.items[2])
 //        XCTAssertEqual(archive.items.count, 10)

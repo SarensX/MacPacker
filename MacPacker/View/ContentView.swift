@@ -12,9 +12,13 @@ struct ContentView: View {
     @StateObject var breadcrumbs: Breadcrumbs = Breadcrumbs()
     
     var body: some View {
-        VStack {
-            Text(breadcrumbs.completePath ?? "...")
-                .frame(height: 40)
+        VStack(spacing: 0) {
+            HStack(alignment: .center) {
+                Text(breadcrumbs.completePath ?? "")
+                    .multilineTextAlignment(.leading)
+                Spacer()
+            }
+            .padding(8)
             ArchiveView()
         }
         .toolbar {

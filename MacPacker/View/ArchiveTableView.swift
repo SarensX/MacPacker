@@ -57,7 +57,7 @@ extension Coordinator: NSFilePromiseProviderDelegate {
                              writePromiseTo url: URL,
                              completionHandler: @escaping (Error?) -> Void) {
         print("filePromiseProvider")
-        if let se = FileContainer.currentStackEntry {
+        if let se = Archive2.currentStackEntry {
             do {
                 guard let archiveType = se.archiveType else { return }
                 guard let itemDragged,

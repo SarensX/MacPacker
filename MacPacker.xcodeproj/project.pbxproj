@@ -17,7 +17,6 @@
 		254BB5472ABBE8430059A1D5 /* ArchiveItemStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259847C52A81E62000E8CDD9 /* ArchiveItemStack.swift */; };
 		254BB5482ABBE8430059A1D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8A92A78DE5F002C1C2A /* ContentView.swift */; };
 		254BB5492ABBE8430059A1D5 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251C7A3D2AA02D9600CD4C86 /* ArchiveView.swift */; };
-		254BB54A2ABBE8430059A1D5 /* FileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB32A7C998B00ED5CDE /* FileContainer.swift */; };
 		254BB54B2ABBE8430059A1D5 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252960982A945BDC00551F53 /* Toolbar.swift */; };
 		254BB54C2ABBE8430059A1D5 /* ArchiveTypeTar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529609C2A94619C00551F53 /* ArchiveTypeTar.swift */; };
 		254BB54E2ABBE8430059A1D5 /* MacPackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8A72A78DE5F002C1C2A /* MacPackerApp.swift */; };
@@ -60,7 +59,6 @@
 		25C5188E2AEA121C0001697F /* BitByteData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 25C518862AEA115E0001697F /* BitByteData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		25C518902AEA121F0001697F /* SWCompression.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C5188A2AEA11660001697F /* SWCompression.framework */; };
 		25C518912AEA121F0001697F /* SWCompression.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 25C5188A2AEA11660001697F /* SWCompression.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		25C62FB42A7C998B00ED5CDE /* FileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C62FB32A7C998B00ED5CDE /* FileContainer.swift */; };
 		25CF96872AC06E34000A7601 /* Archive2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF96862AC06E34000A7601 /* Archive2.swift */; };
 		25CF96882AC06E34000A7601 /* Archive2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF96862AC06E34000A7601 /* Archive2.swift */; };
 		25CF968A2AC09398000A7601 /* ArchiveTypeZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF96892AC09398000A7601 /* ArchiveTypeZip.swift */; };
@@ -163,7 +161,6 @@
 		25C518832AE762BF0001697F /* Breadcrumbs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breadcrumbs.swift; sourceTree = "<group>"; };
 		25C518862AEA115E0001697F /* BitByteData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BitByteData.framework; path = "Carthage/Build/BitByteData.xcframework/macos-arm64_x86_64/BitByteData.framework"; sourceTree = "<group>"; };
 		25C5188A2AEA11660001697F /* SWCompression.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWCompression.framework; path = "Carthage/Build/SWCompression.xcframework/macos-arm64_x86_64/SWCompression.framework"; sourceTree = "<group>"; };
-		25C62FB32A7C998B00ED5CDE /* FileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileContainer.swift; sourceTree = "<group>"; };
 		25CF96862AC06E34000A7601 /* Archive2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive2.swift; sourceTree = "<group>"; };
 		25CF96892AC09398000A7601 /* ArchiveTypeZip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTypeZip.swift; sourceTree = "<group>"; };
 		25CF968C2AC09B8C000A7601 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -367,7 +364,6 @@
 				259847C52A81E62000E8CDD9 /* ArchiveItemStack.swift */,
 				25D4F0AB2AD3A9E2003FBAA4 /* ArchiveItemStackEntry.swift */,
 				25C518832AE762BF0001697F /* Breadcrumbs.swift */,
-				25C62FB32A7C998B00ED5CDE /* FileContainer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -584,7 +580,6 @@
 				254BB5482ABBE8430059A1D5 /* ContentView.swift in Sources */,
 				254BB5492ABBE8430059A1D5 /* ArchiveView.swift in Sources */,
 				25D4F0AA2AD39A4E003FBAA4 /* ArchiveType.swift in Sources */,
-				254BB54A2ABBE8430059A1D5 /* FileContainer.swift in Sources */,
 				254BB54B2ABBE8430059A1D5 /* Toolbar.swift in Sources */,
 				254BB54C2ABBE8430059A1D5 /* ArchiveTypeTar.swift in Sources */,
 				254BB54E2ABBE8430059A1D5 /* MacPackerApp.swift in Sources */,
@@ -612,7 +607,6 @@
 				254BB55F2ABBE9D10059A1D5 /* CheckForUpdatesView.swift in Sources */,
 				25A0D2122AD64E9C00B43C92 /* URL+Extensions.swift in Sources */,
 				25CF968A2AC09398000A7601 /* ArchiveTypeZip.swift in Sources */,
-				25C62FB42A7C998B00ED5CDE /* FileContainer.swift in Sources */,
 				252960992A945BDC00551F53 /* Toolbar.swift in Sources */,
 				25FF4AD42ABD23B200E060A7 /* WelcomeView.swift in Sources */,
 				25C518842AE762BF0001697F /* Breadcrumbs.swift in Sources */,
