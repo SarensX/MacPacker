@@ -11,8 +11,11 @@ import SwiftUI
 struct WelcomeWhatsNewView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("• feat: this welcome screen")
-            Text("• feat: auto updater")
+            Text("• feat: highlight when dragging file to MacPacker window")
+            Text("• feat: double click any file opens it using the default system app")
+            Text("• feat: breadcrumb showing the current path in the archive")
+            Text("• feat: support for any valid zip-based file")
+            Text("• feat: automatic cache cleaning")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .padding()
