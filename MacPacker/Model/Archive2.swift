@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 enum Archive2Error: Error {
     case unknownType(String)
@@ -381,6 +382,16 @@ class Archive2: ObservableObject {
                 }
             } else {
                 // TODO file, but not an archive, so extract and open using sytem
+                if let currentStackEntry = stack.peek(),
+                   let archiveType = currentStackEntry.archiveType,
+                   let tempUrl = try? ArchiveType
+                    .with(archiveType)
+                    .extractFileToTemp(
+                        path: currentStackEntry.localPath,
+                        item: item) {
+                    
+                    NSWorkspace.shared.open(tempUrl)
+                }
             }
         } else if item.type == .directory {
             if item.virtualPath == nil {
