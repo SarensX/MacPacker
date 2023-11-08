@@ -660,7 +660,7 @@
 				CODE_SIGN_ENTITLEMENTS = MacPacker/MacPacker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"MacPacker/Preview Content\"";
 				DEVELOPMENT_TEAM = 88W4UN2KJH;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -680,7 +680,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarensx.MacPacker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -696,7 +696,7 @@
 				CODE_SIGN_ENTITLEMENTS = MacPacker/MacPacker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"MacPacker/Preview Content\"";
 				DEVELOPMENT_TEAM = 88W4UN2KJH;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -716,7 +716,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarensx.MacPacker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -845,7 +845,7 @@
 				CODE_SIGN_ENTITLEMENTS = MacPacker/MacPacker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"MacPacker/Preview Content\"";
 				DEVELOPMENT_TEAM = 88W4UN2KJH;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -865,7 +865,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarensx.MacPacker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -881,7 +881,7 @@
 				CODE_SIGN_ENTITLEMENTS = MacPacker/MacPacker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"MacPacker/Preview Content\"";
 				DEVELOPMENT_TEAM = 88W4UN2KJH;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -901,7 +901,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarensx.MacPacker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

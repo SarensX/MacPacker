@@ -1,9 +1,11 @@
 v0.3
 - feat: highlight when dragging file to MacPacker window
 - feat: double click any files extracts it and opens it using the default editor
-- feat: breadcrumb showing the current path in the arch ive (incl. nested support)
-- core: prepare the core for creating/editing archives
-- core: unit tests
+- feat: breadcrumb showing the current path in the archive (incl. nested support)
+- feat: support for any valid zip-based file
+- feat: automatic cache cleaning & zip creation support
+- chore: prepare the core for creating/editing archives
+- chore: unit tests
 
 v0.2
 - feat: welcome & about dialog
