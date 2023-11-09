@@ -30,6 +30,8 @@
 	</array>
 	<key>SUFeedURL</key>
 	<string>https://macpacker-releases.s3.eu-central-1.amazonaws.com/appcast.xml</string>
+	<key>SUEnableInstallerLauncherService</key>
+	<true/>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
