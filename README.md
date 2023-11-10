@@ -18,15 +18,22 @@ A free, open-source, tool to work with archives. Currently, it supports navigati
 - Support decompression of formats: Deflate, LZMA2, LZMA, BZip2
 - Support archives: ZLib, GZip, 7zip, XZ, RAR
 - Right click context menu in Finder to immediately extract the archive to a sub folder or without
-- Create/edit archive 
+- Create/edit archive
+
+### v0.3
+- feat: highlight when dragging file to MacPacker window
+- feat: double click any file opens it using the default system app
+- feat: breadcrumb showing the current path in the archive
+- feat: support for any valid zip-based file
+- feat: automatic cache cleaning
 
 ### v0.2
-- welcome & about dialog
-- auto update
-- zip support
-- "Open With..." context menu support
+- feat: welcome & about dialog
+- feat: auto update
+- feat: zip support
+- feat: "Open With..." context menu support
 
 ### v0.1
-- Drag & drop an lz4 or tar file to MacPacker
-- Manual option to clear the cache
-- Traverse through nested archives
+- feat: Drag & drop an lz4 or tar file to MacPacker
+- feat: Manual option to clear the cache
+- feat: Traverse through nested archives
