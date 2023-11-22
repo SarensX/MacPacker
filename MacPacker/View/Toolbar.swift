@@ -38,13 +38,6 @@ struct Toolbar: ToolbarContent {
     
     /// Clears the cache be deleting the ta directory in the applciation support directory
     func clearCache() {
-        if let url = applicationSupportDirectory {
-            do {
-                try FileManager.default.removeItem(at: url.appendingPathComponent("ta", conformingTo: .directory))
-            } catch {
-                print("Could not clear cache because...")
-                print(error)
-            }
-        }
+        CacheCleaner.shared.clean()
     }
 }

@@ -1,3 +1,6 @@
+v0.4
+- chore: clean cache when MacPacker terminates
+
 v0.3
 - feat: highlight when dragging file to MacPacker window
 - feat: double click any files extracts it and opens it using the default editor

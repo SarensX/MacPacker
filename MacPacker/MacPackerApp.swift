@@ -56,4 +56,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             welcomeScreenShownInVersion = Bundle.main.appVersionLong
         }
     }
+    
+    func applicationWillTerminate(_ notification: Notification) {
+        CacheCleaner.shared.clean()
+    }
 }
