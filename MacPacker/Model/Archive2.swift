@@ -17,6 +17,7 @@ enum Archive2Type: String {
     case tar = "tar"
     case zip = "zip"
     case lz4 = "lz4"
+    case sevenZip = "7z"
 }
 
 enum Archive2OpenResult: String {

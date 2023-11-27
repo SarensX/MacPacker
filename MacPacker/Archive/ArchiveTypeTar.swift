@@ -27,7 +27,11 @@ class ArchiveTypeTar: IArchiveType {
                 
                 let entries = try TarContainer.open(container: data)
                 entries.forEach { tarEntry in
-                    if let npc = nextPathComponent(after: archivePath, in: tarEntry.info.name) {
+                    if let npc = nextPathComponent(
+                        after: archivePath,
+                        in: tarEntry.info.name,
+                        isDirectoryHint: tarEntry.info.type == .directory
+                    ) {
                         if npc.isDirectory {
                             if dirs.contains(where: { $0 == npc.name }) {
                                 // added already, ignore

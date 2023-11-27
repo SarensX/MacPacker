@@ -1,24 +1,21 @@
 //
-//  ArchiveZip.swift
+//  ArchiveType7zip.swift
 //  MacPacker
 //
-//  Created by Arenswald, Stephan (059) on 24.09.23.
+//  Created by Arenswald, Stephan (059) on 27.11.23.
 //
 
 import Foundation
 import SWCompression
-import ZIPFoundation
 
-typealias ZipArchive = ZIPFoundation.Archive
-
-class ArchiveTypeZip: IArchiveType {
-    var ext: String = "zip"
+class ArchiveType7zip: IArchiveType {
+    var ext: String = "7z"
     
-    /// Returns the content of the zip file in form of FileItems. There is no need to extract the zip
-    /// file because it allows us to peek into the zip file and get the content.
+    /// Returns the content of the 7zip file in form of FileItems. There is no need to extract the 7zip
+    /// file because it allows us to peek into the 7zip file and get the content.
     /// - Parameters:
-    ///   - path: Path to the zip file
-    ///   - archivePath: Path within the zip archive to return
+    ///   - path: Path to the 7zip file
+    ///   - archivePath: Path within the 7zip archive to return
     /// - Returns: Items in the archive with the given path
     public func content(path: URL, archivePath: String) throws -> [ArchiveItem] {
         var result: [ArchiveItem] = []
@@ -28,12 +25,12 @@ class ArchiveTypeZip: IArchiveType {
             if let data = try? Data(contentsOf: path, options: .mappedIfSafe) {
                 print("data loaded")
                 
-                let entries = try ZipContainer.open(container: data)
-                entries.forEach { zipEntry in
+                let entries = try SevenZipContainer.open(container: data)
+                entries.forEach { szEntry in
                     if let npc = nextPathComponent(
                         after: archivePath,
-                        in: zipEntry.info.name,
-                        isDirectoryHint: zipEntry.info.type == .directory
+                        in: szEntry.info.name,
+                        isDirectoryHint: szEntry.info.type == .directory
                     ) {
                         if npc.isDirectory {
                             if dirs.contains(where: { $0 == npc.name }) {
@@ -46,22 +43,22 @@ class ArchiveTypeZip: IArchiveType {
                                     type: .directory,
                                     virtualPath: archivePath + "/" + npc.name,
                                     size: nil,
-                                    data: zipEntry.data))
+                                    data: szEntry.data))
                             }
                         } else {
                             if let name = npc.name.components(separatedBy: "/").last {
                                 result.append(ArchiveItem(
                                     name: name,
                                     type: .file,
-                                    virtualPath: zipEntry.info.name,
-                                    data: zipEntry.data))
+                                    virtualPath: szEntry.info.name,
+                                    data: szEntry.data))
                             }
                         }
                     }
                 }
             }
         } catch {
-            print("zip.content ran in error")
+            print("7z.content ran in error")
             print(error)
         }
         
@@ -88,18 +85,6 @@ class ArchiveTypeZip: IArchiveType {
         return nil
     }
     
-    func save(to url: URL, items: [ArchiveItem]) throws {
-        let fileExists = FileManager.default.fileExists(atPath: url.path)
-        let archive = try ZipArchive(
-            url: url,
-            accessMode: fileExists ? .update : .create)
-        
-        for item in items {
-            if let path = item.path {
-                try archive.addEntry(
-                    with: path.lastPathComponent,
-                    relativeTo: path.deletingLastPathComponent())
-            }
-        }
+    func save(to: URL, items: [ArchiveItem]) throws {
     }
 }

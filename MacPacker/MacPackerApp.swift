@@ -51,7 +51,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationDidFinishLaunching(_ notification: Notification) {
-        if Bundle.main.appVersionLong > welcomeScreenShownInVersion {
+        if Bundle.main.appVersionLong >= welcomeScreenShownInVersion {
             WelcomeWindowController.shared.show()
             welcomeScreenShownInVersion = Bundle.main.appVersionLong
         }

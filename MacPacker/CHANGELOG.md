@@ -1,5 +1,6 @@
 v0.4
 - feat: viewer to show preview of files
+- feat: 7zip read support
 - chore: clean cache when MacPacker terminates
 
 v0.3

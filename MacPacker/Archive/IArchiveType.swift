@@ -40,7 +40,7 @@ extension IArchiveType {
         return nil
     }
     
-    func nextPathComponent(after archivePath: String, in containerPath: String) -> (name: String, isDirectory: Bool)? {
+    func nextPathComponent(after archivePath: String, in containerPath: String, isDirectoryHint: Bool) -> (name: String, isDirectory: Bool)? {
         // Ensure that the containerPath starts with the archivePath
         guard containerPath.hasPrefix(archivePath) else {
             return nil
@@ -58,7 +58,7 @@ extension IArchiveType {
         }
         
         // Check if the next path component is a directory
-        let isDirectory = pathComponents.count > 1 || remainingPath.hasSuffix("/")
+        let isDirectory = pathComponents.count > 1 || remainingPath.hasSuffix("/") || isDirectoryHint == true
         
         if isDirectory {
             // Return the directory name

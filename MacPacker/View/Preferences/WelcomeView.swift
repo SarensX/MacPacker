@@ -12,6 +12,7 @@ struct WelcomeWhatsNewView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text("• feat: viewer to show preview of files")
+            Text("• feat: 7zip read support")
             Text("• chore: clean cache when MacPacker terminates")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -31,7 +32,7 @@ struct WelcomeOtherProjects: View {
                 Link(destination: URL(string: "https://getbraindump.app/?ref=mpwelcome")!) {
                     Text("Braindump")
                 }
-                Text("When you need to write down thoughts fast.")
+                Text("When you need to write down thoughts. Fast.")
             }
             HStack(alignment: .center) {
                 Image("FileFillet")
@@ -40,7 +41,7 @@ struct WelcomeOtherProjects: View {
                 Link(destination: URL(string: "https://filefillet.com/?ref=mpwelcome")!) {
                     Text("FileFillet")
                 }
-                Text("Organize files without tens of Finder windows.")
+                Text("Organize files without tons of Finder windows.")
             }
             
             HStack(alignment: .center) {

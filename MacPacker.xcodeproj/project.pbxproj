@@ -73,6 +73,8 @@
 		25CF968E2AC09B8C000A7601 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 25CF968C2AC09B8C000A7601 /* CHANGELOG.md */; };
 		25D131012B0F074400F4229B /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D131002B0F074400F4229B /* Store.swift */; };
 		25D131022B0F074400F4229B /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D131002B0F074400F4229B /* Store.swift */; };
+		25D434F52B1440B0000BDF19 /* ArchiveType7zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D434F42B1440B0000BDF19 /* ArchiveType7zip.swift */; };
+		25D434F62B1440B0000BDF19 /* ArchiveType7zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D434F42B1440B0000BDF19 /* ArchiveType7zip.swift */; };
 		25D4F0A92AD39A4E003FBAA4 /* ArchiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D4F0A82AD39A4E003FBAA4 /* ArchiveType.swift */; };
 		25D4F0AA2AD39A4E003FBAA4 /* ArchiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D4F0A82AD39A4E003FBAA4 /* ArchiveType.swift */; };
 		25D4F0AC2AD3A9E2003FBAA4 /* ArchiveItemStackEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D4F0AB2AD3A9E2003FBAA4 /* ArchiveItemStackEntry.swift */; };
@@ -176,6 +178,7 @@
 		25CF96892AC09398000A7601 /* ArchiveTypeZip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTypeZip.swift; sourceTree = "<group>"; };
 		25CF968C2AC09B8C000A7601 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		25D131002B0F074400F4229B /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		25D434F42B1440B0000BDF19 /* ArchiveType7zip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveType7zip.swift; sourceTree = "<group>"; };
 		25D4F0A82AD39A4E003FBAA4 /* ArchiveType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveType.swift; sourceTree = "<group>"; };
 		25D4F0AB2AD3A9E2003FBAA4 /* ArchiveItemStackEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveItemStackEntry.swift; sourceTree = "<group>"; };
 		25EF27352AD7098300C8CC56 /* MacPacker.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MacPacker.xctestplan; sourceTree = "<group>"; };
@@ -238,9 +241,10 @@
 			isa = PBXGroup;
 			children = (
 				25D4F0A82AD39A4E003FBAA4 /* ArchiveType.swift */,
+				25D434F42B1440B0000BDF19 /* ArchiveType7zip.swift */,
 				259847C82A81F27900E8CDD9 /* ArchiveTypeLz4.swift */,
-				25CF96892AC09398000A7601 /* ArchiveTypeZip.swift */,
 				2529609C2A94619C00551F53 /* ArchiveTypeTar.swift */,
+				25CF96892AC09398000A7601 /* ArchiveTypeZip.swift */,
 				2529609A2A94617900551F53 /* IArchiveType.swift */,
 			);
 			path = Archive;
@@ -586,6 +590,7 @@
 				25CF968B2AC09398000A7601 /* ArchiveTypeZip.swift in Sources */,
 				254BB5422ABBE8430059A1D5 /* ArchiveTableView.swift in Sources */,
 				25FF4AD82ABD3B4200E060A7 /* WelcomeWindowController.swift in Sources */,
+				25D434F62B1440B0000BDF19 /* ArchiveType7zip.swift in Sources */,
 				25D131022B0F074400F4229B /* Store.swift in Sources */,
 				254BB5432ABBE8430059A1D5 /* ArchiveTypeLz4.swift in Sources */,
 				25C518852AE762BF0001697F /* Breadcrumbs.swift in Sources */,
@@ -614,6 +619,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25D434F52B1440B0000BDF19 /* ArchiveType7zip.swift in Sources */,
 				25FF4AD72ABD3B4200E060A7 /* WelcomeWindowController.swift in Sources */,
 				25F32CA12A9EEE1C002ED5A4 /* ArchiveTableView.swift in Sources */,
 				25CF96872AC06E34000A7601 /* Archive2.swift in Sources */,
