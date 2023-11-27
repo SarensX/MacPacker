@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		251C7A3E2AA02D9600CD4C86 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251C7A3D2AA02D9600CD4C86 /* ArchiveView.swift */; };
-		252960992A945BDC00551F53 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252960982A945BDC00551F53 /* Toolbar.swift */; };
+		252960992A945BDC00551F53 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252960982A945BDC00551F53 /* ToolbarView.swift */; };
 		2529609B2A94617900551F53 /* IArchiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529609A2A94617900551F53 /* IArchiveType.swift */; };
 		2529609D2A94619C00551F53 /* ArchiveTypeTar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529609C2A94619C00551F53 /* ArchiveTypeTar.swift */; };
 		254BB5422ABBE8430059A1D5 /* ArchiveTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F32CA02A9EEE1C002ED5A4 /* ArchiveTableView.swift */; };
@@ -17,7 +17,7 @@
 		254BB5472ABBE8430059A1D5 /* ArchiveItemStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259847C52A81E62000E8CDD9 /* ArchiveItemStack.swift */; };
 		254BB5482ABBE8430059A1D5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8A92A78DE5F002C1C2A /* ContentView.swift */; };
 		254BB5492ABBE8430059A1D5 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251C7A3D2AA02D9600CD4C86 /* ArchiveView.swift */; };
-		254BB54B2ABBE8430059A1D5 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252960982A945BDC00551F53 /* Toolbar.swift */; };
+		254BB54B2ABBE8430059A1D5 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252960982A945BDC00551F53 /* ToolbarView.swift */; };
 		254BB54C2ABBE8430059A1D5 /* ArchiveTypeTar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529609C2A94619C00551F53 /* ArchiveTypeTar.swift */; };
 		254BB54E2ABBE8430059A1D5 /* MacPackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8A72A78DE5F002C1C2A /* MacPackerApp.swift */; };
 		254BB54F2ABBE8430059A1D5 /* IArchiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529609A2A94617900551F53 /* IArchiveType.swift */; };
@@ -27,6 +27,10 @@
 		254BB55F2ABBE9D10059A1D5 /* CheckForUpdatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254BB55E2ABBE9D10059A1D5 /* CheckForUpdatesView.swift */; };
 		256B0ABB2B0DB21B000E8C9D /* CacheCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256B0ABA2B0DB21B000E8C9D /* CacheCleaner.swift */; };
 		256B0ABC2B0DB21B000E8C9D /* CacheCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256B0ABA2B0DB21B000E8C9D /* CacheCleaner.swift */; };
+		256B0ABE2B0DBE71000E8C9D /* InternalEditorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256B0ABD2B0DBE71000E8C9D /* InternalEditorWindowController.swift */; };
+		256B0ABF2B0DBE71000E8C9D /* InternalEditorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256B0ABD2B0DBE71000E8C9D /* InternalEditorWindowController.swift */; };
+		256B0AC12B0DBEEE000E8C9D /* InternalEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256B0AC02B0DBEEE000E8C9D /* InternalEditorView.swift */; };
+		256B0AC22B0DBEEE000E8C9D /* InternalEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256B0AC02B0DBEEE000E8C9D /* InternalEditorView.swift */; };
 		2592CED72AD4EAA2008DEFF8 /* ArchiveTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2592CED62AD4EAA2008DEFF8 /* ArchiveTest.swift */; };
 		2592CEDA2AD4EF6D008DEFF8 /* hello.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2592CED92AD4EF6D008DEFF8 /* hello.txt */; };
 		2592CEDD2AD4F765008DEFF8 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 2592CEDC2AD4F765008DEFF8 /* ZIPFoundation */; };
@@ -67,6 +71,8 @@
 		25CF968B2AC09398000A7601 /* ArchiveTypeZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF96892AC09398000A7601 /* ArchiveTypeZip.swift */; };
 		25CF968D2AC09B8C000A7601 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 25CF968C2AC09B8C000A7601 /* CHANGELOG.md */; };
 		25CF968E2AC09B8C000A7601 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 25CF968C2AC09B8C000A7601 /* CHANGELOG.md */; };
+		25D131012B0F074400F4229B /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D131002B0F074400F4229B /* Store.swift */; };
+		25D131022B0F074400F4229B /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D131002B0F074400F4229B /* Store.swift */; };
 		25D4F0A92AD39A4E003FBAA4 /* ArchiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D4F0A82AD39A4E003FBAA4 /* ArchiveType.swift */; };
 		25D4F0AA2AD39A4E003FBAA4 /* ArchiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D4F0A82AD39A4E003FBAA4 /* ArchiveType.swift */; };
 		25D4F0AC2AD3A9E2003FBAA4 /* ArchiveItemStackEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D4F0AB2AD3A9E2003FBAA4 /* ArchiveItemStackEntry.swift */; };
@@ -128,13 +134,15 @@
 
 /* Begin PBXFileReference section */
 		251C7A3D2AA02D9600CD4C86 /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
-		252960982A945BDC00551F53 /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
+		252960982A945BDC00551F53 /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		2529609A2A94617900551F53 /* IArchiveType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IArchiveType.swift; sourceTree = "<group>"; };
 		2529609C2A94619C00551F53 /* ArchiveTypeTar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTypeTar.swift; sourceTree = "<group>"; };
 		254BB5592ABBE8430059A1D5 /* MacPacker Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MacPacker Store.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		254BB55A2ABBE8430059A1D5 /* MacPacker copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MacPacker copy-Info.plist"; path = "/Users/sarensw/Documents/Private/Projects/MacPacker/MacPacker copy-Info.plist"; sourceTree = "<absolute>"; };
 		254BB55E2ABBE9D10059A1D5 /* CheckForUpdatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckForUpdatesView.swift; sourceTree = "<group>"; };
 		256B0ABA2B0DB21B000E8C9D /* CacheCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheCleaner.swift; sourceTree = "<group>"; };
+		256B0ABD2B0DBE71000E8C9D /* InternalEditorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalEditorWindowController.swift; sourceTree = "<group>"; };
+		256B0AC02B0DBEEE000E8C9D /* InternalEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalEditorView.swift; sourceTree = "<group>"; };
 		2592CED62AD4EAA2008DEFF8 /* ArchiveTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTest.swift; sourceTree = "<group>"; };
 		2592CED92AD4EF6D008DEFF8 /* hello.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hello.txt; sourceTree = "<group>"; };
 		2592CEE22AD529E2008DEFF8 /* bond.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bond.txt; sourceTree = "<group>"; };
@@ -167,6 +175,7 @@
 		25CF96862AC06E34000A7601 /* Archive2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive2.swift; sourceTree = "<group>"; };
 		25CF96892AC09398000A7601 /* ArchiveTypeZip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTypeZip.swift; sourceTree = "<group>"; };
 		25CF968C2AC09B8C000A7601 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		25D131002B0F074400F4229B /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		25D4F0A82AD39A4E003FBAA4 /* ArchiveType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveType.swift; sourceTree = "<group>"; };
 		25D4F0AB2AD3A9E2003FBAA4 /* ArchiveItemStackEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveItemStackEntry.swift; sourceTree = "<group>"; };
 		25EF27352AD7098300C8CC56 /* MacPacker.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MacPacker.xctestplan; sourceTree = "<group>"; };
@@ -337,7 +346,8 @@
 				251C7A3D2AA02D9600CD4C86 /* ArchiveView.swift */,
 				254BB55E2ABBE9D10059A1D5 /* CheckForUpdatesView.swift */,
 				25C0A8A92A78DE5F002C1C2A /* ContentView.swift */,
-				252960982A945BDC00551F53 /* Toolbar.swift */,
+				256B0AC02B0DBEEE000E8C9D /* InternalEditorView.swift */,
+				252960982A945BDC00551F53 /* ToolbarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -368,6 +378,7 @@
 				259847C52A81E62000E8CDD9 /* ArchiveItemStack.swift */,
 				25D4F0AB2AD3A9E2003FBAA4 /* ArchiveItemStackEntry.swift */,
 				25C518832AE762BF0001697F /* Breadcrumbs.swift */,
+				25D131002B0F074400F4229B /* Store.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -377,6 +388,7 @@
 			children = (
 				25FF4AD02ABC9C6300E060A7 /* AboutWindowController.swift */,
 				25FF4AD62ABD3B4200E060A7 /* WelcomeWindowController.swift */,
+				256B0ABD2B0DBE71000E8C9D /* InternalEditorWindowController.swift */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -574,10 +586,13 @@
 				25CF968B2AC09398000A7601 /* ArchiveTypeZip.swift in Sources */,
 				254BB5422ABBE8430059A1D5 /* ArchiveTableView.swift in Sources */,
 				25FF4AD82ABD3B4200E060A7 /* WelcomeWindowController.swift in Sources */,
+				25D131022B0F074400F4229B /* Store.swift in Sources */,
 				254BB5432ABBE8430059A1D5 /* ArchiveTypeLz4.swift in Sources */,
 				25C518852AE762BF0001697F /* Breadcrumbs.swift in Sources */,
 				254BB5452ABBE8430059A1D5 /* ArchiveItem.swift in Sources */,
 				25A0D2132AD64E9C00B43C92 /* URL+Extensions.swift in Sources */,
+				256B0ABF2B0DBE71000E8C9D /* InternalEditorWindowController.swift in Sources */,
+				256B0AC22B0DBEEE000E8C9D /* InternalEditorView.swift in Sources */,
 				256B0ABC2B0DB21B000E8C9D /* CacheCleaner.swift in Sources */,
 				25FF4AD22ABC9C6300E060A7 /* AboutWindowController.swift in Sources */,
 				254BB5472ABBE8430059A1D5 /* ArchiveItemStack.swift in Sources */,
@@ -585,7 +600,7 @@
 				254BB5482ABBE8430059A1D5 /* ContentView.swift in Sources */,
 				254BB5492ABBE8430059A1D5 /* ArchiveView.swift in Sources */,
 				25D4F0AA2AD39A4E003FBAA4 /* ArchiveType.swift in Sources */,
-				254BB54B2ABBE8430059A1D5 /* Toolbar.swift in Sources */,
+				254BB54B2ABBE8430059A1D5 /* ToolbarView.swift in Sources */,
 				254BB54C2ABBE8430059A1D5 /* ArchiveTypeTar.swift in Sources */,
 				254BB54E2ABBE8430059A1D5 /* MacPackerApp.swift in Sources */,
 				25CF96882AC06E34000A7601 /* Archive2.swift in Sources */,
@@ -604,16 +619,19 @@
 				25CF96872AC06E34000A7601 /* Archive2.swift in Sources */,
 				259847C92A81F27900E8CDD9 /* ArchiveTypeLz4.swift in Sources */,
 				256B0ABB2B0DB21B000E8C9D /* CacheCleaner.swift in Sources */,
+				25D131012B0F074400F4229B /* Store.swift in Sources */,
 				25C0A8EA2A7B7013002C1C2A /* ArchiveItem.swift in Sources */,
 				259847C62A81E62000E8CDD9 /* ArchiveItemStack.swift in Sources */,
 				25FF4ACE2ABC9C5900E060A7 /* AboutView.swift in Sources */,
 				25D4F0A92AD39A4E003FBAA4 /* ArchiveType.swift in Sources */,
 				25C0A8AA2A78DE5F002C1C2A /* ContentView.swift in Sources */,
+				256B0AC12B0DBEEE000E8C9D /* InternalEditorView.swift in Sources */,
+				256B0ABE2B0DBE71000E8C9D /* InternalEditorWindowController.swift in Sources */,
 				251C7A3E2AA02D9600CD4C86 /* ArchiveView.swift in Sources */,
 				254BB55F2ABBE9D10059A1D5 /* CheckForUpdatesView.swift in Sources */,
 				25A0D2122AD64E9C00B43C92 /* URL+Extensions.swift in Sources */,
 				25CF968A2AC09398000A7601 /* ArchiveTypeZip.swift in Sources */,
-				252960992A945BDC00551F53 /* Toolbar.swift in Sources */,
+				252960992A945BDC00551F53 /* ToolbarView.swift in Sources */,
 				25FF4AD42ABD23B200E060A7 /* WelcomeView.swift in Sources */,
 				25C518842AE762BF0001697F /* Breadcrumbs.swift in Sources */,
 				2529609D2A94619C00551F53 /* ArchiveTypeTar.swift in Sources */,

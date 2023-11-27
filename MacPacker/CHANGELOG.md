@@ -1,4 +1,5 @@
 v0.4
+- feat: viewer to show preview of files
 - chore: clean cache when MacPacker terminates
 
 v0.3

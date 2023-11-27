@@ -381,7 +381,6 @@ class Archive2: ObservableObject {
                     }
                 }
             } else {
-                // TODO file, but not an archive, so extract and open using sytem
                 if let currentStackEntry = stack.peek(),
                    let archiveType = currentStackEntry.archiveType,
                    let tempUrl = try? ArchiveType
@@ -419,6 +418,23 @@ class Archive2: ObservableObject {
         }
         
         return .success
+    }
+    
+    /// Extracts the given item to a temporary location. This is usually used to peek into that item
+    /// - Parameter item: The item to extract
+    /// - Returns: The URL to which the item was extracted. This is a temporary URL
+    public func extractFileToTemp(_ item: ArchiveItem) -> URL? {
+        if let currentStackEntry = stack.peek(),
+           let archiveType = currentStackEntry.archiveType,
+           let tempUrl = try? ArchiveType
+            .with(archiveType)
+            .extractFileToTemp(
+                path: currentStackEntry.localPath,
+                item: item) {
+            
+            return tempUrl
+        }
+        return nil
     }
     
     /// Loads the content of the given directory. This is especially used

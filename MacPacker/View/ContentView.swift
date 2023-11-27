@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var selectedFileItemID: Set<ArchiveItem.ID> = []
     @StateObject var breadcrumbs: Breadcrumbs = Breadcrumbs()
+    @StateObject var store: Store = Store()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -21,10 +22,11 @@ struct ContentView: View {
             .padding(8)
             ArchiveView()
         }
-        .toolbar {
-            Toolbar()
+        .toolbar(id: "mainToolbar") {
+            ToolbarView()
         }
         .environmentObject(breadcrumbs)
+        .environmentObject(store)
     }
     
     private var selection: Binding<Set<ArchiveItem.ID>> {

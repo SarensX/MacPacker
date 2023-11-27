@@ -11,6 +11,7 @@ import SwiftUI
 struct WelcomeWhatsNewView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
+            Text("• feat: viewer to show preview of files")
             Text("• chore: clean cache when MacPacker terminates")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -164,7 +165,7 @@ struct WelcomeView: View {
             #endif
             
             
-//            Text("2023 SarensX OÜ, Stephan Arenswald. Published as Open Source under MIT.")
+//            Text("2023 SarensX OÜ, Stephan Arenswald. Published as Open Source under GPL.")
 //                .font(.footnote)
 //                .foregroundColor(.secondary)
 //                .padding(.top, 14)

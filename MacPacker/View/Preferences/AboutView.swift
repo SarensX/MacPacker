@@ -83,7 +83,7 @@ struct AboutView: View {
                 Link("sarensw.com", destination: URL(string: "https://sarensw.com/?ref=about")!)
             }
             
-            Text("2023 SarensX OÜ, Stephan Arenswald. Published as Open Source under MIT.")
+            Text("2023 SarensX OÜ, Stephan Arenswald. Published as Open Source under GPL.")
                 .font(.footnote)
                 .foregroundColor(.secondary)
                 .padding(.top, 14)

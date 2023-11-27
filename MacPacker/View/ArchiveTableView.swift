@@ -93,7 +93,6 @@ extension Coordinator: NSFilePromiseProviderDelegate {
 /// Coordinator for the table
 /// NSPasteboardItemDataProvider
 final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
-    
     var parent: ArchiveTableView
     var items: [ArchiveItem] = []
     var itemDragged: ArchiveItem?
@@ -173,9 +172,10 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
 //        }
     }
     
-    // ---
-    // Double click functionality
-    // ---
+    
+    /// Handles the double-click functionality. The default use case is that the item is opened using the system editor.
+    /// If a directory is double clicked, then go into this directory.
+    /// - Parameter sender: <#sender description#>
     @objc func doubleClicked(_ sender: AnyObject) {
         guard let tableView = sender as? NSTableView else {
             return
@@ -193,9 +193,26 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
                         try moveDirectoryUp(item)
                     }
                     parent.isReloadNeeded = true
+                    parent.store.selectedItem = nil
                 }
             } catch {
                 print(error)
+            }
+        }
+    }
+    
+    /// Handles the selection event in the table. When an item is selected, set the item in the store so
+    /// that any other part of the code is able to understand that the selection has changed.
+    /// - Parameter notification: notification
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        let store = parent.store
+        if let tableView = notification.object as? NSTableView {
+            let indexes = tableView.selectedRowIndexes
+            if let selectedIndex = indexes.first {
+                let archiveItem = items[selectedIndex]
+                store.selectedItem = archiveItem
+            } else if indexes.isEmpty {
+                store.selectedItem = nil
             }
         }
     }
@@ -203,18 +220,13 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
 
 /// Table
 struct ArchiveTableView: NSViewRepresentable {
-//    @Binding var data: [ArchiveItem]
+    @EnvironmentObject var store: Store
     @Binding var isReloadNeeded: Bool
-//    var container: FileContainer
     @Binding var archive: Archive2?
     
     //
     // Constructor
     //
-    
-//    init(_ data: Binding<FileContainer>) {
-//        _data = data
-//    }
     
     //
     // NSViewRepresentable

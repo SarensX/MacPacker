@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 
 class ArchiveContainer: ObservableObject {
-    @Published var archive: Archive2?
     @Published var isReloadNeeded: Bool = false
 }
 
 struct ArchiveView: View {
+    @EnvironmentObject var store: Store
 //    @StateObject var container: FileContainer = FileContainer()
     @StateObject var archiveContainer: ArchiveContainer = ArchiveContainer()
     @State private var isDraggingOver = false
@@ -24,7 +24,7 @@ struct ArchiveView: View {
 //                data: $container.items,
                 isReloadNeeded: $archiveContainer.isReloadNeeded,
 //                container: container)
-                archive: $archiveContainer.archive)
+                archive: $store.archive)
         }
         .border(isDraggingOver ? Color.blue : Color.clear, width: 2)
         .onDrop(of: ["public.file-url"], isTargeted: $isDraggingOver) { providers -> Bool in
@@ -54,7 +54,7 @@ struct ArchiveView: View {
         
         do {
             // we're loading a new archive here, so clean up the current stack first
-            if let arc = archiveContainer.archive {
+            if let arc = store.archive {
                 do {
                     try arc.clean()
                 } catch {
@@ -64,7 +64,7 @@ struct ArchiveView: View {
             }
             
             let archive = try Archive2(url: url)
-            archiveContainer.archive = archive
+            store.archive = archive
             
             archiveContainer.isReloadNeeded = true
         } catch {
