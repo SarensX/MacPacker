@@ -1,6 +1,18 @@
 <p align="center">
-  <img alt="MacPacker Logo" src="https://raw.githubusercontent.com/SarensX/MacPacker/c55540e27fe8d9e419651b7e917b4e09ce238c52/MacPacker/Assets.xcassets/Logo.imageset/icon_128x128.png">
+  <img alt="MacPacker Logo" src="https://raw.githubusercontent.com/SarensX/MacPacker/c55540e27fe8d9e419651b7e917b4e09ce238c52/MacPacker/Assets.xcassets/Logo.imageset/icon_256x256.png"  align="left">
 </p>
+
+# MacPacker
+
+MacOS archive previewer and manager
+
+<div>
+  <a href="https://github.com/aonez/Keka/releases"><img src="https://img.shields.io/github/downloads/sarensx/macpacker/total?color=%2300834a" /></a>
+  <a href="https://github.com/aonez/Keka/releases/latest"><img src="https://img.shields.io/github/downloads/sarensx/macpacker/latest/total?color=%2300834a&label=latest" /></a>
+  <a href="https://github.com/aonez/Keka/releases/latest"><img src="https://img.shields.io/github/v/release/sarensx/macpacker?color=%2300834a" /></a>
+</div>
+
+<br /><br /><br /><br />
 
 ## Why?
 
