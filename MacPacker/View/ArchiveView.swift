@@ -14,17 +14,18 @@ class ArchiveContainer: ObservableObject {
 
 struct ArchiveView: View {
     @EnvironmentObject var store: Store
-//    @StateObject var container: FileContainer = FileContainer()
-    @StateObject var archiveContainer: ArchiveContainer = ArchiveContainer()
     @State private var isDraggingOver = false
     
     var body: some View {
         VStack {
             ArchiveTableView(
-//                data: $container.items,
-                isReloadNeeded: $archiveContainer.isReloadNeeded,
-//                container: container)
-                archive: $store.archive)
+                isReloadNeeded: $store.archiveContainer.isReloadNeeded,
+                archive: $store.archive) {
+                    if let archive = store.archive {
+                        return archive.currentStackEntry
+                    }
+                    return nil
+                }
         }
         .border(isDraggingOver ? Color.blue : Color.clear, width: 2)
         .onDrop(of: ["public.file-url"], isTargeted: $isDraggingOver) { providers -> Bool in
@@ -41,7 +42,11 @@ struct ArchiveView: View {
             }
             return true
         }
-        .environmentObject(archiveContainer)
+        .onAppear {
+            if store.openWithUrls.count > 0 {
+                self.drop(store.openWithUrls[0])
+            }
+        }
     }
     
     //
@@ -49,26 +54,16 @@ struct ArchiveView: View {
     //
     
     func drop(_ url: URL) {
-//        container.errorMessage = ""
-//        self.container.load(path)
-        
-        do {
-            // we're loading a new archive here, so clean up the current stack first
-            if let arc = store.archive {
-                do {
-                    try arc.clean()
-                } catch {
-                    print("clean during drop failed")
-                    print(error)
-                }
+        // we're loading a new archive here, so clean up the current stack first
+        if let arc = store.archive {
+            do {
+                try arc.clean()
+            } catch {
+                print("clean during drop failed")
+                print(error)
             }
-            
-            let archive = try Archive2(url: url)
-            store.archive = archive
-            
-            archiveContainer.isReloadNeeded = true
-        } catch {
-            print(error)
         }
+        
+        store.createArchive(url: url)
     }
 }

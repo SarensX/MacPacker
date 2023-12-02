@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var store: Store
     @State private var selectedFileItemID: Set<ArchiveItem.ID> = []
-    @StateObject var breadcrumbs: Breadcrumbs = Breadcrumbs()
-    @StateObject var store: Store = Store()
     
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .center) {
-                Text(breadcrumbs.completePath ?? "")
+                Text(store.completePath ?? "")
                     .multilineTextAlignment(.leading)
                 Spacer()
             }
@@ -25,8 +24,6 @@ struct ContentView: View {
         .toolbar(id: "mainToolbar") {
             ToolbarView()
         }
-        .environmentObject(breadcrumbs)
-        .environmentObject(store)
     }
     
     private var selection: Binding<Set<ArchiveItem.ID>> {

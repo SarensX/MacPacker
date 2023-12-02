@@ -11,6 +11,12 @@
 		252960992A945BDC00551F53 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252960982A945BDC00551F53 /* ToolbarView.swift */; };
 		2529609B2A94617900551F53 /* IArchiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529609A2A94617900551F53 /* IArchiveType.swift */; };
 		2529609D2A94619C00551F53 /* ArchiveTypeTar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2529609C2A94619C00551F53 /* ArchiveTypeTar.swift */; };
+		252D66FD2B199AEB005CC67F /* ArchiveWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252D66FC2B199AEA005CC67F /* ArchiveWindowController.swift */; };
+		252D66FE2B199AEB005CC67F /* ArchiveWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252D66FC2B199AEA005CC67F /* ArchiveWindowController.swift */; };
+		253CF60E2B1BCC7000FF49E5 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253CF60D2B1BCC7000FF49E5 /* PreferencesView.swift */; };
+		253CF60F2B1BCC7000FF49E5 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253CF60D2B1BCC7000FF49E5 /* PreferencesView.swift */; };
+		253CF6112B1BCD0D00FF49E5 /* SettingsGeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253CF6102B1BCD0D00FF49E5 /* SettingsGeneralView.swift */; };
+		253CF6122B1BCD0D00FF49E5 /* SettingsGeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253CF6102B1BCD0D00FF49E5 /* SettingsGeneralView.swift */; };
 		254BB5422ABBE8430059A1D5 /* ArchiveTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F32CA02A9EEE1C002ED5A4 /* ArchiveTableView.swift */; };
 		254BB5432ABBE8430059A1D5 /* ArchiveTypeLz4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259847C82A81F27900E8CDD9 /* ArchiveTypeLz4.swift */; };
 		254BB5452ABBE8430059A1D5 /* ArchiveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C0A8E92A7B7013002C1C2A /* ArchiveItem.swift */; };
@@ -139,6 +145,9 @@
 		252960982A945BDC00551F53 /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		2529609A2A94617900551F53 /* IArchiveType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IArchiveType.swift; sourceTree = "<group>"; };
 		2529609C2A94619C00551F53 /* ArchiveTypeTar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTypeTar.swift; sourceTree = "<group>"; };
+		252D66FC2B199AEA005CC67F /* ArchiveWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveWindowController.swift; sourceTree = "<group>"; };
+		253CF60D2B1BCC7000FF49E5 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		253CF6102B1BCD0D00FF49E5 /* SettingsGeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGeneralView.swift; sourceTree = "<group>"; };
 		254BB5592ABBE8430059A1D5 /* MacPacker Store.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MacPacker Store.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		254BB55A2ABBE8430059A1D5 /* MacPacker copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MacPacker copy-Info.plist"; path = "/Users/sarensw/Documents/Private/Projects/MacPacker/MacPacker copy-Info.plist"; sourceTree = "<absolute>"; };
 		254BB55E2ABBE9D10059A1D5 /* CheckForUpdatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckForUpdatesView.swift; sourceTree = "<group>"; };
@@ -352,6 +361,7 @@
 				25C0A8A92A78DE5F002C1C2A /* ContentView.swift */,
 				256B0AC02B0DBEEE000E8C9D /* InternalEditorView.swift */,
 				252960982A945BDC00551F53 /* ToolbarView.swift */,
+				253CF60D2B1BCC7000FF49E5 /* PreferencesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -393,6 +403,7 @@
 				25FF4AD02ABC9C6300E060A7 /* AboutWindowController.swift */,
 				25FF4AD62ABD3B4200E060A7 /* WelcomeWindowController.swift */,
 				256B0ABD2B0DBE71000E8C9D /* InternalEditorWindowController.swift */,
+				252D66FC2B199AEA005CC67F /* ArchiveWindowController.swift */,
 			);
 			path = Windows;
 			sourceTree = "<group>";
@@ -402,6 +413,7 @@
 			children = (
 				25FF4ACD2ABC9C5900E060A7 /* AboutView.swift */,
 				25FF4AD32ABD23B200E060A7 /* WelcomeView.swift */,
+				253CF6102B1BCD0D00FF49E5 /* SettingsGeneralView.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -591,7 +603,9 @@
 				254BB5422ABBE8430059A1D5 /* ArchiveTableView.swift in Sources */,
 				25FF4AD82ABD3B4200E060A7 /* WelcomeWindowController.swift in Sources */,
 				25D434F62B1440B0000BDF19 /* ArchiveType7zip.swift in Sources */,
+				252D66FE2B199AEB005CC67F /* ArchiveWindowController.swift in Sources */,
 				25D131022B0F074400F4229B /* Store.swift in Sources */,
+				253CF6122B1BCD0D00FF49E5 /* SettingsGeneralView.swift in Sources */,
 				254BB5432ABBE8430059A1D5 /* ArchiveTypeLz4.swift in Sources */,
 				25C518852AE762BF0001697F /* Breadcrumbs.swift in Sources */,
 				254BB5452ABBE8430059A1D5 /* ArchiveItem.swift in Sources */,
@@ -608,6 +622,7 @@
 				254BB54B2ABBE8430059A1D5 /* ToolbarView.swift in Sources */,
 				254BB54C2ABBE8430059A1D5 /* ArchiveTypeTar.swift in Sources */,
 				254BB54E2ABBE8430059A1D5 /* MacPackerApp.swift in Sources */,
+				253CF60F2B1BCC7000FF49E5 /* PreferencesView.swift in Sources */,
 				25CF96882AC06E34000A7601 /* Archive2.swift in Sources */,
 				254BB54F2ABBE8430059A1D5 /* IArchiveType.swift in Sources */,
 				25FF4AD52ABD23B200E060A7 /* WelcomeView.swift in Sources */,
@@ -620,6 +635,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25D434F52B1440B0000BDF19 /* ArchiveType7zip.swift in Sources */,
+				252D66FD2B199AEB005CC67F /* ArchiveWindowController.swift in Sources */,
 				25FF4AD72ABD3B4200E060A7 /* WelcomeWindowController.swift in Sources */,
 				25F32CA12A9EEE1C002ED5A4 /* ArchiveTableView.swift in Sources */,
 				25CF96872AC06E34000A7601 /* Archive2.swift in Sources */,
@@ -631,9 +647,11 @@
 				25FF4ACE2ABC9C5900E060A7 /* AboutView.swift in Sources */,
 				25D4F0A92AD39A4E003FBAA4 /* ArchiveType.swift in Sources */,
 				25C0A8AA2A78DE5F002C1C2A /* ContentView.swift in Sources */,
+				253CF60E2B1BCC7000FF49E5 /* PreferencesView.swift in Sources */,
 				256B0AC12B0DBEEE000E8C9D /* InternalEditorView.swift in Sources */,
 				256B0ABE2B0DBE71000E8C9D /* InternalEditorWindowController.swift in Sources */,
 				251C7A3E2AA02D9600CD4C86 /* ArchiveView.swift in Sources */,
+				253CF6112B1BCD0D00FF49E5 /* SettingsGeneralView.swift in Sources */,
 				254BB55F2ABBE9D10059A1D5 /* CheckForUpdatesView.swift in Sources */,
 				25A0D2122AD64E9C00B43C92 /* URL+Extensions.swift in Sources */,
 				25CF968A2AC09398000A7601 /* ArchiveTypeZip.swift in Sources */,
@@ -690,7 +708,7 @@
 				CODE_SIGN_ENTITLEMENTS = MacPacker/MacPacker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"MacPacker/Preview Content\"";
 				DEVELOPMENT_TEAM = 88W4UN2KJH;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -710,7 +728,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.3;
+				MARKETING_VERSION = 0.4;
+				OTHER_SWIFT_FLAGS = "-DSTORE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarensx.MacPacker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -726,7 +745,7 @@
 				CODE_SIGN_ENTITLEMENTS = MacPacker/MacPacker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"MacPacker/Preview Content\"";
 				DEVELOPMENT_TEAM = 88W4UN2KJH;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -746,7 +765,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.3;
+				MARKETING_VERSION = 0.4;
+				OTHER_SWIFT_FLAGS = "-DSTORE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarensx.MacPacker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

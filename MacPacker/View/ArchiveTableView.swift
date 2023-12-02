@@ -57,7 +57,7 @@ extension Coordinator: NSFilePromiseProviderDelegate {
                              writePromiseTo url: URL,
                              completionHandler: @escaping (Error?) -> Void) {
         print("filePromiseProvider")
-        if let se = Archive2.currentStackEntry {
+        if let se = getCurrentStackEntry() {
             do {
                 guard let archiveType = se.archiveType else { return }
                 guard let itemDragged,
@@ -96,13 +96,15 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
     var parent: ArchiveTableView
     var items: [ArchiveItem] = []
     var itemDragged: ArchiveItem?
+    var getCurrentStackEntry: () -> ArchiveItemStackEntry?
     
     var filePromiseQueue: OperationQueue = {
         let queue = OperationQueue()
         return queue
     }()
     
-    init(_ parent: ArchiveTableView) {
+    init(_ parent: ArchiveTableView, getCurrentStackEntry: @escaping () -> ArchiveItemStackEntry?) {
+        self.getCurrentStackEntry = getCurrentStackEntry
         self.parent = parent
     }
     
@@ -223,6 +225,7 @@ struct ArchiveTableView: NSViewRepresentable {
     @EnvironmentObject var store: Store
     @Binding var isReloadNeeded: Bool
     @Binding var archive: Archive2?
+    var getCurrentStackEntry: () -> ArchiveItemStackEntry?
     
     //
     // Constructor
@@ -279,7 +282,7 @@ struct ArchiveTableView: NSViewRepresentable {
     /// create the coordinator
     /// - Returns: coordinator
     func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+        Coordinator(self, getCurrentStackEntry: getCurrentStackEntry)
     }
     
     //

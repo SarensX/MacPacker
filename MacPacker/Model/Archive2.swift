@@ -31,13 +31,12 @@ class Archive2: ObservableObject {
     @Published var internalPath: String = "/"
     @Published var type: Archive2Type
     @Published var stack: ArchiveItemStack = ArchiveItemStack()
-    @Published var items: [ArchiveItem] = []
+    @Published public var items: [ArchiveItem] = []
     @Published var canEdit: Bool = false
     @Published var tempDirs: [URL] = []
     @Published var errorMessage: String?
-    public static var currentStackEntry: ArchiveItemStackEntry? = nil
-
-//    @Published var isReloadNeeded: Bool = false
+    var currentStackEntry: ArchiveItemStackEntry? = nil
+    private var breadcrumbsUpdated: ([String]) -> Void
     
     //
     // Initializers
@@ -48,12 +47,14 @@ class Archive2: ObservableObject {
         url = nil
         type = .zip
         canEdit = true
+        breadcrumbsUpdated = { _ in }
     }
     
     /// Constructor use if loading an archive
     /// - Parameter url: url to load
     /// - Throws: Throws Archive2Error.unknownType in case the archive type is unknown
-    init(url: URL) throws {
+    init(url: URL, breadcrumbsUpdated: @escaping ([String]) -> Void) throws {
+        self.breadcrumbsUpdated = breadcrumbsUpdated
         self.url = url
         self.type = .zip
         type = try determineTypeFrom(url: url)
@@ -193,9 +194,9 @@ class Archive2: ObservableObject {
                 names.insert(last.localPath.deletingLastPathComponent().path, at: 0)
             }
 //            names[0] = stack.last()!.localPath.path
-            NotificationCenter.default.post(name: Notification.Name("Breadcrumbs.update"), object: names)
+            breadcrumbsUpdated(names)
             
-            Archive2.currentStackEntry = entry
+            self.currentStackEntry = entry
         } catch {
             print(error)
         }
