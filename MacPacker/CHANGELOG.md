@@ -1,3 +1,7 @@
+v0.5
+- feat: multiple windows support
+- fix: open with in Finder not working
+
 v0.4
 - feat: viewer to show preview of files
 - feat: 7zip read support

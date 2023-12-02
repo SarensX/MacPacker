@@ -1,6 +1,18 @@
 <p align="center">
-  <img alt="MacPacker Logo" src="https://raw.githubusercontent.com/SarensX/MacPacker/c55540e27fe8d9e419651b7e917b4e09ce238c52/MacPacker/Assets.xcassets/Logo.imageset/icon_128x128.png">
+  <img alt="MacPacker Logo" src="https://raw.githubusercontent.com/SarensX/MacPacker/c55540e27fe8d9e419651b7e917b4e09ce238c52/MacPacker/Assets.xcassets/Logo.imageset/icon_256x256.png"  align="left">
 </p>
+
+# MacPacker
+
+MacOS archive previewer and manager
+
+<div>
+  <a href="https://github.com/aonez/Keka/releases"><img src="https://img.shields.io/github/downloads/sarensx/macpacker/total?color=%2300834a" /></a>
+  <a href="https://github.com/aonez/Keka/releases/latest"><img src="https://img.shields.io/github/downloads/sarensx/macpacker/latest/total?color=%2300834a&label=latest" /></a>
+  <a href="https://github.com/aonez/Keka/releases/latest"><img src="https://img.shields.io/github/v/release/sarensx/macpacker?color=%2300834a" /></a>
+</div>
+
+<br /><br /><br /><br />
 
 ## Why?
 
@@ -16,9 +28,14 @@ A free, open-source, tool to work with archives. Currently, it supports navigati
 
 ### Backlog
 - Support decompression of formats: Deflate, LZMA2, LZMA, BZip2
-- Support archives: ZLib, GZip, 7zip, XZ, RAR
+- Support archives: ZLib, GZip, XZ, RAR
 - Right click context menu in Finder to immediately extract the archive to a sub folder or without
 - Create/edit archive
+
+### v0.4
+- feat: viewer to show preview of files
+- feat: 7zip read support
+- chore: clean cache when MacPacker terminates
 
 ### v0.3
 - feat: highlight when dragging file to MacPacker window

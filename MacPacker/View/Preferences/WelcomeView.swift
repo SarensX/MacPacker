@@ -11,9 +11,8 @@ import SwiftUI
 struct WelcomeWhatsNewView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("• feat: viewer to show preview of files")
-            Text("• feat: 7zip read support")
-            Text("• chore: clean cache when MacPacker terminates")
+            Text("• feat: multiple windows support")
+            Text("• fix: open with in Finder not working")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .padding()
