@@ -7,9 +7,9 @@
 MacOS archive previewer and manager
 
 <div>
-  <a href="https://github.com/aonez/Keka/releases"><img src="https://img.shields.io/github/downloads/sarensx/macpacker/total?color=%2300834a" /></a>
-  <a href="https://github.com/aonez/Keka/releases/latest"><img src="https://img.shields.io/github/downloads/sarensx/macpacker/latest/total?color=%2300834a&label=latest" /></a>
-  <a href="https://github.com/aonez/Keka/releases/latest"><img src="https://img.shields.io/github/v/release/sarensx/macpacker?color=%2300834a" /></a>
+  <a href="https://github.com/SarensX/MacPacker/releases"><img src="https://img.shields.io/github/downloads/sarensx/macpacker/total?color=%2300834a" /></a>
+  <a href="https://github.com/SarensX/MacPacker/releases/latest"><img src="https://img.shields.io/github/downloads/sarensx/macpacker/latest/total?color=%2300834a&label=latest" /></a>
+  <a href="https://github.com/SarensX/MacPacker/releases/latest"><img src="https://img.shields.io/github/v/release/sarensx/macpacker?color=%2300834a" /></a>
 </div>
 
 <br /><br /><br /><br />
