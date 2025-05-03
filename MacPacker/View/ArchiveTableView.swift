@@ -195,7 +195,7 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
                         try moveDirectoryUp(item)
                     }
                     parent.isReloadNeeded = true
-                    parent.store.selectedItem = nil
+                    parent.state.selectedItem = nil
                 }
             } catch {
                 print(error)
@@ -207,7 +207,7 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
     /// that any other part of the code is able to understand that the selection has changed.
     /// - Parameter notification: notification
     func tableViewSelectionDidChange(_ notification: Notification) {
-        let store = parent.store
+        let store = parent.state
         if let tableView = notification.object as? NSTableView {
             let indexes = tableView.selectedRowIndexes
             if let selectedIndex = indexes.first {
@@ -222,7 +222,7 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
 
 /// Table
 struct ArchiveTableView: NSViewRepresentable {
-    @EnvironmentObject var store: Store
+    @EnvironmentObject var state: ArchiveState
     @Binding var isReloadNeeded: Bool
     @Binding var archive: Archive2?
     var getCurrentStackEntry: () -> ArchiveItemStackEntry?

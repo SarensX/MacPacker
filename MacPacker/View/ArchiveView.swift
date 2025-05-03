@@ -13,15 +13,15 @@ class ArchiveContainer: ObservableObject {
 }
 
 struct ArchiveView: View {
-    @EnvironmentObject var store: Store
+    @EnvironmentObject var state: ArchiveState
     @State private var isDraggingOver = false
     
     var body: some View {
         VStack {
             ArchiveTableView(
-                isReloadNeeded: $store.archiveContainer.isReloadNeeded,
-                archive: $store.archive) {
-                    if let archive = store.archive {
+                isReloadNeeded: $state.archiveContainer.isReloadNeeded,
+                archive: $state.archive) {
+                    if let archive = state.archive {
                         return archive.currentStackEntry
                     }
                     return nil
@@ -43,8 +43,8 @@ struct ArchiveView: View {
             return true
         }
         .onAppear {
-            if store.openWithUrls.count > 0 {
-                self.drop(store.openWithUrls[0])
+            if state.openWithUrls.count > 0 {
+                self.drop(state.openWithUrls[0])
             }
         }
     }
@@ -55,7 +55,7 @@ struct ArchiveView: View {
     
     func drop(_ url: URL) {
         // we're loading a new archive here, so clean up the current stack first
-        if let arc = store.archive {
+        if let arc = state.archive {
             do {
                 try arc.clean()
             } catch {
@@ -64,6 +64,6 @@ struct ArchiveView: View {
             }
         }
         
-        store.createArchive(url: url)
+        state.createArchive(url: url)
     }
 }

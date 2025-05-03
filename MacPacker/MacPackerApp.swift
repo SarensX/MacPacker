@@ -17,6 +17,8 @@ struct MacPackerApp: App {
     #if !STORE
     private let updaterController: SPUStandardUpdaterController
     #endif
+    @Environment(\.openWindow) var openWindow
+    let appState: AppState = AppState.shared
     
     init() {
         #if !STORE
@@ -27,6 +29,12 @@ struct MacPackerApp: App {
     }
     
     var body: some Scene {
+        WindowGroup(id: "MainWindow", for: URL.self) { $url in
+            ContentView()
+                .environmentObject(appState)
+        }
+        .restorationBehavior(.disabled)
+        
         Settings {
             PreferencesView()
         }
@@ -49,20 +57,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     @AppStorage("welcomeScreenShownInVersion") private var welcomeScreenShownInVersion = "0.0"
     private var openWithUrls: [URL] = []
     
-    func application(_ application: NSApplication, open urls: [URL]) {
-        print("User asked to open the following url with Open With... from the context menu")
-        print(urls)
-//        NotificationCenter.default.post(name: Notification.Name("file.load"), object: urls)
-        ArchiveWindowController.shared.createAndShowWindow(urls: urls)
-    }
-    
     func applicationDidFinishLaunching(_ notification: Notification) {
         if Bundle.main.appVersionLong > welcomeScreenShownInVersion {
             WelcomeWindowController.shared.show()
             welcomeScreenShownInVersion = Bundle.main.appVersionLong
         }
-        
-        ArchiveWindowController.shared.createAndShowWindow(urls: openWithUrls)
     }
     
     func applicationWillTerminate(_ notification: Notification) {

@@ -1,14 +1,15 @@
 //
-//  Store.swift
+//  ArchiveState.swift
 //  MacPacker
 //
-//  Created by Arenswald, Stephan (059) on 23.11.23.
+//  Created by Arenswald, Stephan (059) on 04.05.25.
 //
 
 import Foundation
 import SwiftUI
 
-class Store: ObservableObject {
+class ArchiveState: ObservableObject {
+    
     @Published var archive: Archive2?
     @Published var archiveContainer: ArchiveContainer = ArchiveContainer()
     @Published var selectedItem: ArchiveItem? = nil
@@ -17,7 +18,11 @@ class Store: ObservableObject {
     @Published var completePath: String?
 }
 
-extension Store {
+extension ArchiveState {
+    func loadUrl(_ url: URL) {
+        createArchive(url: url)
+    }
+    
     func createArchive(url: URL) {
         do {
             let archive = try Archive2(
@@ -154,3 +159,4 @@ extension Store {
         }
     }
 }
+

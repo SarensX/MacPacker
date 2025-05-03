@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var store: Store
+    @StateObject private var archiveState: ArchiveState = ArchiveState()
+    @EnvironmentObject var state: AppState
     @State private var selectedFileItemID: Set<ArchiveItem.ID> = []
     
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .center) {
-                Text(store.completePath ?? "")
+                Text(archiveState.completePath ?? "")
                     .multilineTextAlignment(.leading)
                 Spacer()
             }
@@ -24,6 +25,11 @@ struct ContentView: View {
         .toolbar(id: "mainToolbar") {
             ToolbarView()
         }
+        .onOpenURL { url in
+            self.archiveState.loadUrl(url)
+        }
+        .environmentObject(archiveState)
+        
     }
     
     private var selection: Binding<Set<ArchiveItem.ID>> {
@@ -34,11 +40,5 @@ struct ContentView: View {
                 print("selection changed to \(String(describing: selectedFileItemID))")
             }
         )
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

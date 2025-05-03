@@ -1,12 +1,31 @@
 {
+  "originHash" : "18876e7c4e9fae52a67bc2dce7e61d1d0d78d56e057ae02c01e5da9637859e2e",
   "pins" : [
+    {
+      "identity" : "bitbytedata",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tsolomko/BitByteData",
+      "state" : {
+        "revision" : "cdcdc5177ad536cfb11b95c620f926a81014b7fe",
+        "version" : "2.0.4"
+      }
+    },
     {
       "identity" : "sparkle",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/sparkle-project/Sparkle",
       "state" : {
-        "revision" : "f0ceaf5cc9f3f23daa0ccb6dcebd79fc96ccc7d9",
-        "version" : "2.5.0"
+        "revision" : "0ca3004e98712ea2b39dd881d28448630cce1c99",
+        "version" : "2.7.0"
+      }
+    },
+    {
+      "identity" : "swcompression",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tsolomko/SWCompression.git",
+      "state" : {
+        "revision" : "390e0b0af8dd19a600005a242a89e570ff482e09",
+        "version" : "4.8.6"
       }
     },
     {
@@ -14,10 +33,10 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/weichsel/ZIPFoundation.git",
       "state" : {
-        "revision" : "a3f5c2bae0f04b0bce9ef3c4ba6bd1031a0564c4",
-        "version" : "0.9.17"
+        "revision" : "02b6abe5f6eef7e3cbd5f247c5cc24e246efcfe0",
+        "version" : "0.9.19"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
