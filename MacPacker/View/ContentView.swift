@@ -22,8 +22,38 @@ struct ContentView: View {
             .padding(8)
             ArchiveView()
         }
-        .toolbar(id: "mainToolbar") {
-            ToolbarView()
+        .toolbar {
+//            ToolbarItemGroup {
+                ToolbarItem(
+                    id: "preview",
+                    placement: .primaryAction,
+                    showsByDefault: true
+                ) {
+                    Button {
+                        if let archive = archiveState.archive,
+                           let selectedItem = archiveState.selectedItem {
+                            let url = archive.extractFileToTemp(selectedItem)
+                            InternalEditorWindowController.shared.show(url)
+                        }
+                    } label: {
+                        Image(systemName: "text.page.badge.magnifyingglass")
+                    }
+                }
+            
+                ToolbarItem(
+                    id: "info",
+                    placement: .primaryAction,
+                    showsByDefault: true
+                ) {
+                    Button {
+                        if let url = archiveState.archive?.url {
+                            openGetInfoWnd(for: [url])
+                        }
+                    } label: {
+                        Image(systemName: "info.circle")
+                    }
+                }
+//            }
         }
         .onOpenURL { url in
             self.archiveState.loadUrl(url)
@@ -40,5 +70,13 @@ struct ContentView: View {
                 print("selection changed to \(String(describing: selectedFileItemID))")
             }
         )
+    }
+    
+    func openGetInfoWnd(for urls: [URL]) {
+        let pBoard = NSPasteboard(name: NSPasteboard.Name(rawValue: "pasteBoard_\(UUID().uuidString )") )
+        
+        pBoard.writeObjects(urls as [NSPasteboardWriting])
+        
+        NSPerformService("Finder/Show Info", pBoard)
     }
 }

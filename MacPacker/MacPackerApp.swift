@@ -29,7 +29,7 @@ struct MacPackerApp: App {
     }
     
     var body: some Scene {
-        WindowGroup(id: "MainWindow", for: URL.self) { $url in
+        WindowGroup(id: "MainWindow") {
             ContentView()
                 .environmentObject(appState)
         }
