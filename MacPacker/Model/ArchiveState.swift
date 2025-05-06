@@ -9,13 +9,21 @@ import Foundation
 import SwiftUI
 
 class ArchiveState: ObservableObject {
-    
     @Published var archive: Archive2?
     @Published var archiveContainer: ArchiveContainer = ArchiveContainer()
     @Published var selectedItem: ArchiveItem? = nil
     @Published var openWithUrls: [URL] = []
     @Published var completePathArray: [String] = []
     @Published var completePath: String?
+    @Published var architePath: String?
+    
+    init() {
+        
+    }
+    
+    init(completePath: String) {
+        self.completePath = completePath
+    }
 }
 
 extension ArchiveState {

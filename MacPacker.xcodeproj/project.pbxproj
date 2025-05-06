@@ -82,7 +82,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
-				View/CheckForUpdatesView.swift,
+				Views/CheckForUpdatesView.swift,
 			);
 			target = 254BB53C2ABBE8430059A1D5 /* MacPacker Store */;
 		};

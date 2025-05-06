@@ -6,17 +6,37 @@
 //
 
 import SwiftUI
+import AppKit
+
+struct PathControlView: NSViewRepresentable {
+    var path: String?
+
+    func makeNSView(context: Context) -> NSPathControl {
+        let pathControl = NSPathControl()
+        pathControl.url = path.flatMap { URL(fileURLWithPath: $0) }
+        pathControl.isEditable = false
+        pathControl.pathStyle = .standard
+        return pathControl
+    }
+
+    func updateNSView(_ nsView: NSPathControl, context: Context) {
+        nsView.url = path.flatMap { URL(fileURLWithPath: $0) }
+    }
+}
+
 
 struct ContentView: View {
-    @StateObject private var archiveState: ArchiveState = ArchiveState()
+    @StateObject var archiveState: ArchiveState = ArchiveState()
     @EnvironmentObject var state: AppState
     @State private var selectedFileItemID: Set<ArchiveItem.ID> = []
     
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .center) {
-                Text(archiveState.completePath ?? "")
-                    .multilineTextAlignment(.leading)
+                ScrollView(.horizontal, showsIndicators: false) {
+//                    PathControlView(path: archiveState.completePath)
+                   BreadcrumbView(url: URL(string: archiveState.completePath ?? ""))
+                }
                 Spacer()
             }
             .padding(8)
@@ -79,4 +99,10 @@ struct ContentView: View {
         
         NSPerformService("Finder/Show Info", pBoard)
     }
+}
+
+#Preview {
+    ContentView(archiveState: ArchiveState(completePath: "/MacPackerTests/TestArchives/archiveNested1.zip"))
+        .environmentObject(AppState.shared)
+        .frame(width: 480, height: 352)
 }
