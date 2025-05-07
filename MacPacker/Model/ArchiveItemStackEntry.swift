@@ -10,6 +10,7 @@ import Foundation
 enum ArchiveItemStackEntryType {
     case Directory
     case Archive
+    case ArchiveDirectory
 }
 
 struct ArchiveItemStackEntry {

@@ -35,7 +35,8 @@ struct ContentView: View {
             HStack(alignment: .center) {
                 ScrollView(.horizontal, showsIndicators: false) {
 //                    PathControlView(path: archiveState.completePath)
-                   BreadcrumbView(url: URL(string: archiveState.completePath ?? ""))
+//                    BreadcrumbView(url: URL(string: archiveState.archive?.internalPath ?? ""))
+                    BreadcrumbView(archive: archiveState.archive ?? nil)
                 }
                 Spacer()
             }

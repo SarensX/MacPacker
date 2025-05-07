@@ -43,39 +43,37 @@ struct BreadcrumbView: View {
     private var url: URL?
     private var items: [BreadcrumbItem] = []
     
-    init(url: URL?) {
-        self.url = url
-        if let url {
-            var tempUrl: URL?
-            for i in 0..<url.pathComponents.count {
-                // name
-                let component = url.pathComponents[i]
-                
-                // current url
-                if tempUrl == nil {
-                    tempUrl = URL(fileURLWithPath: "/")
-                } else {
-                    tempUrl = tempUrl?.appending(component: component)
-                }
-                
-                // icon
+    init(archive: Archive2?) {
+        if let archive, let archiveUrl = archive.url {
+            items.append(BreadcrumbItem(
+                icon: getNSImage(url: archiveUrl),
+                name: archiveUrl.lastPathComponent
+            ))
+            
+            for stackItem in archive.stack {
                 var icon: NSImage?
-                if let tempUrl {
-                    icon = getNSImage(url: tempUrl)
+                if stackItem.type == .Directory || stackItem.type == .ArchiveDirectory {
+                    icon = NSWorkspace.shared.icon(for: .folder)
+                } else {
+                    icon = getNSImageByExtension(fileName: stackItem.name)
                 }
-                
-                // create the bi
-                let bi = BreadcrumbItem(
+                items.append(BreadcrumbItem(
                     icon: icon,
-                    name: component)
-                items.append(bi)
+                    name: stackItem.name
+                ))
             }
         }
     }
     
+    func getNSImageByExtension(fileName: String) -> NSImage? {
+        let fileExtension = (fileName as NSString).pathExtension
+        let icon = NSWorkspace.shared.icon(forFileType: fileExtension)
+        return icon
+    }
+    
     func getNSImage(url: URL) -> NSImage? {
         let icon = NSWorkspace.shared.icon(forFile: url.path)
-        print(url.path)
+        print("Loading image for: \(url.path)")
         return icon
     }
     

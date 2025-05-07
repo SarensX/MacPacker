@@ -1,6 +1,7 @@
 v0.5
 - feat: multiple windows support
 - feat: open info for archive
+- feat: breadcrumb view
 - fix: open with in Finder not working
 
 v0.4

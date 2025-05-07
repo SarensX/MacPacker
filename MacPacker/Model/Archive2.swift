@@ -347,7 +347,7 @@ class Archive2: ObservableObject {
                                 loadStackEntry(stackEntry)
                             }
                         }
-                    } else if currentStackEntry.type == .Archive && currentStackEntry.archivePath != nil {
+                    } else if (currentStackEntry.type == .Archive || currentStackEntry.type == .ArchiveDirectory) && currentStackEntry.archivePath != nil {
                         // the previous stack entry is an archive, but there is no
                         // temp id, so it was not extracted yet
                         // > extract first
@@ -407,7 +407,7 @@ class Archive2: ObservableObject {
             } else if let currentStackEntry = stack.peek(),
                       let archivePath = currentStackEntry.archivePath {
                 let stackEntry = ArchiveItemStackEntry(
-                    type: .Archive,
+                    type: .ArchiveDirectory, //Directory,
                     name: item.name,
                     localPath: currentStackEntry.localPath,
                     archivePath: archivePath == "" ? item.name : archivePath + "/" + item.name,

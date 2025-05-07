@@ -15,7 +15,6 @@ class ArchiveState: ObservableObject {
     @Published var openWithUrls: [URL] = []
     @Published var completePathArray: [String] = []
     @Published var completePath: String?
-    @Published var architePath: String?
     
     init() {
         

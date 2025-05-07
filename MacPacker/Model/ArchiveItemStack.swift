@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ArchiveItemStack {
+struct ArchiveItemStack: Sequence {
     private var stack: [ArchiveItemStackEntry] = []
     
     func peek() -> ArchiveItemStackEntry? {
@@ -39,6 +39,10 @@ struct ArchiveItemStack {
     
     func last() -> ArchiveItemStackEntry? {
         return stack.last
+    }
+    
+    func makeIterator() -> IndexingIterator<Array<ArchiveItemStackEntry>> {
+        return stack.reversed().makeIterator()
     }
 }
 
