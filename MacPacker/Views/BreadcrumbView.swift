@@ -16,6 +16,9 @@ struct BreadcrumbItem {
 struct BreadcrumbItemView: View {
     var breadcrumbItem: BreadcrumbItem
     var showName: Bool = true
+    var onTap: (() -> Void)?
+    
+    @State private var isPressed = false
     
     var body: some View {
         HStack(spacing: 2) {
@@ -35,21 +38,31 @@ struct BreadcrumbItemView: View {
                     .fixedSize()
             }
         }
-        .font(.callout)
+        .font(.caption2)
+        .opacity(isPressed ? 0.6 : 1.0)
+        .gesture(
+            DragGesture(minimumDistance: 0)
+                .onChanged { _ in
+                    isPressed = true
+                }
+                .onEnded { _ in
+                    isPressed = false
+                    onTap?()
+                }
+        )
     }
 }
 
 struct BreadcrumbView: View {
+    @EnvironmentObject var archiveState: ArchiveState
     private var url: URL?
     private var items: [BreadcrumbItem] = []
+    private var archive: Archive2?
     
     init(archive: Archive2?) {
-        if let archive, let archiveUrl = archive.url {
-            items.append(BreadcrumbItem(
-                icon: getNSImage(url: archiveUrl),
-                name: archiveUrl.lastPathComponent
-            ))
-            
+        self.archive = archive
+        
+        if let archive {
             for stackItem in archive.stack {
                 var icon: NSImage?
                 if stackItem.type == .Directory || stackItem.type == .ArchiveDirectory {
@@ -80,12 +93,23 @@ struct BreadcrumbView: View {
     var body: some View {
         HStack(alignment: .firstTextBaseline,spacing: 4) {
             ForEach(items.indices, id: \.self) { index in
-                if index > 0 {
-                    BreadcrumbItemView(breadcrumbItem: items[index])
-                    
-                    if index != items.indices.last {
-                        Image(systemName: "chevron.compact.right")
+                BreadcrumbItemView(breadcrumbItem: items[index], onTap: {
+                    if items.count > 1 {
+                        do {
+                            for _ in 0..<self.items.count-index-1 {
+                                try _ = self.archive?.open(.parent)
+                            }
+                            self.archiveState.archiveContainer.isReloadNeeded = true
+                            self.archiveState.selectedItem = nil
+                        } catch {
+                            print(error)
+                        }
                     }
+                })
+                
+                if index != items.indices.last {
+                    Image(systemName: "chevron.compact.right")
+                        .font(.caption2)
                 }
             }
             

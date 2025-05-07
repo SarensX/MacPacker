@@ -191,9 +191,9 @@ final class Coordinator: NSObject, NSTableViewDelegate, NSTableViewDataSource {
                 let item = items[clickedRow]
                 if let archive = parent.archive {
                     let result = try archive.open(item)
-                    if result == .leaveDirectory {
-                        try moveDirectoryUp(item)
-                    }
+//                    if result == .leaveDirectory {
+//                        try moveDirectoryUp(item)
+//                    }
                     parent.isReloadNeeded = true
                     parent.state.selectedItem = nil
                 }
